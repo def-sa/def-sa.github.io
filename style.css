@@ -2,16 +2,16 @@ html, body {
     background-color:#c3c3c3;
     text-align:center;
     font-family:Monospace;
-    font-size: clamp(30px, 6vh, 35px);
+    font-size: clamp(1.25em, 1vw, 1.5em);
     line-height: calc(.75em + 0.5vw);
     }
   
   body > div {
     background: #fff;
     padding: 1em;
-    margin: 1em auto;
+    margin: auto;
     border-radius: 1em;
-    width: calc(clamp(12em, 2vw, 1em) * 2);
+    width: clamp(80vw, 50vw, 75vw);
     box-shadow: 10px 10px grey;
     }
     
