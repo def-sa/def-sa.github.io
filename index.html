@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>defsa</title>
-  <link rel="icon" type="image/png" href="./images/logo.png">
+  <link rel="icon" type="image/png" href="./images/favicon.png">
   <link rel="stylesheet" href="./style.css">
 
   <meta property="og:title" content="abt"/>
@@ -17,20 +17,28 @@
 </head>
 <body>
 
-  <h1> defsa </h1>
-  
-  <a href="./index.html"> <img src="./images/logo.png"></a>
-  
-  <div>
-    <a href="#">projcts</a>
-    <br><hr>
-    <a href="./card/">abt</a> 
-  </div>
-  
-  <br>
-  <div>
-    <iframe src="update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
-  </div>
+	<div>
+	
+	  <h2> defsa </h2>
+	  
+		<img style="position:absolute; z-index:0" src="./images/logo-old.png">
+		<a href="./index.html"> <img class="rebrand" src="./images/rebrand.png"></a>
+	  <br><br>
+	  
+	  <div id="box">
+		<a href="./warning/">warn</a>
+		<br><hr>
+		<a href="./about/">abt</a>
+		<br><hr>
+		<a href="./projects/">projcts</a>
+	  </div>
+	  
+	  <br>
+	  <div id="box">
+		<iframe src="./update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
+	  </div>
+	  
+	</div>
 </body>
 </html>
  
