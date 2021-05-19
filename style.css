@@ -3,7 +3,7 @@ html, body {
     text-align:center;
     font-family:monospace;
     font-size: clamp(1.25em, 1vw, 1.5em);
-    line-height: calc(.75em + 0.5vw);
+    line-height: calc(1em + 0.5vw);
 	image-rendering: pixelated;
     }
   
@@ -12,11 +12,16 @@ html, body {
     padding: 1em;
     margin: auto;
     border-radius: 1em;
-    width: clamp(80vw, 50vw, 75vw);
+    width: clamp(35vw, 50vw, 75vw);
     box-shadow: 10px 10px #7F7F7F;
 	filter:invert(1);
     }
-    
+	
+ #box > span{
+	filter:invert(1);
+	background-color:white;
+ }
+ 
  body > div > hr {
     opacity:.25;
     width:75%;
