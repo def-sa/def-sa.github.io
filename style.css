@@ -12,16 +12,6 @@ body {
     width:50vmax;
     opacity:.75
     }
-	
-@media screen and (max-width: 768px)
-.content .header h1 h2 {
-    font-size: 31px;
-}
-
-@media screen and (max-width: 480px)
-.content .header h1 h2 {
-    font-size: 24px;
-}
 
 .logo {
 	min-height:100px;
