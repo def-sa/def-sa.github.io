@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>-> warn</title>
+  <title>-> tw/dni</title>
   <link rel="icon" type="image/png" href="../images/favicon.png">
   <link rel="stylesheet" href="../style.css">
 
@@ -15,41 +15,37 @@
 
   
 </head>
-<body>
+<body onload="darkmode()">
+<script src="../script.js"> </script>
 
-	<div>
-	
-	  <h2>-> warn</h2>
-	  <a href="../index.html"> <img src="../images/logo-transparent.png"></a>
-	  <br><br>
+	<h2>-> tw/dni</h2>
+	<a href="../index.html"> <img src="../images/logo-transparent.png"></a>
+	<br><br>
 	  
-		<div id="box">
-		content warning for:
+	<div class="content">
+		warning for:
 		<br><hr>
-		blood / gore.
+		blood / gore
 		<br><hr>
-		abuse, trauma, vent content, ect. (no nsfw).
+		abuse, trauma, vent content, ect. (no nsfw)
 		<br><hr>
-		eyestrain (& rarely, flashing images).
-		</div>
+		eyestrain (& rarely, flashing images)
+	</div>
 		
-		<br>
+	<br>
 		
-		<div id="box">
+	<div class="content">
 		dni if you:
 		<br><hr>
-		are nsfw-centered.
-		<br><hr>
-		believe you're the good guy but you're the bad guy.
-		<br><hr>
+		are nsfw-centered
+		<!-- <br><hr>
 		<span style="opacity:.25">(idk. i'll update this more another time)</span>
-		</div>
+		-->
+	</div>
 		
-	  <br>
-	  <div id="box">
+	<br>
+	<div class="content">
 		<iframe src="../update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
-	  </div>
-	  
 	</div>
 </body>
 </html>

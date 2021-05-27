@@ -1,35 +1,46 @@
-html, body {
-    background-color:#c3c3c3;
-    text-align:center;
+body {
     font-family:monospace;
-    font-size: clamp(1.25em, 1vw, 1.5em);
-    line-height: calc(1em + 0.5vw);
 	image-rendering: pixelated;
-    }
-  
- div > #box {
-    background: #fff;
-    padding: 1em;
-    margin: auto;
-    border-radius: 1em;
-    width: clamp(35vw, 50vw, 75vw);
-    box-shadow: 10px 10px #7F7F7F;
-	filter:invert(1);
+	margin: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
+    background-color: white;
     }
 	
- #box > span{
-	filter:invert(1);
-	background-color:white;
- }
- 
- body > div > hr {
-    opacity:.25;
-    width:75%;
-    }
-    
  body > hr {
     width:50vmax;
     opacity:.75
+    }
+	
+.header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.content {
+	background: #fff;
+    padding: 1em;
+    margin: auto;
+	border-radius: 6px;
+    width: 35vw;
+    box-shadow: 10px 10px #7F7F7F;
+    text-align: center;
+	color: black;
+    text-decoration: none;
+	transition: 250ms ease-in-out;
+  }
+  
+ .content span{
+	background-color:#c3c3c3;
+ }
+ 
+ .content hr {
+    opacity:.25;
+    width:75%;
     }
 	
 .rebrand {
@@ -66,3 +77,5 @@ html, body {
     opacity: 1;
   }
 }
+
+

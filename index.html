@@ -15,29 +15,28 @@
 
   
 </head>
-<body>
-
-	<div>
+<body onload="darkmode()">
+	<script src="./script.js"> </script>
 	
-	  <h2> defsa </h2>
-	  
+	<div class="header">
+		<h1> defsa </h1>
 		<img style="position:absolute; z-index:0" src="./images/logo-old.png">
 		<a href="./index.html"> <img class="rebrand" src="./images/rebrand.png"></a>
-	  <br><br>
-	  
-	  <div id="box">
-		<a href="./warning/">warn</a>
+	</div>
+	<br>
+	<hr>
+	<br>
+	
+	<div class="content">
+		<a href="./warning/">tw/dni</a>
 		<br><hr>
 		<a href="./about/">abt</a>
 		<br><hr>
 		<a href="./projects/">projcts</a>
-	  </div>
-	  
-	  <br>
-	  <div id="box">
+	</div>
+	<br>
+	<div class="content">
 		<iframe src="./update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
-	  </div>
-	  
 	</div>
 </body>
 </html>
