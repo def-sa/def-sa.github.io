@@ -1,13 +1,11 @@
 body {
     font-family:monospace;
 	image-rendering: pixelated;
-	margin: 0;
-    font-size: 1.5em;
-    font-weight: 400;
-    line-height: 1.5;
-    color: black;
+	margin: auto;
+    font-size: 1.25em;
     text-align: center;
     background-color: white;
+	color: black;
     }
 	
  body > hr {
@@ -15,6 +13,23 @@ body {
     opacity:.75
     }
 	
+@media screen and (max-width: 768px)
+.content .header h1 h2 {
+    font-size: 31px;
+}
+
+@media screen and (max-width: 480px)
+.content .header h1 h2 {
+    font-size: 24px;
+}
+
+.logo {
+	min-height:100px;
+	min-width:86px;
+	max-height:100px;
+	max-width:86px;
+}
+
 .header {
     text-align: center;
     max-width: 700px;
@@ -26,12 +41,12 @@ body {
     padding: 1em;
     margin: auto;
 	border-radius: 6px;
-    width: 35vw;
     box-shadow: 10px 10px #7F7F7F;
     text-align: center;
 	color: black;
     text-decoration: none;
 	transition: 250ms ease-in-out;
+	width: clamp(35vw, 45vw, 75vw);
   }
   
  .content span{
