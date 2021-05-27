@@ -29,7 +29,7 @@
     var cookieparse = (cookie === 'true');
     if (cookie !== '' || cookie !== null) { //if cookie is defined
       if (cookieparse == true) {
-        document.body.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "#3c3c3c";
         document.body.style.filter = "invert(1)";
         for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
           document.getElementsByTagName('img')[i].style.filter = "invert(1)";
@@ -37,7 +37,7 @@
         document.getElementById("darkmode").innerHTML = "Light mode";
       }
       if (cookieparse == false) {
-        document.body.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "#c3c3c3";
         document.body.style.filter = "invert(0)";
         for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
           document.getElementsByTagName('img')[i].style.filter = "invert(0)";
