@@ -4,8 +4,7 @@ body {
 	margin: auto;
     font-size: 1.25em;
     text-align: center;
-    background-color: white;
-	color: black;
+    background-color: #c3c3c3;
     }
 	
  body > hr {
@@ -47,40 +46,5 @@ body {
     opacity:.25;
     width:75%;
     }
-	
-.rebrand {
-  animation: rebrand 3s steps(1, end) infinite;
-  z-index:1;
-}
-
-@keyframes rebrand {
-  0% {
-    opacity: 1;
-  }
-    6% {
-    opacity: 0;
-  }
-    11% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0;
-  }
-  93% {
-    opacity: 1;
-  }
-  94% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 
