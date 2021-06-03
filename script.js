@@ -79,7 +79,7 @@
   })
   .then((data) => {
     var random = Math.floor(Math.random() * (data.length));
-    document.getElementById('splash').innerHTML = data[random];
+    document.getElementById('splash').innerHTML = "<b>. </b>"+data[random]+"<b> .</b>";
   });
 	  
   }
