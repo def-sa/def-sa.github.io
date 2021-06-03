@@ -34,7 +34,7 @@
         for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
           document.getElementsByTagName('img')[i].style.filter = "invert(1)";
         }
-        document.getElementById("darkmode").innerHTML = "Light mode";
+        document.getElementById("darkmode").innerHTML = "lighten";
       }
       if (cookieparse == false) {
         document.body.style.backgroundColor = "#c3c3c3";
@@ -42,7 +42,7 @@
         for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
           document.getElementsByTagName('img')[i].style.filter = "invert(0)";
         }
-        document.getElementById("darkmode").innerHTML = "Dark mode";
+        document.getElementById("darkmode").innerHTML = "darken";
       }
     } else { //if cookie is not defined
       setCookie("darkmode", false, 30);
