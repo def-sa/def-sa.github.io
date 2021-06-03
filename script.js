@@ -9,7 +9,7 @@
       for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
         document.getElementsByTagName('img')[i].style.filter = "invert(1)";
       }
-      document.getElementById("darkmode").innerHTML = "Light mode";
+      document.getElementById("darkmode").innerHTML = "lighten";
       dark = true;
       setCookie("darkmode", dark, 30); //set cookie to false
     } else { //if dark mode is active
@@ -18,7 +18,7 @@
       for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
         document.getElementsByTagName('img')[i].style.filter = "invert(0)";
       }
-      document.getElementById("darkmode").innerHTML = "Dark mode";
+      document.getElementById("darkmode").innerHTML = "darken";
       dark = undefined; //restart
       setCookie("darkmode", false, 30); //set cookie to false
     }
