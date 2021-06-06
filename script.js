@@ -65,9 +65,17 @@ function getCookie(cname) {
   }
   
 function imginvert(num) {
-	for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
-		document.getElementsByTagName('img')[i].style.filter = "invert("+num+")";
-	} 
+	if (num == 'unknown') {
+		var regExp = /\(([^)]+)\)/;
+		var invertvalue = regExp.exec(document.body.style.filter);
+		for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
+			document.getElementsByTagName('img')[i].style.filter = "invert("+invertvalue[1]+")";
+		}
+	} else {
+		for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
+			document.getElementsByTagName('img')[i].style.filter = "invert("+num+")";
+		}
+	}
 }
 
 function splash() {
