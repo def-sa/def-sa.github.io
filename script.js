@@ -1,6 +1,6 @@
 
 window.onload = function() {
-  if(!localStorage.getItem('theme')) {
+  if(!sessionStorage.getItem('theme')) {
     populateStorage();
   } else {
     setStyles();
@@ -8,17 +8,17 @@ window.onload = function() {
 }
 
 function populateStorage() {
-  localStorage.setItem('theme', document.getElementById('seltheme').checked);
+  sessionStorage.setItem('theme', document.getElementById('seltheme').checked);
   setStyles();
 }
 
 function setStyles() {
-  if (localStorage.getItem('theme') == 'true') {
+  if (sessionStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
     document.body.style.color = "#fff";
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "lighten: ";
-  } else if (localStorage.getItem('theme') == 'false') {
+  } else if (sessionStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
     document.body.style.color = "#000";
     document.getElementById('seltheme').checked = false;
