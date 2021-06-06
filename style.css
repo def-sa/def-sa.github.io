@@ -47,7 +47,7 @@ body {
     width:75%;
     }
 
-#splash:not(img){
+#splash{
 	opacity: .65;
 }
 

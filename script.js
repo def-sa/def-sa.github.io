@@ -1,4 +1,4 @@
-
+/*
 function loadSetting() {
 var cookie = getCookie("darkmode");
 var cookieparse = (cookie === 'true');
@@ -19,6 +19,8 @@ if (cookie !== '' || cookie !== null) { //if cookie is defined
       setCookie("darkmode", false, 30);
       }
 }
+
+
 
 function darkmode() {
     if (getCookie("darkmode") == 'true') {
@@ -76,6 +78,33 @@ function imginvert(num) {
 			document.getElementsByTagName('img')[i].style.filter = "invert("+num+")";
 		}
 	}
+}
+*/
+
+window.onload = function() {
+  if(!localStorage.getItem('theme')) {
+    populateStorage();
+  } else {
+    setStyles();
+  }
+}
+
+function populateStorage() {
+  localStorage.setItem('theme', document.getElementById('seltheme').checked);
+  setStyles();
+}
+
+function setStyles() {
+  document.getElementById('output').innerHTML = localStorage.getItem('theme');
+  if (localStorage.getItem('theme') == 'true') {
+    document.body.style.backgroundColor = "#3c3c3c";
+    document.body.style.color = "#fff";
+    document.getElementById('seltheme').checked = true;
+  } else if (localStorage.getItem('theme') == 'false') {
+    document.body.style.backgroundColor = "#c3c3c3";
+    document.body.style.color = "#000";
+    document.getElementById('seltheme').checked = false;
+  }
 }
 
 function splash() {
