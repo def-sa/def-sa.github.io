@@ -1,5 +1,27 @@
 
-  function darkmode() {
+// load setting
+var cookie = getCookie("darkmode");
+var cookieparse = (cookie === 'true');
+if (cookie !== '' || cookie !== null) { //if cookie is defined
+	if (cookieparse == true) {
+		document.body.style.backgroundColor = "#3c3c3c";
+        document.body.style.filter = "invert(1)";
+        for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
+          document.getElementsByTagName('img')[i].style.filter = "invert(1)";
+        }
+        document.getElementById("darkmode").innerHTML = "lighten";
+      }
+      if (cookieparse == false) {
+        document.body.style.backgroundColor = "#c3c3c3";
+        document.body.style.filter = "invert(0)";
+        imgfix();
+        document.getElementById("darkmode").innerHTML = "darken";
+      }
+    } else { //if cookie is not defined
+      setCookie("darkmode", false, 30);
+      }
+	  
+function darkmode() {
     if (getCookie("darkmode") == 'true') {
       dark = true;
       }
@@ -15,48 +37,21 @@
     } else { //if dark mode is active
       document.body.style.backgroundColor = "#c3c3c3";
       document.body.style.filter = "invert(0)";
-      for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
-        document.getElementsByTagName('img')[i].style.filter = "invert(0)";
-      }
+      imgfix();
       document.getElementById("darkmode").innerHTML = "darken";
       dark = undefined; //restart
       setCookie("darkmode", false, 30); //set cookie to false
     }
   }
   
-  function loadSetting() {
-    var cookie = getCookie("darkmode");
-    var cookieparse = (cookie === 'true');
-    if (cookie !== '' || cookie !== null) { //if cookie is defined
-      if (cookieparse == true) {
-        document.body.style.backgroundColor = "#3c3c3c";
-        document.body.style.filter = "invert(1)";
-        for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
-          document.getElementsByTagName('img')[i].style.filter = "invert(1)";
-        }
-        document.getElementById("darkmode").innerHTML = "lighten";
-      }
-      if (cookieparse == false) {
-        document.body.style.backgroundColor = "#c3c3c3";
-        document.body.style.filter = "invert(0)";
-        for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
-          document.getElementsByTagName('img')[i].style.filter = "invert(0)";
-        }
-        document.getElementById("darkmode").innerHTML = "darken";
-      }
-    } else { //if cookie is not defined
-      setCookie("darkmode", false, 30);
-      }
-    }
-  
-  function setCookie(cname,cvalue,exdays) {
+function setCookie(cname,cvalue,exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
   
-  function getCookie(cname) {
+function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -72,7 +67,13 @@
     return "";
   }
   
-  function splash() {
+function imgfix() {
+	for (var i = 0; i < document.getElementsByTagName('img').length; i++) {
+		document.getElementsByTagName('img')[i].style.filter = "invert(0)";
+	} 
+}
+
+function splash() {
 	fetch('splashes.json')
   .then((response) => {
     return response.json();
@@ -80,7 +81,6 @@
   .then((data) => {
     var random = Math.floor(Math.random() * (data.length));
     document.getElementById('splash').innerHTML = "<b>. </b>"+data[random]+"<b> .</b>";
-  });
-	  
+  }); 
   }
   
