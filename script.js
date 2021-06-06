@@ -5,6 +5,7 @@ window.onload = function() {
   } else {
     setStyles();
   }
+  splash();
 }
 
 function populateStorage() {
