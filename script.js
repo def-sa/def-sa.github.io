@@ -95,15 +95,16 @@ function populateStorage() {
 }
 
 function setStyles() {
-  document.getElementById('output').innerHTML = localStorage.getItem('theme');
   if (localStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
     document.body.style.color = "#fff";
     document.getElementById('seltheme').checked = true;
+	document.getElementById('themelabel').innerHTML = "lighten: ";
   } else if (localStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
     document.body.style.color = "#000";
     document.getElementById('seltheme').checked = false;
+	document.getElementById('themelabel').innerHTML = "darken: ";
   }
 }
 
