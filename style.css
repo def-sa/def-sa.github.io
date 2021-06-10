@@ -58,7 +58,10 @@ body {
 #art img {
   min-width: 100px;
   min-height: 100px;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
+  box-shadow: 10px 10px #7F7F7F;
+  text-align: center;
+  padding:5px;
   }
 

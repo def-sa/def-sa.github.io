@@ -18,12 +18,14 @@ function setStyles() {
     document.body.style.backgroundColor = "#3c3c3c";
     document.body.style.color = "#fff";
 	document.getElementsByClassName('content').backgroundColor = "#000";
+	document.getElementById('content').backgroundColor = "#000";
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "darken:";
   } else if (sessionStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
     document.body.style.color = "#000";
 	document.getElementsByClassName('content').backgroundColor = "#fff";
+	document.getElementById('content').backgroundColor = "#fff";
     document.getElementById('seltheme').checked = false;
 	document.getElementById('themelabel').innerHTML = "darken:";
   }
