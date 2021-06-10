@@ -16,16 +16,28 @@ function populateStorage() {
 function setStyles() {
   if (sessionStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
-	document.getElementsByClassName("content").style.backgroundColor = "#000000";
-	document.querySelector("a").style.color = "#ffffff";
 	document.body.style.color = "#ffffff";
+	content = document.getElementsByClassName("content");
+	for (i = 0; i < content.length; i++) {
+		content[i].style.backgroundColor = "#000000";
+	}
+	anchor = document.querySelector("a");
+	for (i = 0; i < anchor.length; i++) {
+		anchor[i].style.color = "#ffffff";
+	}
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "darken:";
   } else if (sessionStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
-	document.getElementsByClassName("content").style.backgroundColor = "#ffffff";
-	document.querySelector("a").style.color = "#000000";
-    document.body.style.color = "#000000";
+	document.body.style.color = "#000000";
+	content = document.getElementsByClassName("content");
+	for (i = 0; i < content.length; i++) {
+		content[i].style.backgroundColor = "#ffffff";
+	}
+	anchor = document.querySelector("a");
+	for (i = 0; i < anchor.length; i++) {
+		anchor[i].style.color = "#000000";
+	}
     document.getElementById('seltheme').checked = false;
 	document.getElementById('themelabel').innerHTML = "darken:";
   }
