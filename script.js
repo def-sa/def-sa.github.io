@@ -16,16 +16,16 @@ function populateStorage() {
 function setStyles() {
   if (sessionStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
-	document.getElementsByClassName("content").style.background = "#000000";
-	document.querySelector("a").style.color = "#ffffff";
-	document.body.style.color = "#ffffff";
+	document.getElementsByClassName("content").style.backgroundColor = "black";
+	document.querySelector("a").style.color = "white";
+	document.body.style.color = "white";
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "darken:";
   } else if (sessionStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
-	document.getElementsByClassName("content").style.background = "#ffffff";
-	document.querySelector("a").style.color = "#000000";
-    document.body.style.color = "#000000";
+	document.getElementsByClassName("content").style.backgroundColor = "white";
+	document.querySelector("a").style.color = "black";
+    document.body.style.color = "black";
     document.getElementById('seltheme').checked = false;
 	document.getElementById('themelabel').innerHTML = "darken:";
   }
