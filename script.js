@@ -16,15 +16,15 @@ function populateStorage() {
 function setStyles() {
   if (sessionStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
-	document.getElementsByClassName('content').style.backgroundColor = "#000";
-	document.querySelector("a").style.color = "#fff"
+	document.getElementsByClassName('content').style.background = "#000";
+	document.querySelector("a").style.color = "#fff";
 	document.body.style.color = "#fff";
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "darken:";
   } else if (sessionStorage.getItem('theme') == 'false') {
     document.body.style.backgroundColor = "#c3c3c3";
-	document.getElementsByClassName('content').style.backgroundColor = "#fff";
-	document.querySelector("a").style.color = "#000"
+	document.getElementsByClassName('content').style.background = "#fff";
+	document.querySelector("a").style.color = "#000";
     document.body.style.color = "#000";
     document.getElementById('seltheme').checked = false;
 	document.getElementById('themelabel').innerHTML = "darken:";
