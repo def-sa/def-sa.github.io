@@ -34,7 +34,7 @@ function setStyles() {
 	content = document.getElementsByClassName("content");
 	for (i = 0; i < content.length; i++) {
 		content[i].style.backgroundColor = "#ffffff";
-		content[i].style.color = "#ffffff";
+		content[i].style.color = "#000000";
 	}
 	anchor = document.querySelectorAll("a");
 	for (i = 0; i < anchor.length; i++) {
