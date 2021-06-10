@@ -49,6 +49,7 @@ function createImg(key,value) {
     img.alt = key;
     var a = document.createElement("a");
     a.setAttribute("href", value[i]);
+	a.setAttribute('target', '_blank');
     a.appendChild(img);
     document.getElementById('art').appendChild(a);
   }
