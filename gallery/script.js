@@ -11,29 +11,37 @@ fetch('./art.json')
       case "ideas":
         t.ideasvalue = value;
         createImg(`${key}`,value);
+		link = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) { //for each link
-          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "black";
+          link.style.backgroundColor = "black";
+		  link.style.color = "inherit";
         }
         break;
       case "drawings":
         t.drawingsvalue = value;
         createImg(`${key}`,value);
+		link = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "gray";
+          link.style.backgroundColor = "gray";
+		  link.style.color = "inherit";
         }
         break;
       case "edits":
         t.editsvalue = value;
         createImg(`${key}`,value);
+		link = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "lightgray";
+          link.style.backgroundColor = "lightgray";
+		  link.style.color = "inherit";
         }
         break;
 	  case "other":
         t.othervalue = value;
         createImg(`${key}`,value);
+		link = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "white";
+          link.style.backgroundColor = "white";
+		  link.style.color = "inherit";
         }
         break;
       }
