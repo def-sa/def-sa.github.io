@@ -20,6 +20,7 @@ function setStyles() {
 	content = document.getElementsByClassName("content");
 	for (i = 0; i < content.length; i++) {
 		content[i].style.backgroundColor = "#000000";
+		content[i].style.color = "#ffffff";
 	}
 	anchor = document.querySelector("a");
 	for (i = 0; i < anchor.length; i++) {
@@ -33,6 +34,7 @@ function setStyles() {
 	content = document.getElementsByClassName("content");
 	for (i = 0; i < content.length; i++) {
 		content[i].style.backgroundColor = "#ffffff";
+		content[i].style.color = "#ffffff";
 	}
 	anchor = document.querySelector("a");
 	for (i = 0; i < anchor.length; i++) {
