@@ -11,37 +11,33 @@ fetch('./art.json')
       case "ideas":
         t.ideasvalue = value;
         createImg(`${key}`,value);
-		var image = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) { //for each link
-          image.style.backgroundColor = "black";
-		  image.style.color = "white";
+          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "black";
+		  document.getElementById(`${key}`+"img"+i).style.color = "white";
         }
         break;
       case "drawings":
         t.drawingsvalue = value;
         createImg(`${key}`,value);
-		var image = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          image.style.backgroundColor = "gray";
-		  image.style.color = "white";
+          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "gray";
+		  document.getElementById(`${key}`+"img"+i).style.color = "white";
         }
         break;
       case "edits":
         t.editsvalue = value;
         createImg(`${key}`,value);
-		var image = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          image.style.backgroundColor = "lightgray";
-		  image.style.color = "black";
+          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "lightgray";
+		  document.getElementById(`${key}`+"img"+i).style.color = "black";
         }
         break;
 	  case "other":
         t.othervalue = value;
         createImg(`${key}`,value);
-		var image = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) {
-          image.style.backgroundColor = "white";
-		  image.style.color = "black";
+          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "white";
+		  document.getElementById(`${key}`+"img"+i).style.color = "black";
         }
         break;
       }
