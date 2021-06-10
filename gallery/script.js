@@ -33,7 +33,7 @@ fetch('./art.json')
         t.othervalue = value;
         createImg(`${key}`,value);
         for (i = 0; i < value.length; i++) {
-          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "lightgray";
+          document.getElementById(`${key}`+"img"+i).style.backgroundColor = "white";
         }
         break;
       }
