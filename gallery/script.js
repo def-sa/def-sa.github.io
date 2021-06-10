@@ -11,10 +11,10 @@ fetch('./art.json')
       case "ideas":
         t.ideasvalue = value;
         createImg(`${key}`,value);
-		link = document.getElementById(`${key}`+"img"+i);
+		img = document.getElementById(`${key}`+"img"+i);
         for (i = 0; i < value.length; i++) { //for each link
-          link.style.backgroundColor = "black";
-		  link.style.color = "white";
+          img.style.backgroundColor = "black";
+		  img.style.color = "white";
         }
         break;
       case "drawings":
