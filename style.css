@@ -4,7 +4,8 @@ body {
 	margin: auto;
     font-size: 1.25em;
     text-align: center;
-    background-color: #c3c3c3;
+	width: 100%;
+	height: 100%;
     }
 	
  body > hr {
@@ -46,6 +47,11 @@ body {
     opacity:.25;
     width:75%;
     }
+	
+.update {
+	opacity:.65;
+	color:black;
+}
 
 #splash{
 	opacity: .65;

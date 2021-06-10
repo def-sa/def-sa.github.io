@@ -22,7 +22,7 @@ function setStyles() {
 		content[i].style.backgroundColor = "#000000";
 		content[i].style.color = "#ffffff";
 	}
-	anchor = document.querySelector("a");
+	anchor = document.querySelectorAll("a");
 	for (i = 0; i < anchor.length; i++) {
 		anchor[i].style.color = "#ffffff";
 	}
@@ -36,7 +36,7 @@ function setStyles() {
 		content[i].style.backgroundColor = "#ffffff";
 		content[i].style.color = "#ffffff";
 	}
-	anchor = document.querySelector("a");
+	anchor = document.querySelectorAll("a");
 	for (i = 0; i < anchor.length; i++) {
 		anchor[i].style.color = "#000000";
 	}
