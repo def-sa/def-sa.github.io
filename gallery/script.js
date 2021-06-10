@@ -47,6 +47,7 @@ function createImg(key,value) {
     img.id = key+"img"+i;
     img.src = value[i];
     img.alt = key;
+	img.loading = "lazy";
     var a = document.createElement("a");
     a.setAttribute("href", value[i]);
 	a.setAttribute('target', '_blank');
