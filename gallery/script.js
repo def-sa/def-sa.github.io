@@ -42,6 +42,10 @@ function createImg(key,value) {
     img.id = key+i;
     img.src = value[i];
     img.alt = key;
+	img.style.minHeight = "100px";
+    img.style.maxHeight = "150px";
+    img.style.minWidth = "100px";
+    img.style.maxWidth = "150px";
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
