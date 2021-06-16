@@ -18,7 +18,7 @@ function createImg(key,value) {
     case "ideas":
       bg.style.border = "3px dotted black";
 	  document.getElementById(key).checked = true;
-    continue;
+    break;
     case "edits":
       bg.style.display = "none";
 	  document.getElementById(key).checked = false;
