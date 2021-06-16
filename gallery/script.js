@@ -17,7 +17,8 @@ function createImg(key,value) {
   switch (key) { //customize specific bg
     case "ideas":
       bg.style.border = "3px dotted black";
-    break;
+	  document.getElementById(key).checked = true;
+    continue;
     case "edits":
       bg.style.display = "none";
 	  document.getElementById(key).checked = false;
