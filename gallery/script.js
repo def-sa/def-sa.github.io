@@ -16,46 +16,45 @@ function createImg(key,value) {
   bg.id = key+"bg";
   switch (key) { //customize specific bg
     case "ideas":
-      bg.style.border = "3px dotted black";
-	  document.getElementById(key).checked = true;
-    break;
+		bg.style.border = "3px dotted black";
+		document.getElementById(key).checked = true;
+		break;
     case "edits":
-      bg.style.display = "none";
-	  document.getElementById(key).checked = false;
-    break;
+		bg.style.display = "none";
+		document.getElementById(key).checked = false;
+		break;
 	case "other":
-      bg.style.display = "none";
-	  document.getElementById(key).checked = false;
-    break;
+		bg.style.display = "none";
+		document.getElementById(key).checked = false;
+		break;
 	case "animated":
-      bg.style.display = "none";
-	  document.getElementById(key).checked = false;
-    break;
+		bg.style.display = "none";
+		document.getElementById(key).checked = false;
+		break;
     default: //if no case is met, mark as checked
       document.getElementById(key).checked = true;
-    break;
+		break;
     }
   for (i = 0; i < value.length; i++) { //for each link
     bg.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
     //create image
     var img = document.createElement('img'); 
     img.id = key+i;
-    img.src = value[i];
     img.alt = key;
-	img.style.minHeight = "100px";
-    img.style.maxHeight = "150px";
-    img.style.minWidth = "100px";
-    img.style.maxWidth = "150px";
+	img.src = value[i]+"&name=100x100";
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
 	switch (key) { //customize specific image details
     case "ideas":
-      img.loading = "auto";
-    break;
+		img.loading = "auto";
+		break;
+	case "animated":
+		img.remove();
+		break;
     default: //if no case is met, lazy load
       img.loading = "lazy";
-    break;
+		break;
     }
     a.appendChild(img);
     bg.appendChild(a);

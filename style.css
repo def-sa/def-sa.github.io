@@ -68,11 +68,15 @@ body {
 }
 
 #art img {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 150px;
+  max-height: 150px;
   box-shadow: 10px 10px #7F7F7F;
   text-align: center;
   padding:5px;
   }
-  
+
 #top {
   display: none;
   position: fixed;
@@ -80,4 +84,5 @@ body {
   right: 50vw;
   cursor: pointer;
   padding: 15px;
+  z-index:99;
 }

@@ -13,9 +13,9 @@ function populateStorage() {
   setStyles();
 }
 
-var totop = document.getElementById("top")
+var totop = document.getElementById("top");
 window.onscroll = function() {
-  if (document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     totop.style.display = "block";
   } else {
     totop.style.display = "none";
@@ -64,4 +64,3 @@ function splash() {
     document.getElementById('splash').innerHTML = "<b>. </b>"+data[random]+"<b> .</b>";
   });
   }
-  
