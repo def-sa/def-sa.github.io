@@ -17,7 +17,6 @@ function createImg(key,value) {
   switch (key) { //customize specific bg
     case "ideas":
       bg.style.border = "3px dotted black";
-      document.getElementById(key).checked = false;
     break;
     case "edits":
       bg.style.display = "none";
@@ -45,6 +44,14 @@ function createImg(key,value) {
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
+	switch (key) { //customize specific image details
+    case "ideas":
+      img.loading = "auto";
+    break;
+    default: //if no case is met, lazy load
+      img.loading = "lazy";
+    break;
+    }
     a.appendChild(img);
     bg.appendChild(a);
     document.getElementById('art').appendChild(bg);
