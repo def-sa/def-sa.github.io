@@ -1,6 +1,11 @@
 {
   "ideas":
   [
+	"https://pbs.twimg.com/media/E30XYWhXIAAoktw?format=jpg",
+	"https://pbs.twimg.com/media/E30XYWgWQAEoADa?format=jpg",
+	"https://pbs.twimg.com/media/E3yD55XX0AMrJxz?format=jpg",
+	"https://pbs.twimg.com/media/E3yD55TX0AccOMc?format=jpg",
+	"https://pbs.twimg.com/media/E3yD55TX0AccOMc?format=jpg",
 	"https://pbs.twimg.com/media/E3abUN2XoAMbN-u?format=jpg",
 	"https://pbs.twimg.com/media/E3Udh5YX0AcIuMF?format=jpg",
 	"https://pbs.twimg.com/media/E3UULf8WEAIRwC3?format=jpg",
@@ -58,6 +63,10 @@
   
   "drawings":
   [
+	"https://pbs.twimg.com/media/E303Le7XMAI1WBC?format=jpg",
+	"https://pbs.twimg.com/media/E3u2YEWX0AMqRdo?format=jpg",
+	"https://pbs.twimg.com/media/E3u2YETWEAIFPnP?format=jpg",
+	"https://pbs.twimg.com/media/E3u2YEVX0AE1jck?format=jpg",
 	"https://pbs.twimg.com/media/E3VIHJhWQAE-E8l?format=jpg",
 	"https://pbs.twimg.com/media/E3CGfzGWYAAq5om?format=jpg",
 	"https://pbs.twimg.com/media/E2X9MPVWYAAGHcV?format=jpg",
@@ -164,15 +173,11 @@
   
   "other":
   [
+
 	"https://pbs.twimg.com/media/E2wBaLOX0AM7z8R?format=jpg",
 	"https://pbs.twimg.com/media/E15AtiwWEAAF25Q?format=jpg",
 	"https://pbs.twimg.com/media/E1pisYAWYAA7w4W?format=jpg",
 	"https://pbs.twimg.com/media/E1pAvm5WUAAgae3?format=jpg",
-	"https://twitter.com/i/status/1392640803923709965",
-	"https://twitter.com/i/status/1392640715100987394",
-	"https://twitter.com/i/status/1392420395526000643",
-	"https://twitter.com/i/status/1391913154842615809",
-	"https://twitter.com/i/status/1390393457177399299",
 	"https://pbs.twimg.com/media/E0fsb1DXsAAlBWX?format=jpg",
 	"https://pbs.twimg.com/media/E0R2fIcXEAUVkNs?format=jpg",
 	"https://pbs.twimg.com/media/E0KxZbaWUAAnIkb?format=jpg",
@@ -180,8 +185,6 @@
 	"https://pbs.twimg.com/media/E0KxZbZXoAEl2zx?format=jpg",
 	"https://pbs.twimg.com/media/E0KxZbYX0AMbSLi?format=jpg",
 	"https://pbs.twimg.com/media/EziiCYeVcAMFZwj?format=jpg",
-	"https://twitter.com/i/status/1384659198001049600",
-	"https://twitter.com/i/status/1384581676160864258",
 	"https://pbs.twimg.com/media/EzHj1crVUAAovbh?format=jpg",
 	"https://pbs.twimg.com/media/EzHj1ctUcAQYfNw?format=jpg",
 	"https://pbs.twimg.com/media/EyuGxHGW8AMdcTw?format=jpg",
@@ -198,26 +201,38 @@
 	"https://pbs.twimg.com/media/EutRPSCU4AEcB2n?format=jpg",
 	"https://pbs.twimg.com/media/EuoqA4aUYAcpKDj?format=jpg",
 	"https://pbs.twimg.com/media/EuoqA4cVIAAlJi4?format=jpg",
-	"https://twitter.com/i/status/1361758794661814273",
 	"https://pbs.twimg.com/media/Et6fVMSXcAEpYiD?format=jpg",
 	"https://pbs.twimg.com/media/Et6fVMTXcAQKAET?format=jpg",
 	"https://pbs.twimg.com/media/EtiOa_9XEAE5bh0?format=jpg",
 	"https://pbs.twimg.com/media/EtiOa_9XYAAuJjf?format=jpg",
 	"https://pbs.twimg.com/media/EtVrVvnWYAAtXJv?format=jpg",
 	"https://pbs.twimg.com/media/EstRGTnXAAIK92N?format=jpg",
-	"https://twitter.com/i/status/1353956111376904192",
 	"https://pbs.twimg.com/media/EsW6yOBWMAA397z?format=jpg",
 	"https://pbs.twimg.com/media/Er_LjHEXYAoIz_j?format=jpg",
 	"https://pbs.twimg.com/media/Er_LjHDXMAAeOsA?format=jpg",
 	"https://pbs.twimg.com/media/Er_Lf5tXcAAlpKO?format=jpg",
-	"https://twitter.com/i/status/1351019795135803392",
 	"https://pbs.twimg.com/media/Er5ThXqXYAAUXOU?format=jpg",
 	"https://pbs.twimg.com/media/Er5ThXqXUAcrXuc?format=jpg",
 	"https://pbs.twimg.com/media/Er5ThXrXUAEcOqD?format=jpg",
 	"https://pbs.twimg.com/media/Er5ThXoXcAItUso?format=jpg",
-	"https://twitter.com/i/status/1348490230245060608",
 	"https://pbs.twimg.com/media/ErBf-2CXcAUcG8G?format=jpg",
 	"https://pbs.twimg.com/media/EpWzirbXYAUMpmx?format=jpg",
 	"https://pbs.twimg.com/media/EpWzircW4A8O8AN?format=jpg"
+  ],
+  "animated":
+  [
+	"https://twitter.com/i/status/1403530050947977218",
+	"https://twitter.com/i/status/1403403314046308355",
+	"https://twitter.com/i/status/1392640803923709965",
+	"https://twitter.com/i/status/1392640715100987394",
+	"https://twitter.com/i/status/1392420395526000643",
+	"https://twitter.com/i/status/1391913154842615809",
+	"https://twitter.com/i/status/1390393457177399299",
+	"https://twitter.com/i/status/1384659198001049600",
+	"https://twitter.com/i/status/1384581676160864258",
+	"https://twitter.com/i/status/1361758794661814273",
+	"https://twitter.com/i/status/1353956111376904192",
+	"https://twitter.com/i/status/1351019795135803392",
+	"https://twitter.com/i/status/1348490230245060608"
   ]
 }
