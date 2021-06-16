@@ -13,6 +13,15 @@ function populateStorage() {
   setStyles();
 }
 
+var totop = document.getElementById("top")
+window.onscroll = function() {
+  if (document.documentElement.scrollTop > 20) {
+    totop.style.display = "block";
+  } else {
+    totop.style.display = "none";
+  }
+};
+
 function setStyles() {
   if (sessionStorage.getItem('theme') == 'true') {
     document.body.style.backgroundColor = "#3c3c3c";
