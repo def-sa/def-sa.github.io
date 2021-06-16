@@ -1,13 +1,4 @@
- var totop = document.getElementById("top");
-window.onscroll = function() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    totop.style.display = "block";
-  } else {
-    totop.style.display = "none";
-  }
-};
-
-  fetch('art.json')
+	fetch('art.json')
     .then((response) => {
       return response.json();
     })
@@ -50,7 +41,7 @@ function createImg(key,value) {
     var img = document.createElement('img'); 
     img.id = key+i;
     img.alt = key;
-	img.src = value[i]+"&name=100x100";
+	img.src = value[i]+"&name=360x360";
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
