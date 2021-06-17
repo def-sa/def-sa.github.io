@@ -9,14 +9,14 @@ window.onload = function() {
 }
 
 
-document.onscroll = function() {
+window.addEventListener("scroll", function() {
   var totop = document.getElementById("top");
-  if (document.body.scrollTop > 125 || document.documentElement.scrollTop > 125) {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     totop.style.display = "block";
   } else {
     totop.style.display = "none";
   }
-};
+});
 
 function populateStorage() {
   sessionStorage.setItem('theme', document.getElementById('seltheme').checked);
