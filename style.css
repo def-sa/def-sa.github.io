@@ -10,7 +10,8 @@ body {
     font-size: 1.25em;
     text-align: center;
 	margin:0;
-	overflow:auto;
+	overflow:overlay;
+	height: 100vh;
     }
 	
  body > hr {
