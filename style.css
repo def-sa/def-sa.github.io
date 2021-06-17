@@ -79,3 +79,19 @@ body {
 	border: 3px dotted;
 	width: 40vw;
 }
+
+.easteregg {
+    width: 100vw;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.easteregg p {
+    display: inline-block;
+    padding-left: 100vw;
+    animation: marquee 6s linear infinite;
+}
+@keyframes easteregg {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
