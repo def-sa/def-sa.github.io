@@ -1,17 +1,12 @@
 html {
-    background-color:#c3c3c3;
-	overflow:auto;
+    background:#c3c3c3;
 }
 
 body {
     font-family:monospace;
 	image-rendering: pixelated;
-	margin: auto;
     font-size: 1.25em;
     text-align: center;
-	margin:0;
-	overflow:auto;
-	height: 100vh;
     }
 	
  body > hr {
@@ -33,7 +28,7 @@ body {
 }
 
 .content {
-	background-color: white;
+	background: white;
     padding: 1em;
     margin: auto;
 	border-radius: 6px;
@@ -67,24 +62,24 @@ body {
 }
 
 #art img {
-  min-width: 100px;
-  min-height: 100px;
-  max-width: 150px;
-  max-height: 150px;
-  box-shadow: 10px 10px #7F7F7F;
-  text-align: center;
-  padding:5px;
+	min-width: 100px;
+	min-height: 100px;
+	max-width: 150px;
+	max-height: 150px;
+	box-shadow: 10px 10px #7F7F7F;
+	text-align: center;
+	padding:5px;
   }
 
 #top {
 	font-family: monospace;
-  display: none;
-  position: fixed;
-  top: 1vh;
-  left: 30vw;
-  cursor: pointer;
-  padding: 12px;
-  z-index: 99;
-  border: 3px dotted;
-  width: 40vw;
+	display: none;
+	position: fixed;
+	top: 1vh;
+	left: 30vw;
+	cursor: pointer;
+	padding: 12px;
+	z-index: 99;
+	border: 3px dotted;
+	width: 40vw;
 }

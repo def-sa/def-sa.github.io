@@ -8,16 +8,6 @@ window.onload = function() {
   splash();
 }
 
-
-window.addEventListener("scroll", function() {
-  var totop = document.getElementById("top");
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    totop.style.display = "block";
-  } else {
-    totop.style.display = "none";
-  }
-});
-
 function populateStorage() {
   sessionStorage.setItem('theme', document.getElementById('seltheme').checked);
   setStyles();
@@ -25,8 +15,8 @@ function populateStorage() {
 
 function setStyles() {
   if (sessionStorage.getItem('theme') == 'true') {
-    document.body.style.backgroundColor = "#3c3c3c";
-	document.body.style.color = "#ffffff";
+    document.documentElement.style.backgroundColor = "#3c3c3c";
+	document.documentElement.style.color = "#ffffff";
 	content = document.getElementsByClassName("content");
 	for (i = 0; i < content.length; i++) {
 		content[i].style.backgroundColor = "#000000";
@@ -39,8 +29,8 @@ function setStyles() {
     document.getElementById('seltheme').checked = true;
 	document.getElementById('themelabel').innerHTML = "darken:";
   } else if (sessionStorage.getItem('theme') == 'false') {
-    document.body.style.backgroundColor = "#c3c3c3";
-	document.body.style.color = "#000000";
+    document.documentElement.style.backgroundColor = "#c3c3c3";
+	document.documentElement.style.color = "#000000";
 	content = document.getElementsByClassName("content");
 	for (i = 0; i < content.length; i++) {
 		content[i].style.backgroundColor = "#ffffff";
