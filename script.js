@@ -9,7 +9,7 @@ window.onload = function() {
 }
 
 
-window.onscroll = function() {
+document.onscroll = function() {
   var totop = document.getElementById("top");
   if (document.body.scrollTop > 125 || document.documentElement.scrollTop > 125) {
     totop.style.display = "block";
