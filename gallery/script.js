@@ -36,12 +36,12 @@ function createImg(key,value) {
 		break;
     }
   for (i = 0; i < value.length; i++) { //for each link
-    bg.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
+    bg.style.backgroundColor = "rgba(255, 255, 255, 0."+i+"5)";
     //create image
     var img = document.createElement('img'); 
     img.id = key+i;
     img.alt = key;
-	img.src = value[i]+"&name=360x360";
+	img.src = value[i]+"&name=360x360"; //get lower res thumbnail
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
@@ -67,13 +67,12 @@ function createCheckbox(key) {
   var check = document.createElement('input');
   check.id = key;
   check.type = "checkbox";
-  check.name = key;
+  check.title = "show "+key+" tab";
   check.setAttribute("onchange" , "toggle(this)");
-  var label = document.createElement('label');
-  label.for = "input";
-  label.innerHTML = key+":";
+  var label = document.createElement('span');
+  label.innerText = key+":";
+  label.appendChild(check);
   document.getElementById('input').appendChild(label);
-  document.getElementById('input').appendChild(check);
   }
 
 function toggle(obj) {
