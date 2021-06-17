@@ -51,9 +51,6 @@ function createImg(key,value) {
     img.id = key+i;
     img.alt = key;
 	img.src = value[i]+"&name=360x360"; //get lower res thumbnail
-    //create anchor
-    var a = document.createElement("a");
-    a.href = value[i];
 	switch (key) { //customize specific image details
     case "ideas":
 		img.loading = "auto";
@@ -65,6 +62,10 @@ function createImg(key,value) {
       img.loading = "lazy";
 		break;
     }
+	//create anchor
+    var a = document.createElement("a");
+    a.href = value[i];
+	a.target = "_blank";
     a.appendChild(img);
     bg.appendChild(a);
     document.getElementById('art').appendChild(bg);
