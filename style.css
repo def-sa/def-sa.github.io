@@ -81,15 +81,12 @@ body {
 }
 
 .easteregg {
-    width: 100vw;
-    white-space: nowrap;
     overflow: hidden;
-    box-sizing: border-box;
 }
 .easteregg p {
-    display: inline-block;
-    padding-left: 100vw;
-    animation: marquee 6s linear infinite;
+    padding: 0 30vw 0 60vw;
+    animation: marquee 1.5s linear infinite;
+    margin: auto;
 }
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
