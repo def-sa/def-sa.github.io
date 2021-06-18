@@ -91,7 +91,7 @@ body {
     padding-left: 100vw;
     animation: marquee 6s linear infinite;
 }
-@keyframes easteregg {
+@keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
 }
