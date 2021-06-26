@@ -66,6 +66,7 @@ function createImg(key,value) {
     var a = document.createElement("a");
     a.href = value[i];
 	a.target = "_blank";
+	a.title = "click to view full resolution";
     a.appendChild(img);
     bg.appendChild(a);
     document.getElementById('art').appendChild(bg);
