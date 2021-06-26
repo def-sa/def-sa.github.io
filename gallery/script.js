@@ -36,12 +36,8 @@ function createImg(key,value) {
 		bg.style.display = "none";
 		document.getElementById(key).checked = false;
 		break;
-	case "animated":
-		bg.style.display = "none";
-		document.getElementById(key).checked = false;
-		break;
     default: //if no case is met, mark as checked
-      document.getElementById(key).checked = true;
+		document.getElementById(key).checked = true;
 		break;
     }
   for (i = 0; i < value.length; i++) { //for each link

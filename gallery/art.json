@@ -174,7 +174,23 @@
 	"https://pbs.twimg.com/media/Ep46LbUXUAQ9s3B?format=jpg",
 	"https://pbs.twimg.com/media/EpybA6TXUAkgxir?format=jpg"
   ],
-  
+    "animated":
+  [	
+	"https://twitter.com/i/status/1407728283547021316",
+	"https://twitter.com/i/status/1403530050947977218",
+	"https://twitter.com/i/status/1403403314046308355",
+	"https://twitter.com/i/status/1392640803923709965",
+	"https://twitter.com/i/status/1392640715100987394",
+	"https://twitter.com/i/status/1392420395526000643",
+	"https://twitter.com/i/status/1391913154842615809",
+	"https://twitter.com/i/status/1390393457177399299",
+	"https://twitter.com/i/status/1384659198001049600",
+	"https://twitter.com/i/status/1384581676160864258",
+	"https://twitter.com/i/status/1361758794661814273",
+	"https://twitter.com/i/status/1353956111376904192",
+	"https://twitter.com/i/status/1351019795135803392",
+	"https://twitter.com/i/status/1348490230245060608"
+  ],
    "edits":
   [	
 	"https://pbs.twimg.com/media/E0Dovj2WQAE1JTI?format=png",
@@ -243,22 +259,5 @@
 	"https://pbs.twimg.com/media/ErBf-2CXcAUcG8G?format=jpg",
 	"https://pbs.twimg.com/media/EpWzirbXYAUMpmx?format=jpg",
 	"https://pbs.twimg.com/media/EpWzircW4A8O8AN?format=jpg"
-  ],
-  "animated":
-  [	
-	"https://twitter.com/i/status/1407728283547021316",
-	"https://twitter.com/i/status/1403530050947977218",
-	"https://twitter.com/i/status/1403403314046308355",
-	"https://twitter.com/i/status/1392640803923709965",
-	"https://twitter.com/i/status/1392640715100987394",
-	"https://twitter.com/i/status/1392420395526000643",
-	"https://twitter.com/i/status/1391913154842615809",
-	"https://twitter.com/i/status/1390393457177399299",
-	"https://twitter.com/i/status/1384659198001049600",
-	"https://twitter.com/i/status/1384581676160864258",
-	"https://twitter.com/i/status/1361758794661814273",
-	"https://twitter.com/i/status/1353956111376904192",
-	"https://twitter.com/i/status/1351019795135803392",
-	"https://twitter.com/i/status/1348490230245060608"
   ]
 }
