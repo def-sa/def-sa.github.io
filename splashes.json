@@ -299,7 +299,7 @@
 	"undefined ;)",
 	
 	"<a href='./'>Find out more!</a>",
-	"<x onload='console.log('Hi :)')'> I've console logged</x>",
+	"<x onload=\"console.log('Hi :)')\"> I've console logged</x>",
 	"<strike> A BORZOI </strike>",
 	"<strike>moderate</strike> SEVERE",
 	"Experiencing interruptions? <u>Find out why</u>",

@@ -50,7 +50,7 @@ function createImg(key,value) {
     var img = document.createElement('img'); 
     img.id = key+i;
     img.alt = key;
-	img.src = value[i]+"&name=360x360"; //get lower res thumbnail
+	img.src = value[i]+"&name=240x240"; //get lower res thumbnail
 	switch (key) { //customize specific image details
     case "ideas":
 		img.loading = "auto";
