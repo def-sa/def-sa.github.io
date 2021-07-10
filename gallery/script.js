@@ -1,3 +1,14 @@
+	fetch('art.json')
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      for (const [key, value] of Object.entries(data)) {
+        createCheckbox(key);
+        createImg(key, value);
+      }
+    });
+    
 window.onscroll = function() {
   var totop = document.getElementById("top");
   if (document.body.scrollTop > 125 || document.documentElement.scrollTop > 125) {
@@ -7,94 +18,71 @@ window.onscroll = function() {
   }
 };
 	
-fetch('art.json')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    var allTags = [];
-    for (ia = 0; ia < data.length; ia++) { //for each entree
-      var tags = data[ia].tags.toString().split(",");
-      for (i = 0; i < tags.length; i++) { //find unique tags
-        allTags.push(tags[i]); 
-        uniqueTags = allTags.filter(distinct); 
-      }
+function createImg(key,value) {
+  //create bg
+  var bg = document.createElement('div');
+  bg.style.position = "inline";
+  bg.id = key+"bg";
+  switch (key) { //customize specific bg
+    case "ideas":
+		bg.style.border = "3px dotted black";
+		document.getElementById(key).checked = true;
+		break;
+    case "edits":
+		bg.style.display = "none";
+		document.getElementById(key).checked = false;
+		break;
+	case "other":
+		bg.style.display = "none";
+		document.getElementById(key).checked = false;
+		break;
+    default: //if no case is met, mark as checked
+		document.getElementById(key).checked = true;
+		break;
     }
-      createCheckboxes(uniqueTags);
-      createBackground(uniqueTags, data);
-  });
-	
-function createCheckboxes(uniqueTags){
-    for (i = 0; i < uniqueTags.length; i++) { //for each unique tag
-        //create checkbox
-        var check = document.createElement('input');
-        check.id = "input"+uniqueTags[i];
-        //check.name = "checkbox"+i;
-        check.type = "checkbox";
-        check.checked = true; //expecting for everything to be displayed ha ha
-        check.setAttribute("onchange" , "toggle(this)");
-        //create checkbox label
-        var label = document.createElement('p');
-        label.for = "input";
-        label.innerText = uniqueTags[i]+":";
-        label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
-        label.style.display = "inline-block";
-        if (i >= (uniqueTags.length / 2)) {
-          label.style.color = "white";
-          }
-        label.style.color = "filter: invert(1)";
-        inputdiv = document.getElementById('inputdiv');
-        //create spacer
-        inputdiv.appendChild(document.createTextNode(" ")); //cant put &nbsp here for some reason
-        label.appendChild(check);
-        inputdiv.appendChild(label);
-        //dates = document.getElementById('dates');
+  for (i = 0; i < value.length; i++) { //for each link
+    bg.style.backgroundColor = "rgba(255, 255, 255, 0."+i+"5)";
+    //create image
+    var img = document.createElement('img'); 
+    img.id = key+i;
+    img.alt = key;
+	img.src = value[i]+"&name=240x240"; //get lower res thumbnail
+	switch (key) { //customize specific image details
+    case "ideas":
+		img.loading = "auto";
+		break;
+	case "animated":
+		img.remove();
+		break;
+    default: //if no case is met, lazy load
+      img.loading = "lazy";
+		break;
     }
-}
-
-function createBackground(uniqueTags, data) {
-  for (i = 0; i < uniqueTags.length; i++) { //for each unique tag
-    if (i > 3) { //if first or 2nd entree, create them
-      //create bg
-      bg = document.createElement('div');
-      bg.style.position = "inline";
-      bg.id = uniqueTags[i];
-      bg.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
-      //create bg label
-      label = document.createElement("p");
-      label.innerText = bg.id;
-      label.classList.add("tags");
-      bg.appendChild(label);
-      populateBackground(uniqueTags, data, bg);
-    } else { //if not, create them with display:none and make checkbox unchecked
-      //create bg
-      bg = document.createElement('div');
-      bg.style.position = "inline";
-      bg.id = uniqueTags[i];
-      bg.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
-      bg.style.display = "none";
-      document.getElementById("input"+uniqueTags[i]).checked = false; // uncheck corrosponding checkbox
-      //create bg labela
-      label = document.createElement("p");
-      label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
-      label.innerText = bg.id;
-      label.classList.add("tags");
-      if (i >= (uniqueTags.length / 2)) {
-        label.style.color = "white";
-      }
-      //append the things
-      bg.appendChild(label);
-      populateBackground(uniqueTags, data, bg);
-      }
+	//create anchor
+    var a = document.createElement("a");
+    a.href = value[i];
+	a.target = "_blank";
+	a.title = "click to view full resolution";
+    a.appendChild(img);
+    bg.appendChild(a);
+    document.getElementById('art').appendChild(bg);
+    
   }
 }
 
-function distinct(value, index, self) {
-  return self.indexOf(value) === index;
-}
+function createCheckbox(key) {
+  var check = document.createElement('input');
+  check.id = key;
+  check.type = "checkbox";
+  check.title = "show "+key+" tab";
+  check.setAttribute("onchange" , "toggle(this)");
+  var label = document.createElement('span');
+  label.innerText = key+":";
+  label.appendChild(check);
+  document.getElementById('input').appendChild(label);
+  }
 
 function toggle(obj) {
-  var tab = obj.id.substring(5);
-  var e = document.getElementById(tab); //if all images under key value
-  e.style.display = ((e.style.display!='none') ? 'none' : 'inherit');
+    var e = document.getElementById(obj.id+"bg"); //if all images under key value
+    e.style.display = ((e.style.display!='none') ? 'none' : 'inherit');
 }
