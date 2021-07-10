@@ -105,7 +105,7 @@ function populateBackground(key, value, keysArr, bg) {
     img.alt = "image in "+key;
     img.loading = "lazy";
     img.title = "Tags: "+keysArr;
-    img.src = value[i];
+	img.src = value[i]+"&name=240x240"; //get lower res thumbnail
     //create anchor
     var a = document.createElement("a");
     a.href = value[i];
