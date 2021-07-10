@@ -74,8 +74,9 @@ function createBackground(key, value, keysArr, i) {
     }
     console.log(bg, label);
     bg.appendChild(label);
-    populateBackground(key, value, keysArr, bg);
-  } else { //if not, create them with display:none and make checkbox unchecked
+	checked = true;
+    populateBackground(key, value, keysArr, bg, checked);
+  } else { //create rest of bgs with display:none and make checkbox unchecked
     //create bg
     bg = document.createElement('div');
     bg.style.position = "inline";
@@ -94,16 +95,21 @@ function createBackground(key, value, keysArr, i) {
     }
     //append the things
     bg.appendChild(label);
-    populateBackground(key, value, keysArr, bg);
+	checked = false;
+    populateBackground(key, value, keysArr, bg, checked);
   }
 }
 
-function populateBackground(key, value, keysArr, bg) {
+function populateBackground(key, value, keysArr, bg, checked) {
   for (i = 0; i < value.length; i++) {
     //create image
     var img = document.createElement('img');
     img.alt = "image in "+key;
-    img.loading = "lazy";
+	if (checked == true) {
+		img.loading = "auto";
+	} else {
+		img.loading = "lazy";
+	}
     img.title = "Tags: "+keysArr;
 	img.src = value[i]+"&name=240x240"; //get lower res thumbnail
     //create anchor
