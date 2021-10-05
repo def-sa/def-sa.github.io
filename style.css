@@ -80,7 +80,6 @@ hr {
   text-align: center;
   color: black;
   text-decoration: none;
-  width: clamp(35vw, 45vw, 75vw);
   }
   
 .about {
@@ -88,11 +87,12 @@ hr {
   flex-direction: row;
   flex-wrap: wrap;
   row-gap:20px;
+  width:60vw;
   }
   
 .box a img {
-  width:6vw;
-  height:6vh;
+  max-height: 25%;
+  max-width: 25%;
   }
   
 .easteregg {
