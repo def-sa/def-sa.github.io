@@ -61,6 +61,18 @@ hr {
   align-items: center;
 }
 
+.big-box {
+  background: white;
+  padding: 1em;
+  margin: auto;
+  box-shadow: 10px 10px #7f7f7f;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  max-width:75vw;
+  min-width:50vw;
+  }
+  
 .box {
   background: white;
   padding: 1em;
