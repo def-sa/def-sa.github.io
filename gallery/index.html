@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="an internet user's website">
-	<meta name="keywords" content="artist, website">
-	<meta name="author" content="def-sa">
-	<meta property="og:title" content="def-sa -> gallery"/>
-	<meta property="og:description" content="shitty gallery of my things"/>
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://def-sa.github.io/"/>
-	<meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
-	<title>-> gallry</title>
-	<link rel="preload" as="document" href="./">
-	<link rel="preload" as="document" href="../update.html">
-	<script src="../script.js"> </script>
-	<link rel="stylesheet" href="../style.css">
-	<link rel="icon" type="image/png" href="../images/favicon.png">
-</head>
-<body>
-	<button onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="top" title="Go to top">Top</button>
-	<div class="header">
-		<h2>-> gallry</h2>
-		<a href="../"> <img id="logo" src="../images/logo-transparent.png" title="<- gallry" alt="def-sa's logo"></a>
-	</div>
-	<br>
-	<div class="content">
-		<p>incomplete. planning on making a "full" gallery soon. everything here is basically just what i've posted on <a href="https://twitter.com/def_sa_" target="_blank">twitter</a> as of 8/11/21</p>
-		<hr>
-		<div id="input"></div>
-	</div>
-	<br>
-	<div id="art" class="content">
-	</div>
-	<br>
-	<div class="content">
-		<iframe src="../update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
-	</div>
-	<script defer src="./script.js"> </script>
-</body>
+<html>
+  <head>
+  
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="an internet user's website">
+	  <meta name="keywords" content="artist, website">
+	  <meta name="author" content="def-sa">
+	  <meta property="og:title" content="def-sa"/>
+	  <meta property="og:description" content="some of my art"/>
+	  <meta property="og:type" content="website">
+	  <meta property="og:url" content="https://def-sa.github.io/"/>
+	  <meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
+	  <link rel="stylesheet" href="../style.css">
+	  <link rel="icon" type="image/png" href="../images/favicon.png">
+	  <script src="./script.js"> </script>
+    <title>def-sa</title>
+
+  </head>
+  <body>
+    <button onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="top" title="Go to top">Top</button>
+    <p class="header">def-sa</p>
+    <a href="../" title="made with 💛 by def-sa"><img src="./images/logo-transparent.png"/></a>
+      
+    <div class="container">
+  <!-- Tabs -->
+    <ul id="nav-tab" class="nav">
+      <li><a href="../#home">home</a></li>
+      <li><a href="../#warning">b4-u-follow</a></li>
+      <li><a href="../#about">abt</a></li>
+      <li class="active"><a href="./">gallry</a></li>
+      <li><a href="../#blog">blog</a></li>
+    </ul>
+    </div>
+    <div id="gallery">
+      <div class="box">
+  		<p>incomplete. planning on making a "full" gallery soon. everything here is basically just what i've posted on <a href="https://twitter.com/def_sa_" target="_blank">twitter</a> as of 10/05/21</p>
+  		<hr>
+  		<div id="input"></div>
+  	  </div>
+  	  <br>
+  	  <div id="art" class="box">
+  	  </div>
+	  </div>
+  </body>
 </html>
- 

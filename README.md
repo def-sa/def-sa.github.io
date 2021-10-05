@@ -1,11 +1,11 @@
 # def-sa.github.io
 
-webthing
+webthing v2
 
 ## featuring:
 - "it should work, probably"
-- splash text thing (refresh on home page)
+- splash text thing (now featuring over 1k splashes!)
 - gallery of images
-- dark theme option
-- many, many links
-- it fits on mobile, probably
+- a few links
+- it fits on mobile, probably ?
+- has a blog

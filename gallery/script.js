@@ -1,6 +1,6 @@
 window.onscroll = function() {
   var totop = document.getElementById("top");
-  if (document.body.scrollTop > 125 || document.documentElement.scrollTop > 125) {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
     totop.style.display = "block";
   } else {
     totop.style.display = "none";
@@ -72,7 +72,7 @@ function createBackground(key, value, keysArr, i) {
     } else {
       label.style.color = "black";
     }
-    console.log(bg, label);
+    //console.log(bg, label);
     bg.appendChild(label);
 	checked = true;
     populateBackground(key, value, bg, checked);
@@ -122,7 +122,7 @@ function populateBackground(key, value, bg, checked) {
 }
 
 function toggle(obj) {
-  console.log(obj.id);
+  //console.log(obj.id);
   var tab = obj.id.substring(5);
   var e = document.getElementById(tab);
   e.style.display = ((e.style.display!='none') ? 'none' : 'inherit');

@@ -1,57 +1,150 @@
 
-window.onload = function() {
-  if(!sessionStorage.getItem('theme')) {
-    populateStorage();
+document.getElementById('nav-tab').addEventListener("click", onTabClick, false);
+
+var regex = /#(.*)/;
+var url = window.location.href.match(regex);
+
+if(!new RegExp(regex).test(url)){
+  //no tab selected, do nothing
+} else {
+  removeActive();
+  addActive(null,`${url[1]}`);
+  }
+
+function onTabClick(event, a) {
+  removeActive();
+  addActive(event, null, a);
+  splashes();
+}
+
+function removeActive() {
+  let activeTabs = document.querySelectorAll('.active');
+  //remove active class from all tabs
+  activeTabs.forEach(function(tab) {
+    tab.className = tab.className.replace('active', '');
+  });
+}
+
+function addActive(event, tab, a) {
+  if (event) {
+    // activate new tab and panel
+    event.target.parentElement.className += ' active'; //for highlight + underline
+    document.getElementById(event.target.href.split('#')[1]).className += ' active'; //for tab-pane to be visible
+  }
+  if (tab) {
+    var active = document.querySelector('a[href="#'+`${url[1]}`+'"]');
+    active.parentElement.className += ' active';
+    document.getElementById(`${url[1]}`).className += ' active';
+  }
+  if (a) {
+    var tabname = a.getAttribute("href").substring(1);
+    var activetab = document.querySelector('a[href="#'+tabname+'"]');
+    activetab.parentElement.className += ' active';
+    document.getElementById(tabname).className += ' active';
+    }
+}
+
+
+
+window.onscroll = function() {
+  var totop = document.getElementById("top");
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    totop.style.display = "block";
   } else {
-    setStyles();
+    totop.style.display = "none";
   }
-  splash();
-}
+};
 
-function populateStorage() {
-  sessionStorage.setItem('theme', document.getElementById('seltheme').checked);
-  setStyles();
-}
-
-function setStyles() {
-  if (sessionStorage.getItem('theme') == 'true') {
-    document.documentElement.style.backgroundColor = "#3c3c3c";
-	document.documentElement.style.color = "#ffffff";
-	content = document.getElementsByClassName("content");
-	for (i = 0; i < content.length; i++) {
-		content[i].style.backgroundColor = "#000000";
-		content[i].style.color = "#ffffff";
-	}
-	anchor = document.querySelectorAll("a");
-	for (i = 0; i < anchor.length; i++) {
-		anchor[i].style.color = "#ffffff";
-	}
-    document.getElementById('seltheme').checked = true;
-	document.getElementById('themelabel').innerHTML = "darken:";
-  } else if (sessionStorage.getItem('theme') == 'false') {
-    document.documentElement.style.backgroundColor = "#c3c3c3";
-	document.documentElement.style.color = "#000000";
-	content = document.getElementsByClassName("content");
-	for (i = 0; i < content.length; i++) {
-		content[i].style.backgroundColor = "#ffffff";
-		content[i].style.color = "#000000";
-	}
-	anchor = document.querySelectorAll("a");
-	for (i = 0; i < anchor.length; i++) {
-		anchor[i].style.color = "#000000";
-	}
-    document.getElementById('seltheme').checked = false;
-	document.getElementById('themelabel').innerHTML = "darken:";
+fetch('blog-main.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+  //console.log(data);
+  var formatted = document.getElementById("formatted");
+  if (data.length > 1) {
+    data.forEach((entry) => {
+      if (entry.date == '') {
+        entry.date = 'none';
+      }
+      if (entry.text == '') {
+        entry.text = 'none';
+      }
+    post = document.createElement("div");
+    header = document.createElement("h3");
+    header.innerText = entry.date;
+    body = document.createElement("p");
+    body.innerText = entry.text;
+    post.appendChild(header);
+    post.appendChild(body);
+    post.appendChild(document.createElement("hr"));
+    formatted.appendChild(post);
+    });
+  } else {
+    if (data.date == '') {
+      data.date = 'none';
+    }
+    if (data.text == '') {
+      data.text = 'none';
+    }
+    post = document.createElement("div");
+    header = document.createElement("h3");
+    header.innerText = data.date;
+    body = document.createElement("p");
+    body.innerText = data.text;
+    post.appendChild(header);
+    post.appendChild(body);
+    post.appendChild(document.createElement("hr"));
+    formatted.appendChild(post);
   }
-}
+  recentBlog(data);
+});
 
-function splash() {
+function splashes() {
 	fetch('splashes.json')
   .then((response) => {
     return response.json();
   })
   .then((data) => {
     var random = Math.floor(Math.random() * (data.length));
-    document.getElementById('splash').innerHTML = "<b>. </b>"+data[random]+"<b> .</b>";
+    document.getElementById('splashes').innerHTML = "<b>. </b>"+data[random]+"<b> .</b>";
   });
-  }
+}
+
+function recentBlog(data) {
+  console.log(data);
+  if (data.length > 1) {
+      if (data.date == '') {
+        data.date = 'none';
+      }
+      if (data.text == '') {
+        data.text = 'none';
+      }
+    container = document.getElementById("recent-blog");
+    var recent = data.at(-1);
+    header = document.createElement("h3");
+    header.innerText = recent.date;
+    container.appendChild(header);
+    var blurb = recent.text.substr(0, 128)+"...";
+    body = document.createElement("p");
+    body.innerText = blurb;
+    container.appendChild(body);
+  } else {
+    if (data.date == '') {
+        data.date = 'none';
+      }
+      if (data.text == '') {
+        data.text = 'none';
+      }
+    container = document.getElementById("recent-blog");
+    header = document.createElement("h3");
+    header.innerText = data.date;
+    container.appendChild(header);
+    var blurb = data.text.substr(0, 128)+"...";
+    console.log(blurb);
+    body = document.createElement("p");
+    body.innerText = blurb;
+    container.appendChild(body);
+    }
+}
+

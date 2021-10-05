@@ -1,50 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="an internet user's website">
-	<meta name="keywords" content="artist, website">
-	<meta name="author" content="def-sa">
-	<meta property="og:title" content="def-sa"/>
-	<meta property="og:description" content="webthing"/>
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://def-sa.github.io/"/>
-	<meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
-	<title>def-sa</title>
-	<link rel="prefetch" as="document" href="./update.html">
-	<link rel="prefetch" as="script" href="./script.js">
-	<link rel="prefetch" as="style" href="./style.css">
-	<link rel="prefetch" as="document" href="./warning/">
-	<link rel="prefetch" as="document" href="./about/">
-	<link rel="prefetch" as="document" href="./projects/">
-	<link rel="prefetch" as="document" href="./gallery/">
-	<link rel="preload" as="fetch" href="./splashes.json" crossOrigin="anonymous">
-	<script src="./script.js"> </script>
-	<link rel="stylesheet" href="./style.css">
-	<link rel="icon" type="image/png" href="./images/favicon.png">
-</head>
-<body>
-	<div class="header">
-		<h1> def-sa </h1>
-		<a href="./"> <img src="./images/logo-transparent.png" title="hello!!!" alt="def-sa's logo"></a>
-		<p class="low" id="splash">
-		<b>. &nbsp; .</b>
-		</p>
-	</div>
-	<br>
-	<div class="content">
-		<a href="./warning/" title="dni and tw list">b4-u-follow</a>
-		<br><hr>
-		<a href="./about/" title="about me">abt</a>
-		<br><hr>
-		<a href="./gallery/" title="gallery of images i've created">gallry</a>
-		<br><hr>
-		<a href="./projects/" title="concurrent and working projects of mine">projcts</a>
-	</div>
-	<br>
-	<div class="content">
-		<iframe src="./update.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
-	</div>
-</body>
+<html>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="an internet user's website">
+	  <meta name="keywords" content="artist, website">
+	  <meta name="author" content="def-sa">
+	  <meta property="og:title" content="def-sa"/>
+	  <meta property="og:description" content="webthing"/>
+	  <meta property="og:type" content="website">
+	  <meta property="og:url" content="https://def-sa.github.io/"/>
+	  <meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
+	  <link rel="stylesheet" href="./style.css">
+	  <link rel="icon" type="image/png" href="./images/favicon.png">
+	  <script src="./script.js"> </script>
+	  
+    <title>def-sa</title>
+  </head>
+  <body onload="splashes()">
+    <button onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="top" title="Go to top">Top</button>
+    <p class="header"><a href="https://github.com/def-sa/def-sa.github.io">def-sa</a></p>
+    <a href="./" title="made with 💛 by def-sa"><img src="./images/logo-transparent.png"/></a>
+      
+    <div class="container">
+  <!-- Tabs -->
+    <ul id="nav-tab" class="nav">
+      <li class="active"><a href="#home">home</a></li>
+      <li><a href="#warning">b4-u-follow</a></li>
+      <li><a href="#about">abt</a></li>
+      <li><a href="./gallery/">gallry</a></li>
+      <li><a href="#blog">blog</a></li>
+    </ul>
+
+  <!-- Tab panes -->
+    <div class="tab-content">
+    <!-- HOME -->
+      <div class="tab-pane active" id="home">
+        <div class="box">
+        <h3>recent blender animation i made</h3>
+        <br>
+        <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/6v_bRnAsyIs" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <br>
+        <div class="box" id="splashcontainer">
+          <p id="splashes"></p>
+          <hr>
+          <a onclick="splashes()"><img src="./images/splashes.svg"></a>
+        </div>
+        <br>
+        <div class="box">
+        <h3>most recent blog post</h3>
+        <hr>
+        <div id="recent-blog">
+        </div>
+        <a href="#blog" onclick="onTabClick(null, this)">[read more]</a>
+        </div>
+      </div>
+      <div class="tab-pane" id="warning">
+        <div class="box">
+            <p>i post experimental art</p>
+            <p>general warning for mature topics and eyestrain</p>
+            <p>i don't add warnings / tags to posts</p>
+            <p>i don't do commissions or requests at the moment</p>
+            <u><a href="#about" onclick="onTabClick(null, this)">more abt me</a></u>
+        </div>
+        <br>
+        <div class="box">
+          <h3>do not interact if you:</h3>
+          <p>are nsfw-centered</p>
+          <p>have an issue with me or my art</p>
+        </div>
+      </div>
+      <!-- ABOUT -->
+      <div class="tab-pane" id="about">
+      <div class="about">
+      <div class="box">
+        <h3>who?</h3>
+        <hr>
+        <p>my alias is <b>def-sa</b></p>
+        <p>pronouns are <b>they/them</b></p>
+        <p>i'm 20</p>
+        <p>an artist working on many things</p>
+      </div>
+      <div class="box">
+        <h3>what?</h3>
+        <hr>
+        <p><b>visual arts</b>. mostly 2d, some 3d. almost always digital</p>
+        <p>coding. learning html, css, & javascript</p>
+        <p>sounds. (not much, yet)</p>
+      </div>
+
+      
+      <div class="box">
+        <h3>when?</h3>
+        <hr>
+        <p>starting trying art 2019</p>
+      </div>
+      
+      
+      <div class="box">
+      <h3>where?</h3>
+      <hr>
+      <a href="./twitter/" target="_blank"><img src="./images/icons/twitter.svg"></a>
+      <a href="./discord/" target="_blank"><img src="./images/icons/discord.svg"></a>
+      <a href="https://github.com/def-sa/" target="_blank"><img src="./images/icons/github.svg"></a>
+      <a href="https://www.youtube.com/channel/UCKRlKSYP5z1A9Yc3Gb6YVcw" target="_blank"><img src="./images/icons/youtube.svg"></a>
+      <a href="https://soundcloud.com/defsa" target="_blank"><img src="./images/icons/soundcloud.svg"></a>
+      <a href="https://defsa.neocities.org/" target="_blank"><img src="./images/icons/neocities.svg"></a>
+      </div>
+      
+      
+      <div class="box">
+        <h3>why?</h3>
+        <hr>
+        <p>for experience, and expression</p>
+      </div>
+      
+      <div class="box">
+        <h3>how?</h3>
+        <hr>
+        <p style="filter: opacity(.5)">(not all programs listed)</p>
+        <a href="https://support.microsoft.com/en-us/windows/get-microsoft-paint-a6b9578c-ed1c-5b09-0699-4ed8115f9aa9" target="_blank"><b>MSPaint</b></a>
+        <a href="https://ibispaint.com/" target="_blank"><b>ibisPaint</b></a>
+        <a href="https://www.blender.org/" target="_blank"><b>Blender</b></a>
+        <a href="https://ezgif.com/" target="_blank">Ezgif</a>
+        <a href="https://www.blackmagicdesign.com/products/davinciresolve/" target="_blank">Davinci Resolve 17</a>
+      </div>
+      </div>
+      <!-- GALLERY -->
+      </div>
+      <div class="tab-pane" id="gallery">
+	    <u><a href="./gallery/">okay well that should've taken you off the main page  click here if you're in this purgatory</a></u>
+      </div>
+      <!-- BLOG -->
+      <div class="tab-pane" id="blog" onload="getblogJSON()">
+      <h3>blog</h3>
+        <div class="box" id="formatted">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+
+  </body>
 </html>
- 
