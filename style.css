@@ -34,8 +34,6 @@ hr {
 
 .nav {
   list-style: none;
-  padding: 0;
-  display:static;
   }
 
 .nav .active a { 
@@ -49,6 +47,7 @@ hr {
 
 .nav-tab ul li a {
   padding: 10px;
+  
   }
 
 .tab-pane { 
