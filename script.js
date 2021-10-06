@@ -72,7 +72,7 @@ fetch('blog-main.json')
     header = document.createElement("h3");
     header.innerText = entry.date;
     body = document.createElement("p");
-    body.innerText = entry.text;
+    body.innerHTML = entry.text;
     post.appendChild(header);
     post.appendChild(body);
     post.appendChild(document.createElement("hr"));
@@ -106,7 +106,7 @@ function recentBlog(data) {
     container.appendChild(header);
     var blurb = recent.text.substr(0, 128)+"...";
     body = document.createElement("p");
-    body.innerText = blurb;
+    body.innerHTML = blurb;
     container.appendChild(body);
 }
 
