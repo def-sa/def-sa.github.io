@@ -60,9 +60,7 @@ fetch('blog-main.json')
     return response.json();
   })
   .then((data) => {
-  //console.log(data);
   var formatted = document.getElementById("formatted");
-  if (data.length > 1) {
     data.forEach((entry) => {
       if (entry.date == '') {
         entry.date = 'none';
@@ -80,23 +78,6 @@ fetch('blog-main.json')
     post.appendChild(document.createElement("hr"));
     formatted.appendChild(post);
     });
-  } else {
-    if (data.date == '') {
-      data.date = 'none';
-    }
-    if (data.text == '') {
-      data.text = 'none';
-    }
-    post = document.createElement("div");
-    header = document.createElement("h3");
-    header.innerText = data.date;
-    body = document.createElement("p");
-    body.innerText = data.text;
-    post.appendChild(header);
-    post.appendChild(body);
-    post.appendChild(document.createElement("hr"));
-    formatted.appendChild(post);
-  }
   recentBlog(data);
 });
 
@@ -112,14 +93,12 @@ function splashes() {
 }
 
 function recentBlog(data) {
-  console.log(data);
-  if (data.length > 1) {
-      if (data.date == '') {
-        data.date = 'none';
-      }
-      if (data.text == '') {
-        data.text = 'none';
-      }
+    if (data.date == '') {
+       data.date = 'none';
+     }
+    if (data.text == '') {
+       data.text = 'none';
+     }
     container = document.getElementById("recent-blog");
     var recent = data.at(-1);
     header = document.createElement("h3");
@@ -129,22 +108,5 @@ function recentBlog(data) {
     body = document.createElement("p");
     body.innerText = blurb;
     container.appendChild(body);
-  } else {
-    if (data.date == '') {
-        data.date = 'none';
-      }
-      if (data.text == '') {
-        data.text = 'none';
-      }
-    container = document.getElementById("recent-blog");
-    header = document.createElement("h3");
-    header.innerText = data.date;
-    container.appendChild(header);
-    var blurb = data.text.substr(0, 128)+"...";
-    console.log(blurb);
-    body = document.createElement("p");
-    body.innerText = blurb;
-    container.appendChild(body);
-    }
 }
 

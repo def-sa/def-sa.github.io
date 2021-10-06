@@ -152,3 +152,8 @@ hr {
 #recent-blog {
   overflow-wrap: break-word;
   }
+  
+ #formatted {
+	display: flex;
+    flex-direction: column-reverse;
+ }
