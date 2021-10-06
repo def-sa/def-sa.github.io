@@ -157,3 +157,8 @@ hr {
 	display: flex;
     flex-direction: column-reverse;
  }
+
+ #formatted a {
+	text-decoration: underline;
+    color: darkgoldenrod;
+ }
