@@ -62,20 +62,22 @@ fetch('blog-main.json')
   .then((data) => {
   var formatted = document.getElementById("formatted");
     data.forEach((entry) => {
+		/*
       if (entry.date == '') {
         entry.date = 'none';
       }
       if (entry.text == '') {
         entry.text = 'none';
-      }
+      } */
+	  if (entry.text.includes("\n")) {
+		entry.text.replace("\n","<br>");
+	  }
     post = document.createElement("div");
     header = document.createElement("h3");
     header.innerText = entry.date;
-    body = document.createElement("p");
-    body.innerHTML = entry.text;
     post.appendChild(header);
-    post.appendChild(body);
     post.appendChild(document.createElement("hr"));
+	post.innerHTML += entry.text;
     formatted.appendChild(post);
     });
   recentBlog(data);
@@ -93,12 +95,14 @@ function splashes() {
 }
 
 function recentBlog(data) {
+	/*
     if (data.date == '') {
        data.date = 'none';
      }
     if (data.text == '') {
        data.text = 'none';
      }
+	 */
     container = document.getElementById("recent-blog");
     var recent = data.at(-1);
     header = document.createElement("h3");
