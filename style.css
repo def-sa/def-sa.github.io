@@ -36,6 +36,7 @@
 }
  .header{
      font-size: 2rem;
+	 color: var(--foreground);
 }
  .container {
      width:50vw;

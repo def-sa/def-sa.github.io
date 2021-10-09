@@ -110,3 +110,19 @@ function recentBlog(data) {
     body.innerHTML = blurb;
     container.appendChild(body);
 }
+
+//invert color of icons if dark mode
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  img = document.querySelectorAll("img");
+	for (i = 0; i < img.length; i++) {
+		if (img[i].getAttribute('src').includes("./images/icons/")) {
+		img[i].style.filter = "invert(1)";
+		}
+	}
+} else {
+	img = document.querySelectorAll("img");
+	for (i = 0; i < img.length; i++) {
+		if (img[i].getAttribute('src').includes("./images/icons/")) {
+		img[i].style.filter = "invert(0)";
+    }
+}
