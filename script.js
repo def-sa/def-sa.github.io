@@ -124,5 +124,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 	for (i = 0; i < img.length; i++) {
 		if (img[i].getAttribute('src').includes("./images/icons/")) {
 		img[i].style.filter = "invert(0)";
-    }
+		}
+	}
 }
