@@ -34,7 +34,7 @@
      align-items: center;
      padding: 0 0 2em 0;
 }
- .header{
+ .header a {
      font-size: 2rem;
 	 color: var(--foreground);
 }
