@@ -41,14 +41,14 @@ function createCheckboxes(key, keysArr, i){
   var label = document.createElement('p');
   label.for = "input";
   label.innerText = key+":";
-  label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
+  //label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
   label.style.display = "inline-block";
-  if (i >= (keysArr.length / 2)) {
-    label.style.color = "white";
-  } else {
-    label.style.color = "black";
-  }
-  label.style.color = "filter: invert(1)";
+  //if (i >= (keysArr.length / 2)) {
+    //label.style.color = "white";
+  //} else {
+    //label.style.color = "black";
+  //}
+  //label.style.color = "filter: invert(1)";
   inputdiv = document.getElementById('input');
   //create spacer
   inputdiv.appendChild(document.createTextNode(" ")); //cant put &nbsp here for some reason
@@ -65,13 +65,13 @@ function createBackground(key, value, keysArr, i) {
     bg.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
     //create bg label
     label = document.createElement("p");
-    label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
+    //label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
     label.innerText = key;
-    if (i >= (keysArr.length / 2)) {
-      label.style.color = "white";
-    } else {
-      label.style.color = "black";
-    }
+    //if (i >= (keysArr.length / 2)) {
+      //label.style.color = "white";
+    //} else {
+      //label.style.color = "black";
+    //}
     //console.log(bg, label);
     bg.appendChild(label);
 	checked = true;
@@ -86,13 +86,13 @@ function createBackground(key, value, keysArr, i) {
     document.getElementById("input"+key).checked = false; // uncheck corrosponding checkbox
     //create bg labela
     label = document.createElement("p");
-    label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
+    //label.style.backgroundColor = "rgba(0, 0, 0, 0."+i+"5)";
     label.innerText = key;
-    if (i >= (keysArr.length / 2)) {
-      label.style.color = "white";
-    } else {
-      label.style.color = "black";
-    }
+    //if (i >= (keysArr.length / 2)) {
+      //label.style.color = "white";
+    //} else {
+      //label.style.color = "black";
+    //}
     //append the things
     bg.appendChild(label);
 	checked = false;
