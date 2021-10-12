@@ -60,7 +60,7 @@ fetch('blog-main.json')
 .then((data) => {
     data.forEach((entry) => {
         if (entry.text.includes("\n")) {
-            entry.text = entry.text.replace("\n", "<br>");
+            entry.text = entry.text.replace("\n", "<br><br>");
         }
         createPosts(entry);
     });
