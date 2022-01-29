@@ -37,15 +37,14 @@
  .header a {
      font-size: 2rem;
 	 color: var(--foreground);
+	 text-decoration: none;
 }
  .container {
      width:50vw;
      display:contents;
 }
  a {
-     text-decoration: none;
      color: var(--accent-pri);
-     padding: 10px;
 }
  hr {
      width:50%;
@@ -54,6 +53,13 @@
  .nav {
      list-style: none;
 }
+
+.nav a {
+	padding: 10px;
+	text-decoration: none;
+	color: var(--accent-pri);
+}
+
  .nav .active a {
      color: var(--foreground);
      border-bottom: 1px solid var(--foreground);
@@ -63,6 +69,7 @@
 }
  .nav-tab ul li a {
      padding: 10px;
+	 text-decoration: none;
 }
  .tab-pane {
      display: none;
