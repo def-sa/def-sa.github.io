@@ -105,8 +105,13 @@
      width:60vw;
 }
  .box a img {
-     max-height: 25%;
-     max-width: 25%;
+     max-height: 50%;
+     max-width: 50%;
+}
+
+.list {
+	display:flex;
+	flex-direction: column;
 }
  #art img {
      min-width: 100px;
