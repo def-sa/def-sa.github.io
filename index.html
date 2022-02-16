@@ -1,71 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	  <meta name="description" content="an internet user's website">
-	  <meta name="keywords" content="artist, website">
-	  <meta name="author" content="def-sa">
-	  <meta property="og:title" content="def-sa"/>
-	  <meta property="og:description" content="webthing"/>
-	  <meta property="og:type" content="website">
-	  <meta property="og:url" content="https://def-sa.github.io/"/>
-	  <meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
-	  <link rel="stylesheet" href="./style.css">
-	  <link rel="icon" type="image/png" href="./images/favicon.png">
-	  <script src="./script.js"> </script>
-	  
+  <head>
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	<meta charset="UTF-8" lang="en" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="an internet user's website">
+	<meta name="keywords" content="artist, website">
+	<meta name="author" content="def-sa">
+	<meta property="og:title" content="def-sa"/>
+	<meta property="og:description" content="some of my art"/>
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://def-sa.github.io/"/>
+	<meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
+	<link rel="icon" type="image/png" href="./images/favicon.png">
     <title>def-sa</title>
+	<script src="./script.js"> </script>
+    <link href="./style.css" rel="stylesheet" type="text/css" media="all">
   </head>
-  <body onload="splashes()">
-    <button onclick="document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="top" title="Go to top">Top</button>
-    <p class="header"><a href="https://github.com/def-sa/def-sa.github.io">def-sa</a></p>
-    <a href="./" title="made with 💛 by def-sa"><img src="./images/logo-transparent.png" alt="def-sa logo"/></a>
-      
-    <div class="container">
-  <!-- Tabs -->
+  <body>
+  <p id="home"></p>
+  <p id="gallery"></p>
+  <p id="about"></p>
+  <p id="↑"></p>
+  <div id="intro">
+    <h1 style="margin-top: 15vh">def-sa</h1>
+    <img class="logo spin" src="/favicon.ico"/>
+  </div>
+  <div id="wrapper">
+    <div class="header">
+    <img id="logo" src="/favicon.ico" onclick="this.style.animationPlayState = 'running'"/>
+    <div id="ham" onclick="toggleHam();">⚌</div>
     <ul id="nav-tab" class="nav">
-      <li class="active"><a href="#home">home</a></li>
-      <li><a href="#warning">b4-u-follow</a></li>
-      <li><a href="#about">abt</a></li>
-      <li><a href="./gallery/">gallry</a></li>
-      <!-- <li><a href="#blog">blog</a></li> -->
+      <li class="active"><a>home</a></li>
+      <li><a>gallery</a></li>
+      <li></li>
+      <li><a>about</a></li>
+      <li><a>↑</a></li>
+      </ul>
+    </div>
+    <div id="ham-menu">
+    <ul class="ham-nav">
+      <li><a onclick="openHome();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">home</a></li>
+      <li><a onclick="openGallery();toggleHam();">gallery</a></li>
+      <li><a onclick="openAbout();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">about</a></li>
+      <li><a onclick="openSpeps();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">↑</a></li>
     </ul>
-
-  <!-- Tab panes -->
+    </div>
     <div class="tab-content">
-    <!-- HOME -->
-      <div class="tab-pane active" id="home">
-        <div class="big-box">
-        <h3>my first full video project, made for my track alarm</h3>
-        <br>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/1D6cyPP_Wc0" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <br>
-		<!-- removing splashes for now -->
-        <div class="big-box">
-			if you're looking to contact me, i'm most active on my <a href="https://def-sa.github.io/discord" target="_blank">discord</a>
-        </div>
-        <br>
-      </div>
-      <div class="tab-pane" id="warning">
-        <div class="big-box">
-            <p>i make experimental art, drawings, photographs, 3d renders, ect. </p>
-            <p>general warning for mature topics and eyestrain</p>
-			<p>you can <a href="https://def-sa.github.io/discord" target="_blank">contact me</a> if you'd like</p>
-            <a href="#about" onclick="onTabClick(null, this)">more abt me</a>
-        </div>
-        <br>
-        <div class="big-box">
-          <h3>do not interact if you:</h3>
-          <p>are nsfw-centered</p>
-		  <p>support N<u></u>F<b></b>Ts</p>
-          <p>have an issue with me or my art</p>
+      <div class="tab-pane" id="home-tab">
+        <div class="homepost">
+          <p id="closehome">x</p>
+          <p style="font-size: 1em;">hello!</p>
+          <p style="font-size: 1.5em;margin-left: 10%;">i'm def-sa.</p>
+          <p style="margin-left: 25%;font-size: 1.15em;">a trying experimental artist.</p>
+          <p style="margin-left: 65%;font-size: 1.15em;white-space: nowrap;">more <a href="./#about">about</a> me</p>
+          <p>you can find me here:</p>
+          <div class="links">
+            <a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/twitter.svg" alt="twitter logo"></a>
+      		  <a href="./discord/" target="_blank"><img src="./images/discord.svg"alt="discord logo"></a>
+      		  <a href="https://www.youtube.com/channel/UCKRlKSYP5z1A9Yc3Gb6YVcw" target="_blank"><img src="./images/youtube.svg" alt="youtube logo"></a>
+      		  <a href="https://github.com/def-sa/" target="_blank"><img src="./images/github.svg" alt="github logo"></a>
+      		  <a href="https://youtube.com/playlist?list=PLEH4IQLOvKmwiAKV-cOi9Abo3QmlZ4GNq" target="_blank"><img src="./images/sounds.svg" alt="noise logo"></a>
+    		  </div>
         </div>
       </div>
-      <!-- ABOUT -->
-      <div class="tab-pane" id="about">
-      <div class="about">
-      <div class="box">
+      <div class="tab-pane" id="gallery-tab">
+      <div id="sortbuttons">
+        <button onclick="toggle(this)">all</button>
+      </div>
+        <div id="item-details">
+        <div class="item-popup">
+        <div id="item-image"> </div>
+          <div id="item-info"> 
+            <div id="item-x" onclick="closePopup();">x</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    <div class="tab-pane" id="about-tab">
+      <div class="aboutpost">
+      <div class="item">
         <h3>who?</h3>
         <hr>
         <p>my alias is <b>def-sa</b></p>
@@ -73,65 +88,18 @@
         <p>i'm 20</p>
         <p>a learning artist</p>
       </div>
-      <div class="box">
+      <div class="item">
         <h3>what?</h3>
         <hr>
         <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
-        <p>coding. learning html, css, & javascript</p>
-        <p>auditory arts. not music</p>
-      </div>
-
-      
-      <div class="box">
-        <h3>when?</h3>
-        <hr>
-        <p>est. 2019</p>
-      </div>
-      
-      
-      <div class="box list">
-		  <h3>where?</h3>
-		  <hr>
-		  <a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/icons/twitter.svg" alt="twitter logo"></a>
-		  <a href="./discord/" target="_blank"><img src="./images/icons/discord.svg"alt="discord logo"></a>
-		  <a href="https://github.com/def-sa/" target="_blank"><img src="./images/icons/github.svg" alt="github logo"></a>
-		  <a href="https://www.youtube.com/channel/UCKRlKSYP5z1A9Yc3Gb6YVcw" target="_blank"><img src="./images/icons/youtube.svg" alt="youtube logo"></a>
-      </div>
-      
-      
-      <div class="box">
-        <h3>why?</h3>
-        <hr>
-        <p>for experience, and expression</p>
-      </div>
-      
-      <div class="box list">
-        <h3>how?</h3>
-        <hr>
-        <p style="filter: opacity(.5)">(not all programs listed)</p>
-        <a href="https://support.microsoft.com/en-us/windows/get-microsoft-paint-a6b9578c-ed1c-5b09-0699-4ed8115f9aa9" target="_blank"><b>MSPaint</b></a>
-        <a href="https://ibispaint.com/" target="_blank"><b>ibisPaint</b></a>
-        <a href="https://www.blender.org/" target="_blank"><b>Blender</b></a>
-        <a href="https://ezgif.com/" target="_blank">Ezgif</a>
-        <a href="https://www.blackmagicdesign.com/products/davinciresolve/" target="_blank">Davinci Resolve 17</a>
+        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="./">from scratch</a>!</p>
+        <p>auditory arts. (not music)</p>
       </div>
       </div>
-      <!-- GALLERY -->
-      </div>
-      <div class="tab-pane" id="gallery">
-	    <a href="./gallery/">okay well that should've taken you off the main page  click here if you're in this purgatory</a>
-      </div>
-	  <!-- scrapping the blog for now. wow shocker! 
-      <!-- BLOG 
-      <div class="tab-pane" id="blog" onload="getblogJSON()">
-      <h3>blog</h3>
-        <div class="big-box" id="formatted">
-        </div>
-      </div> -->
+    </div>
+    <div class="tab-pane" id="speps-tab">
+    </div>
     </div>
   </div>
-
-  <script src="./script.js"></script>
-
   </body>
 </html>
