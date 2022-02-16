@@ -647,6 +647,12 @@ content:hover {
   display:none;
   }
 
+#speps-tab {
+  width: 100vh;
+  height: 100vh;
+  color: white;
+}
+
 .aboutpost .item {
   margin: auto;
   display: block;
