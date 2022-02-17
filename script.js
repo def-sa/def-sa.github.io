@@ -1,5 +1,7 @@
 
-document.getElementById('nav-tab').addEventListener("click", onTabClick);
+document.getElementById('nav-tab').addEventListener('click', event => {
+  onTabClick(this.event);
+});
 
 const home = document.getElementById("home-tab");
 const gallery = document.getElementById("gallery-tab");
@@ -11,6 +13,9 @@ gallery.style.display = "flex";
 
 //remove all active, scroll to top, add selected active 
 function onTabClick(event) {
+	if (event.path[0].id == "nav-tab") {
+		return;
+    }
   document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
   document.body.scrollTop = document.documentElement.scrollTop = 0;
   tab = document.getElementById(event.target.parentElement.children[0].innerHTML+"-tab");
