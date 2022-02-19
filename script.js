@@ -49,6 +49,14 @@ function hideTabs() {
   speps.style.display = "none";
 }
 
+//if click outside of homepost window, close home
+document.getElementById('home-tab').onclick = function(e) {
+  if  (event.target.parentElement.id == 'homepost') {
+  } else {
+  openGallery();
+  }
+};
+
 // close home post
 document.getElementById('closehome').onclick = function(event){
   openGallery();

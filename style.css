@@ -591,6 +591,7 @@ content:hover {
 
 #aboutpost a {
   color: #3c769a;
+  cursor: pointer;
   }
 
 #aboutpost div {
