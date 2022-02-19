@@ -134,17 +134,81 @@ function toggleHam() {
 
 //remove items from popup and close it
 document.getElementById('item-x').onclick = function(event){
+  clearPopup();
+};
+//popup x keyboard support
+document.getElementById('item-x').onkeyup = function(event){
+  keyboardClick(event, this);
+};
+
+function clearPopup() {
   document.getElementById('item-details').style.display = 'none';
   lists = document.getElementById("item-info").getElementsByTagName("ul");
   for (i = 0; i < lists.length; i++) {
     lists[i].innerHTML = ""; //remove all children within lists
   }
-};
-document.getElementById('item-x').onkeyup = function(event){
-  if (event.key == "Enter" || event.key == "Space") {
-    this.click();
-    } 
-};
+}
+//key press to move along gallery images
+document.addEventListener("keyup", function(event) {
+  if (event.key == "ArrowLeft" || event.key == "a") {
+    moveGallery(true, false);
+    return;
+  }
+  if (event.key == "ArrowRight" || event.key == "d") {
+    moveGallery(false, true);
+    return;
+  }
+});
+//move gallery 
+function moveGallery(left, right) {
+  galleryactive = document.querySelector('#gallery-tab .active');
+  index = getChildrenIndex(galleryactive)-2; 
+  galleryitem = document.querySelectorAll("#gallery-tab .item");
+  for (i = 0; i < galleryitem.length; i++ ) { //for each gallery item 
+    if (right == true) { //if right pressed
+      if (index < galleryitem.length-1) { //dont move index out of range
+        galleryitem[index].classList.remove("active");
+        galleryitem[index+1].classList.add("active");
+        galleryitem[index+1].children[0].click(); //click viewbutton
+        return;
+      }
+    }
+    if (left == true) {
+      if (index > 0) {
+        galleryitem[index].classList.remove("active");
+        galleryitem[index-1].classList.add("active");
+        galleryitem[index-1].children[0].click();
+        return;
+      }
+    }
+  }
+}
+//some function i stole 
+function getChildrenIndex(ele){
+  if(ele.sourceIndex){
+    var eles = ele.parentNode.children;
+    var low = 0, high = eles.length-1, mid = 0;
+    var esi = ele.sourceIndex, nsi;
+    //use binary search algorithm
+    while (low <= high) {
+      mid = (low + high) >> 1;
+      nsi = eles[mid].sourceIndex;
+      if (nsi > esi) {
+          high = mid - 1;
+      } else if (nsi < esi) {
+          low = mid + 1;
+        } else {
+          return mid;
+        }
+    }
+  }
+  //other browsers
+  var i=0;
+  while(ele = ele.previousElementSibling){
+    i++;
+  }
+  return i;
+}
 
 //populate gallery, duh
 function populateGallery() {
@@ -174,6 +238,10 @@ function populateGallery() {
       item = document.createElement("div");
       item.classList.add("item");
       item.setAttribute("data-tags", data[i].tags);
+      if (i == 0) {
+        item.classList.add("active");
+        }
+      
       //create gallery item overlay
       viewbutton = document.createElement("button");
       viewbutton.classList.add("viewbutton");
@@ -196,6 +264,7 @@ function populateGallery() {
     }
   });
 }
+
 //to get uniquetags for gallery buttons
 function getUniqueTags(data) {
   var allTags = []; //pre define for sorting unique tags later
@@ -212,9 +281,18 @@ function getUniqueTags(data) {
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
-  
+
 //populate gallery popup
 function populatePopup(btn) {
+  clearPopup();
+  btn.blur();
+  
+  if (document.querySelector('#gallery-tab .active')) {
+    document.querySelector('#gallery-tab .active').classList.remove('active');
+    } else {
+      document.getElementById('gallery-tab').children[2].classList.add("active");
+      }
+  btn.parentNode.classList.add("active");  
   iframe = btn.parentElement.getElementsByTagName('iframe').item(0);
   img = btn.parentElement.getElementsByTagName('img').item(0);
   item = document.getElementById('item-image');
@@ -292,6 +370,7 @@ function populatePopup(btn) {
         }
     }
   }
+  document.getElementById("item-info").focus();
   document.getElementById('item-details').style.display = 'flex';
   }
 
