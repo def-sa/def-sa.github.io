@@ -32,11 +32,11 @@
     <img id="logo" src="./images/logo-transparent.png" onclick="this.style.animationPlayState = 'running'"/>
     <div id="ham" onclick="toggleHam();">⚌</div>
     <ul id="nav-tab" class="nav">
-      <li class="active"><a  href="./#home">home</a></li>
-      <li><a href="./#gallery">gallery</a></li>
+      <li class="active"><a tabindex=0 onclick="openHome()">home</a></li>
+      <li><a tabindex=0 onclick="openGallery()">gallery</a></li>
       <li></li>
-      <li><a href="./#about">about</a></li>
-      <li><a href="./#speps">↑</a></li>
+      <li><a tabindex=0 onclick="openAbout()">about</a></li>
+      <li><a tabindex=0 onclick="openSpeps()">↑</a></li>
       </ul>
     </div>
     <div id="ham-menu">
@@ -102,7 +102,7 @@
         <h3>what?</h3>
         <hr>
         <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
-        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="./">from scratch</a>!</p>
+        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>!</p>
         <p>auditory arts. (not music)</p>
       </div>
       </div>

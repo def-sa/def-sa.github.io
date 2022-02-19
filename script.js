@@ -32,6 +32,17 @@ function addActive(tab, nav) {
       break;
     }  
 }
+
+//keyboard nav for header links
+all_nav = document.getElementById("nav-tab").children;
+for (i = 0; i < all_nav.length; i++) {
+  all_nav[i].onkeyup = function(event) {
+    if (event.key == "Enter" || event.key == "Space") {
+      this.children[0].click();
+    } 
+  };
+}
+
 //hide tabs
 function hideTabs() {
   home.style.display = "none";
@@ -88,25 +99,23 @@ function URLfix() {
 //on url change, make it pretty
 window.addEventListener('popstate', function (event) {
 	URLfix();
+	document.body.scrollTop = document.documentElement.scrollTop = 0;
 });
 
 //sorry about this but idk what else i'd do
 function openHome() {
-  document.body.scrollTop = document.documentElement.scrollTop = 0;
   document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab //remove underline + highlight
   addActive(document.getElementById("home-tab"), document.getElementById("nav-tab").children[0]);
   }
 function openGallery() {
   document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
-  addActive(document.getElementById("gallery-tab"), document.getElementById("nav-tab").children[1]); 
+  addActive(document.getElementById("gallery-tab"), document.getElementById("nav-tab").children[1]);
   }
 function openAbout() {
-  document.body.scrollTop = document.documentElement.scrollTop = 0;
   document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
   addActive(document.getElementById("about-tab"), document.getElementById("nav-tab").children[3]); //skip one child because of empty list item where logo is
   }
 function openSpeps() {
-  document.body.scrollTop = document.documentElement.scrollTop = 0;
   document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
   addActive(document.getElementById("speps-tab"), document.getElementById("nav-tab").children[4]);
   }
