@@ -281,7 +281,6 @@ a {
 	#item-popup {
 		display: flex;
 		box-shadow: .5em .5em 2em #3c3c3c;
-		position: absolute !important;
 		top: 12vh;
 		overflow: auto;
 		height: fit-content;
