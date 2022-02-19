@@ -16,6 +16,7 @@
 	<link rel="icon" type="image/png" href="./images/favicon.png">
     <title>def-sa</title>
     <link href="./style.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="preconnect" href="https://drive.google.com">
   </head>
   <body>
   <p id="home"></p>
@@ -31,29 +32,29 @@
     <img id="logo" src="./images/logo-transparent.png" onclick="this.style.animationPlayState = 'running'"/>
     <div id="ham" onclick="toggleHam();">⚌</div>
     <ul id="nav-tab" class="nav">
-      <li class="active"><a>home</a></li>
-      <li><a>gallery</a></li>
+      <li class="active"><a  href="./#home">home</a></li>
+      <li><a href="./#gallery">gallery</a></li>
       <li></li>
-      <li><a>about</a></li>
-      <li><a>↑</a></li>
+      <li><a href="./#about">about</a></li>
+      <li><a href="./#speps">↑</a></li>
       </ul>
     </div>
     <div id="ham-menu">
-    <ul class="ham-nav">
-      <li><a onclick="openHome();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">home</a></li>
-      <li><a onclick="openGallery();toggleHam();">gallery</a></li>
-      <li><a onclick="openAbout();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">about</a></li>
-      <li><a onclick="openSpeps();toggleHam();document.body.scrollTop = document.documentElement.scrollTop = 0;">↑</a></li>
+    <ul id="ham-nav">
+      <li><a href="#home" onclick="toggleHam();">home</a></li>
+      <li><a href="./#gallery" onclick="toggleHam();">gallery</a></li>
+      <li><a href="./#about" onclick="toggleHam();">about</a></li>
+      <li><a href="./#speps" onclick="toggleHam();">↑</a></li>
     </ul>
     </div>
-    <div class="tab-content">
+    <div id="tab-content">
       <div class="tab-pane" id="home-tab">
-        <div class="homepost">
-          <p id="closehome">x</p>
+        <div id="homepost">
+          <p id="closehome" tabindex=0>x</p>
           <p style="font-size: 1em;">hello!</p>
           <p style="font-size: 1.5em;margin-left: 10%;">i'm def-sa.</p>
           <p style="margin-left: 25%;font-size: 1.15em;">a trying experimental artist.</p>
-          <p style="margin-left: 65%;font-size: 1.15em;white-space: nowrap;">more <a href="./#about">about</a> me</p>
+          <p style="margin-left: 65%;font-size: 1.15em;">more <a href="./#about">about</a> me</p>
           <p>you can find me here:</p>
           <div class="links">
             <a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/twitter.svg" alt="twitter logo"></a>
@@ -66,20 +67,29 @@
       </div>
       <div class="tab-pane" id="gallery-tab">
       <div id="sortbuttons">
-        <button onclick="toggle(this)">full gallery coming soon</button>
+        <button onclick="toggle(this)">all</button>
       </div>
         <div id="item-details">
-        <div class="item-popup">
-        <div id="item-image"> </div>
+        <div id="item-popup">
+          <div id="item-image">
+            <img id="full-img">
+          </div>
           <div id="item-info"> 
-            <div id="item-x" onclick="closePopup();">x</div>
+            <div id="item-x" tabindex=0>x</div>
+            <p id="dimensions"></p>
+            <h3 id="date"></h3>
+            <a id="full"></a>
+            <p id="desc"></p>
+            <ul id="tags"></ul>
+            <ul id="programs"></ul>
+            <ul id="links"></ul>
           </div>
         </div>
         </div>
       </div>
     <div class="tab-pane" id="about-tab">
-      <div class="aboutpost">
-      <div class="item">
+      <div id="aboutpost">
+      <div>
         <h3>who?</h3>
         <hr>
         <p>my alias is <b>def-sa</b></p>
@@ -87,16 +97,17 @@
         <p>i'm 20</p>
         <p>a learning artist</p>
       </div>
-      <div class="item">
+      <br><br>
+      <div>
         <h3>what?</h3>
         <hr>
         <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
-        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>!</p>
+        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="./">from scratch</a>!</p>
         <p>auditory arts. (not music)</p>
       </div>
       </div>
     </div>
-    <div class="tab-pane" id="speps-tab"> nothing yet </div>
+    <div class="tab-pane" id="speps-tab"> nothing (yet) </div>
     </div>
   </div>
   <script src="./script.js"> </script>
