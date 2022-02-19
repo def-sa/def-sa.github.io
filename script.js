@@ -37,9 +37,7 @@ function addActive(tab, nav) {
 all_nav = document.getElementById("nav-tab").children;
 for (i = 0; i < all_nav.length; i++) {
   all_nav[i].onkeyup = function(event) {
-    if (event.key == "Enter" || event.key == "Space") {
-      this.children[0].click();
-    } 
+    keyboardClick(event, this.children[0]); 
   };
 }
 
@@ -54,12 +52,20 @@ function hideTabs() {
 // close home post
 document.getElementById('closehome').onclick = function(event){
   openGallery();
-}; //accessibility support
+}; //accessibility support for closehome
 document.getElementById('closehome').onkeyup = function(event){
-  if (event.key == "Enter" || event.key == "Space") {
-    this.click();
-    } 
+  keyboardClick(event, this);
 };
+//accessibility support for about me link
+document.getElementById('homepost').children[4].children[0].onkeyup = function(event) {
+  keyboardClick(event, this);
+  };
+
+function keyboardClick(event, element) {
+  if (event.key == "Enter" || event.key == "Space") {
+    element.click();
+    } 
+}
 
 //intro
 window.onload = function() {
