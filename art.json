@@ -1,119 +1,53 @@
 [
   {
-    "id": "1CsE_CmE2rXZ3LC47Ng3pY8SvE1b_4GJv",
-    "id_thumb": "1nVpagy9jGogar8MKHAHlnX67Em879bJG",
-    "desc": "fractal broken",
-    "tags": [
-      "showcase",
-      "gif"
-    ],
-    "programs": [
-      "ezgif",
-      "glitch-studio"
-    ],
-    "links": "https://twitter.com/def_sa_/status/1479112089482395665",
-    "date": "2022-01-06T06:00:00.000Z",
-    "dimensions": "480x480",
-    "type": "gif"
-  },
-  {
-    "id": "1_pdmp8koXeFl8Ndk4uttEdPshb5JcAGv",
-    "id_thumb": "1_WCwFxpGBYV7yFaTFJo3wivAH1MwTY2i",
-    "desc": "plant dog",
-    "tags": [
-      "drawing",
-      "showcase"
-    ],
-    "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1413325093745348608",
-    "date": "2021-07-08T05:00:00.000Z",
-    "dimensions": "1200x1200",
-    "type": "jpg"
-  },
-  {
-    "id": "14TEKxPoOjGf0Fx3xmird3SkLyhXPS4dI",
-    "id_thumb": "1anNjsRQEDlQqP2ah1kEwS9oZyhrXc621",
-    "desc": "skull",
-    "tags": [
-      "drawing",
-      "showcase"
-    ],
-    "programs": "tuxpaint",
-    "links": "https://twitter.com/def_sa_/status/1402479112246202368",
-    "date": "2021-06-08T05:00:00.000Z",
-    "dimensions": "1000x952",
-    "type": "jpg"
-  },
-  {
-    "id": "15dEQkzgwR4SMBLtO3C8yqszFBFpiIMOU",
-    "id_thumb": "1r0s7muIPCqIm6fkTPlfqJK9yCn_wplLf",
-    "desc": "drip mesh",
-    "tags": "showcase",
-    "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1425432906705559557",
-    "date": "2021-08-11T05:00:00.000Z",
-    "dimensions": "1200x1200",
-    "type": "jpg"
-  },
-  {
-    "id": "1Z9O3tgiYUwoQIjioucVM_4HhJGawonSJ",
-    "id_thumb": "1j7pYacGldMvDdwdXdkQHnLuNiX3oPepx",
+    "id": "1XNn7YpIoyRyb-dVPedA75FFXVJkjIJsu",
+    "id_thumb": "1XKCIXOXu3sxcKlGwipvHxvaIpbr-qq7N",
+    "date": "2021-02-23T06:00:00.000Z",
     "desc": "daft punk guy",
     "tags": [
-      "drawing",
+      "drawings",
       "showcase"
     ],
     "programs": "mspaint",
     "links": "https://twitter.com/def_sa_/status/1364379808851922946",
-    "date": "2021-02-23T06:00:00.000Z",
     "dimensions": "1200x1116",
     "type": "jpg"
   },
   {
-    "id": "1SFrrcvdAMaJTGD8hVxos3fb57l_ihD-6",
-    "id_thumb": "1chJYETM8vIHS9MpqSDMn_Ao4bSEw3eA5",
-    "desc": "pixel sort borzoi",
-    "tags": "showcase",
-    "programs": [
-      "glitché",
-      "ibispaint"
-    ],
-    "links": "https://twitter.com/def_sa_/status/1425525862951264256",
-    "date": "2021-08-11T05:00:00.000Z",
-    "dimensions": "1191x1200",
-    "type": "jpg"
-  },
-  {
-    "id": "1lmuIoX7FwZDhfAunJJ__ef_JKPr0X791",
-    "id_thumb": "1ncTHlcIRJo_ZD-lMO-Q-4RRG_3IM1aok",
-    "desc": "just overlay broken",
+    "id": "1rSTSdHzhn6jedEQ3hiLXE7ekZa2F_Lbt",
+    "id_thumb": "1CnD47sUZ-xSB55UGK7MhtjG4GFaL6EFC",
+    "date": "2021-07-08T05:00:00.000Z",
+    "desc": "plant dog",
     "tags": [
-      "showcase",
-      "gif"
+      "drawings",
+      "showcase"
     ],
-    "programs": "ezgif",
-    "links": "https://twitter.com/def_sa_/status/1421645774992064513",
-    "date": "2021-07-31T05:00:00.000Z",
-    "dimensions": "713x401",
-    "type": "gif"
-  },
-  {
-    "id": "1Mbbnjfml8u9iD38EMtQvBpXd9ZEEz9sJ",
-    "id_thumb": "1u7QxjDVv87k2sf2F5bUliQvdnjao871s",
-    "desc": "kixpix fern",
-    "tags": "showcase",
-    "programs": "kidpix",
-    "links": "https://twitter.com/def_sa_/status/1424918998207107072",
-    "date": "2021-08-09T05:00:00.000Z",
-    "dimensions": "930x930",
+    "programs": "ibispaint",
+    "links": "https://twitter.com/def_sa_/status/1413325093745348608",
+    "dimensions": "1200x1200",
     "type": "jpg"
   },
   {
-    "id": "11IPdwJffO8Kl7GEkswQaTDIPenng4KMD",
-    "id_thumb": "1f6V9Dz29tr7csZaSvTAinSwN8xL6nBxh",
+    "id": "1rcMTiDPqgljKGlYAtIkBTKyRc5kQtoGW",
+    "id_thumb": "1Y_DdjrZ80KRbzNxystTlA8G1oo3oWWwm",
+    "date": "2022-01-19T06:00:00.000Z",
+    "desc": "alarm",
+    "tags": [
+      "video",
+      "showcase"
+    ],
+    "programs": "davinci-resolve",
+    "links": "https://youtu.be/1D6cyPP_Wc0",
+    "dimensions": "720x480",
+    "type": "video"
+  },
+  {
+    "id": "1lGPti-FAPR1BIMgyI_1W6NVxvxXyoDXg",
+    "id_thumb": "1-5YjRHXUf5lAqn_C3gXMe9_2H8udPnlL",
+    "date": "2021-11-29T06:00:00.000Z",
     "desc": "bruh zoi",
     "tags": [
-      "drawing",
+      "drawings",
       "showcase"
     ],
     "programs": [
@@ -121,121 +55,216 @@
       "ibispaint"
     ],
     "links": "https://twitter.com/def_sa_/status/1465379763682480135",
-    "date": "2021-11-29T06:00:00.000Z",
     "dimensions": "1107x1107",
     "type": "jpg"
   },
   {
-    "id": "1x5lbRJvBgJTWQHDl-FX_Y52Cc8Efc8M-",
-    "id_thumb": "1NPf1yTeSicfIhLnrbFKUmBj1M9YmLJU8",
-    "desc": "painter",
-    "tags": [
-      "drawing",
-      "showcase"
-    ],
+    "id": "10JRCSxB1_J9O3XoGPwquEhi2ukmrcH8r",
+    "id_thumb": "1v34R4BB4LGlBGCh_RaVhYhlLpCVUwRj9",
+    "date": "2021-08-11T05:00:00.000Z",
+    "desc": "drip mesh",
+    "tags": "showcase",
     "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1471226465157005312",
-    "date": "2021-12-15T06:00:00.000Z",
+    "links": "https://twitter.com/def_sa_/status/1425432906705559557",
     "dimensions": "1200x1200",
     "type": "jpg"
   },
   {
-    "id": "1GRyxZFHH7VGSQAicYwTodLcHi5E9GuPR",
-    "id_thumb": "1McXaI1l2zT3dBavyyU_AJfpU8U09Ykhn",
+    "id": "11_ZmRqcNyBbkNNAV4tYDrFWqAPeh8cpC",
+    "id_thumb": "1Hqph0sN3HDVOqWOPJyaMDcJcPmKGKBwX",
+    "date": "2022-01-06T06:00:00.000Z",
+    "desc": "fractal broken",
+    "tags": [
+      "showcase",
+      "gifs"
+    ],
+    "programs": [
+      "ezgif",
+      "glitch-studio"
+    ],
+    "links": "https://twitter.com/def_sa_/status/1479112089482395665",
+    "dimensions": "480x480",
+    "type": "gif"
+  },
+  {
+    "id": "1CDb4bSc59GnStn14bH2-FovJyZHNiJKW",
+    "id_thumb": "1qC78HSdgHk-iQfo3NK1hfyU3IVsmD0en",
+    "date": "2021-06-08T05:00:00.000Z",
+    "desc": "skull",
+    "tags": [
+      "drawings",
+      "showcase"
+    ],
+    "programs": "tuxpaint",
+    "links": "https://twitter.com/def_sa_/status/1402479112246202368",
+    "dimensions": "1000x952",
+    "type": "jpg"
+  },
+  {
+    "id": "1WcRpOPEn3HPydxn1NhuKZ-fJogqzMgWI",
+    "id_thumb": "1o6KCV8tqawPCgVcc0Xqyc-jXhkouG6fZ",
+    "date": "2021-07-31T05:00:00.000Z",
+    "desc": "just overlay broken",
+    "tags": [
+      "showcase",
+      "gifs"
+    ],
+    "programs": "ezgif",
+    "links": "https://twitter.com/def_sa_/status/1421645774992064513",
+    "dimensions": "713x401",
+    "type": "gif"
+  },
+  {
+    "id": "1_3M2DmZe1aDRXTJOwHByEs3OtMGuLG5V",
+    "id_thumb": "15GCApli617X80-vLMX9p0SbZR1VFM79K",
+    "date": "2021-08-09T05:00:00.000Z",
+    "desc": "kixpix fern",
+    "tags": "showcase",
+    "programs": "kidpix",
+    "links": "https://twitter.com/def_sa_/status/1424918998207107072",
+    "dimensions": "930x930",
+    "type": "jpg"
+  },
+  {
+    "id": "1SPK2LmTlHygTolWLEI0AyGJZ872rRW8z",
+    "id_thumb": "1PxE3Eov-ScrRESPsB4Erc2GkDoKOZEvz",
+    "date": "2021-08-11T05:00:00.000Z",
+    "desc": "pixel sort borzoi",
+    "tags": "showcase",
+    "programs": [
+      "glitché",
+      "ibispaint"
+    ],
+    "links": "https://twitter.com/def_sa_/status/1425525862951264256",
+    "dimensions": "1191x1200",
+    "type": "jpg"
+  },
+  {
+    "id": "1tBnJexmdje3YKUj6WXIm1dCAHd7Xfu87",
+    "id_thumb": "1rkaqD9KcBZKUm_qBvjAu7pPEGEzBQ27P",
+    "date": "2021-10-11T05:00:00.000Z",
+    "desc": "unfinished (111.27)",
+    "tags": [
+      "video",
+      "showcase"
+    ],
+    "programs": [
+      "blender",
+      "davinci-resolve"
+    ],
+    "links": "https://youtu.be/TqVzgwh_p3k",
+    "dimensions": "1920x1080",
+    "type": "video"
+  },
+  {
+    "id": "11WJVVMmEXiBONoEJW2r5ygFdeOqKSDyu",
+    "id_thumb": "1IvKWkPLlzP3n4QyXMzuMYw-6wVLZtAN0",
+    "date": "2021-11-20T06:00:00.000Z",
     "desc": "ideal",
     "tags": [
-      "drawing",
+      "drawings",
       "showcase"
     ],
     "programs": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1462142043728273409",
-    "date": "2021-11-20T06:00:00.000Z",
     "dimensions": "1200x1200",
     "type": "jpg"
   },
   {
-    "id": "1_Cp12e3tkMXR-B7vhz0-fWcW5Jhri2um",
-    "id_thumb": "18Ygj7FWWC5BRsGZxbMRJIeUs9L7vInGm",
+    "id": "1Ke6m5zvavvU0eQ2eR4_Td1KzY_K6KVOv",
+    "id_thumb": "1X2AW58vWi13an8h8wvgR_eo9BZhC5LnD",
+    "date": "2021-07-01T05:00:00.000Z",
     "desc": "drip hole",
     "tags": "showcase",
     "programs": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1410653828240846855",
-    "date": "2021-07-01T05:00:00.000Z",
     "dimensions": "1105x1200",
     "type": "jpg"
   },
   {
-    "id": "1QdAQZEjxvitEGK0QXOlLiu1WjpPlhP2z",
-    "id_thumb": "1yUxR7NX4lp7Stz6mPvn_6m9RBX3c12lF",
-    "desc": "slug owl",
-    "tags": "showcase",
+    "id": "1lwIZgvbvFH_QenIGBoA_rNDfVPr5mOpe",
+    "id_thumb": "1vAStWjlhQSL_-MxO-yyMdVRXRREVTxTs",
+    "date": "2021-12-15T06:00:00.000Z",
+    "desc": "painter",
+    "tags": [
+      "drawings",
+      "showcase"
+    ],
     "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1352888430489952256",
-    "date": "2021-01-23T06:00:00.000Z",
-    "dimensions": "1080x1080",
+    "links": "https://twitter.com/def_sa_/status/1471226465157005312",
+    "dimensions": "1200x1200",
     "type": "jpg"
   },
   {
-    "id": "1R19-ooVPWC-RkEK08M9z-IOWiZPZ_lej",
-    "id_thumb": "1tB2PGT9haNFpmbJA91s_-6OOST7xtUXm",
+    "id": "1ohCN4Veukfz5b297AVRCuuvnqjFLdOUt",
+    "id_thumb": "1xHbzs9Spul9uaGIFePIfLeHlGWOULmWa",
+    "date": "2021-11-25T06:00:00.000Z",
     "desc": "ascii dog",
     "tags": [
-      "drawing",
+      "drawings",
       "showcase"
     ],
     "links": "https://twitter.com/def_sa_/status/1463918664126767110",
-    "date": "2021-11-25T06:00:00.000Z",
     "dimensions": "752x792",
     "type": "jpg"
   },
   {
-    "id": "1wihWJ4hhGKxHV7i-8-j5TfiBqCIU_fdF",
-    "id_thumb": "1n14DDl51d0pViFm4wzOPc9bJha0eTE6e",
-    "desc": "no mouse",
+    "id": "1pyG6-aMIL0IeH-UXsN1btVbHiOkii-FU",
+    "id_thumb": "1asmxHvrLVTyyT6bmtM3wrudjyBRI-ZqD",
+    "date": "2021-07-10T05:00:00.000Z",
+    "desc": "fuck you",
     "tags": "showcase",
     "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1417195620377546758",
-    "date": "2021-07-19T05:00:00.000Z",
-    "dimensions": "1200x986",
+    "links": "https://twitter.com/def_sa_/status/1414021892982312966",
+    "dimensions": "1200x1200",
     "type": "jpg"
   },
   {
-    "id": "15P-XQzPo4P3Qby2BfvmMusDKxcVXx-Ex",
-    "id_thumb": "1NnpqebtEIrMRgFWCVUV5FMgdMsdISDil",
+    "id": "1wEMbHyIeQxmWB2CJcvewIDmWKjgmn3fk",
+    "id_thumb": "1DVLWWVqVeK8F3GTAKzb9dunK5OGB3CnE",
+    "date": "2021-06-13T05:00:00.000Z",
+    "desc": "really super small",
+    "tags": "showcase",
+    "programs": "ibispaint",
+    "links": "https://twitter.com/def_sa_/status/1404142227622932482",
+    "dimensions": "900x1200",
+    "type": "jpg"
+  },
+  {
+    "id": "1OwXUUfYQFbbKjyfZNbodhR0iz_RgBozE",
+    "id_thumb": "1JqC7nIoFMIf9QXiyyxcB-KeXedSKVhPB",
+    "date": "2021-10-01T05:00:00.000Z",
     "desc": "catman (downscaled)",
     "tags": [
       "showcase",
-      "gif"
+      "gifs"
     ],
     "programs": "blender",
     "links": [
       "https://twitter.com/def_sa_/status/1444072749878714368",
       "https://youtu.be/o-jCtVFFZH4"
     ],
-    "date": "2021-10-01T05:00:00.000Z",
     "dimensions": "800x800",
     "type": "gif"
   },
   {
-    "id": "1dcI2VLpBOy122bPFvdcDjVNm6xH1lsw8",
-    "id_thumb": "1Q7Qy09_zF-d0ECl4iczrVZ0qbpM6g_EQ",
-    "desc": "fuck you",
-    "tags": "showcase",
+    "id": "1M9FLc0nImnXlmK-kVEg3qKnGqnWQ0AjQ",
+    "id_thumb": "1QyH_cAC-OEmeRa0EyD7oWfQRhkYBpemC",
+    "date": "2021-01-23T06:00:00.000Z",
+    "desc": "slug owl",
     "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1414021892982312966",
-    "date": "2021-07-10T05:00:00.000Z",
-    "dimensions": "1200x1200",
+    "links": "https://twitter.com/def_sa_/status/1352888430489952256",
+    "dimensions": "1080x1080",
     "type": "jpg"
   },
   {
-    "id": "1SB_YuN916DjmFRVQTb2jLWwE2EEePNZG",
-    "id_thumb": "1xl3vCEDrDawwqLTKkzFNvPLEnhf2O-XN",
-    "desc": "really super small",
-    "tags": "showcase",
+    "id": "19V_tqMa8EH1a6EHmFyMlLyiOrtpLXS-y",
+    "id_thumb": "1p6TvGLdndJV3YgozYGEJxnI_KUywwIS7",
+    "date": "2021-07-19T05:00:00.000Z",
+    "desc": "no mouse",
     "programs": "ibispaint",
-    "links": "https://twitter.com/def_sa_/status/1404142227622932482",
-    "date": "2021-06-13T05:00:00.000Z",
-    "dimensions": "900x1200",
+    "links": "https://twitter.com/def_sa_/status/1417195620377546758",
+    "dimensions": "1200x986",
     "type": "jpg"
   }
 ]

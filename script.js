@@ -240,34 +240,51 @@ function populateGallery() {
     //for each data entry
     for (i = 0; i < data.length; i++) {
       //metadata names: id, id_thumb, desc, tags, programs, links, date, dimensions, type
-      
-      //TODO: add support for videos within an iframe
+		
       //create gallery item, with tags for button sorting
       item = document.createElement("div");
       item.classList.add("item");
-      item.setAttribute("data-tags", data[i].tags);
+      if (data[i].tags != undefined) {
+        item.setAttribute("data-tags", data[i].tags);
+      } else {
+        data[i].tags = "(no tags)";
+        item.setAttribute("data-tags", "");
+        }
       if (i == 0) {
         item.classList.add("active");
         }
-      
+        
       //create gallery item overlay
       viewbutton = document.createElement("button");
       viewbutton.classList.add("viewbutton");
       viewbutton.setAttribute("onclick", "populatePopup(this)");
       viewbutton.innerHTML = "view "+data[i].type;
-      //create gallery image with thumbnail
-      image = document.createElement("img");
-      if (data[i].tags.includes("showcase")) {
-        image.loading = "eager";
+      item.appendChild(viewbutton);
+      
+      if (data[i].tags.includes("video")) { //if video
+        //create iframe with video
+        iframe = document.createElement("iframe");
+        data[i].id = data[i].links.split("/").pop(); //id = yt video id **assumes link will always be youtube if video**
+        iframe.alt = data[i].desc;
+        iframe.src = "https://www.youtube-nocookie.com/embed/"+data[i].id;
+        iframe.frameBorder = 0;
+        iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+        iframe.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to iframe
+        item.appendChild(iframe);
+        } else { //if not video
+        //create gallery image with thumbnail
+        image = document.createElement("img");
+        if (data[i].tags.includes("showcase")) {
+          image.loading = "eager";
         } else {
           image.loading = "lazy";
-          }
-      image.alt = data[i].desc;
-      image.src = "https://drive.google.com/uc?id="+data[i].id_thumb;
-      image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
-      //append items to 
-      item.appendChild(viewbutton);
-      item.appendChild(image);
+        }
+        image.alt = data[i].desc;
+        image.src = "https://drive.google.com/uc?id="+data[i].id_thumb;
+        image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
+        //append items to 
+        item.appendChild(image);
+        }
       document.getElementById("gallery-tab").appendChild(item);
     }
   });
@@ -293,30 +310,43 @@ function onlyUnique(value, index, self) {
 //populate gallery popup
 function populatePopup(btn) {
   clearPopup();
+  //for arrow navigation
   btn.blur();
-  
-  if (document.querySelector('#gallery-tab .active')) {
+  if (document.querySelector('#gallery-tab .active')) { //if active exists, remove, or else the first item is active
     document.querySelector('#gallery-tab .active').classList.remove('active');
-    } else {
-      document.getElementById('gallery-tab').children[2].classList.add("active");
-      }
-  btn.parentNode.classList.add("active");  
+  } else {
+    document.getElementById('gallery-tab').children[2].classList.add("active");
+  }
+  btn.parentNode.classList.add("active");
+  
   iframe = btn.parentElement.getElementsByTagName('iframe').item(0);
   img = btn.parentElement.getElementsByTagName('img').item(0);
   item = document.getElementById('item-image');
   iteminfo = document.getElementById('item-info');
   
+  
+  
   // if tag of item is iframe, clone iframe to popup 
   if (iframe) {
-    item.appendChild(iframe.cloneNode());
-    //TODO: write custom metadata for videos specifically
-    }
+    video = document.getElementById("full-video");
+    videometa = iframe.getAttribute("data-meta");
+    videometa = JSON.parse(videometa);
+    document.getElementById("full-img").style.display = "none";
+    video.style.display = "block";
+    
+    videometa.dimensions = "";
+    video.src = iframe.src;
+    
+    addtoPopup(videometa, "video");
+  }
   if (img) { // if tag of item is img
     imagemeta = img.getAttribute("data-meta");
     imagemeta = JSON.parse(imagemeta);
     
     //put image src in img
     image = document.getElementById("full-img");
+    image.style.display = "block";
+    document.getElementById("full-video").style.display = "none";
     image.src = "";
     if (imagemeta.type.includes("gif")) { //preloading gifs is fucky, so don't
       image.src = "https://drive.google.com/uc?id="+imagemeta.id;
@@ -325,62 +355,68 @@ function populatePopup(btn) {
       image.setAttribute("onLoad","this.src='https://drive.google.com/uc?id="+imagemeta.id+"';this.onload='Function()'"); //load full image after 
     }
     image.alt = "full image";
-    
-    //put metadata in date
-    date = document.getElementById("date");
-    if (imagemeta.date == "N/A") {
-      date.innerText = "unknown date";
-      } else {
-       date.innerText = imagemeta.date.substring(0,10); 
-      }
-    
-    //put metadata in desc
-    desc = document.getElementById("desc");
-    desc.innerText = imagemeta.desc;
-    
-    //put metadata in full
-    full = document.getElementById("full");
-    full.innerText = "open original";
-    full.target = "_blank";
-    full.href = "https://drive.google.com/uc?id="+imagemeta.id;
-    
-    //put metadata in dimensions
-    dim = document.getElementById("dimensions");
-    dim.innerText = imagemeta.dimensions;
-    
-    //put metadata in tags
-    tags = document.getElementById("tags");
-    populateList(imagemeta.tags, tags);
-    
-    //put metadata in programs
-    programs = document.getElementById("programs");
-    populateList(imagemeta.programs, programs);
-    
-    //put metadata in links , special formatting so cant use the populateList function
-    links = document.getElementById("links");
-    if (!Array.isArray(imagemeta.links)) { 
-      link = document.createElement("li");
-      anchor = document.createElement("a");
-      anchor.href = imagemeta.links;
-      anchor.target = "_blank";
-      anchor.innerText = imagemeta.links.match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1]; //get domain from link
-      link.appendChild(anchor);
-      links.appendChild(link);
-    } else {
-      for (i = 0; i < imagemeta.links.length; i++) {
-        link = document.createElement("li");
-        anchor = document.createElement("a");
-        anchor.href = imagemeta.links[i];
-        anchor.target = "_blank";
-        anchor.innerText = imagemeta.links[i].match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1];
-        link.appendChild(anchor);
-        links.appendChild(link);
-        }
-    }
+    addtoPopup(imagemeta);
   }
   document.getElementById("item-info").focus();
   document.getElementById('item-details').style.display = 'flex';
+}
+
+function addtoPopup(meta, type) {
+  //put metadata in date
+  date = document.getElementById("date");
+  if (meta.date == "N/A") {
+    date.innerText = "unknown date";
+  } else {
+    date.innerText = meta.date.substring(0,10); 
   }
+  //put metadata in desc
+  desc = document.getElementById("desc");
+  desc.innerText = meta.desc;
+  
+  //put metadata in full
+  full = document.getElementById("full");
+  full.innerText = "open original";
+  full.target = "_blank";
+  if (type == "video") {
+    full.href = "https://youtu.be/"+meta.id;
+  } else {
+    full.href = "https://drive.google.com/uc?id="+meta.id;
+  }
+  
+  //put metadata in dimensions
+  dim = document.getElementById("dimensions");
+   dim.innerText = meta.dimensions;
+   
+   //put metadata in tags
+   tags = document.getElementById("tags");
+   populateList(meta.tags, tags);
+  
+  //put metadata in programs
+  programs = document.getElementById("programs");
+  populateList(meta.programs, programs);
+    
+  //put metadata in links , special formatting so cant use the populateList function
+  links = document.getElementById("links");
+  if (!Array.isArray(meta.links)) { 
+    link = document.createElement("li");
+    anchor = document.createElement("a");
+    anchor.href = meta.links;
+    anchor.target = "_blank";
+    anchor.innerText = meta.links.match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1]; //get domain from link
+    link.appendChild(anchor);
+    links.appendChild(link);
+  } else {
+    for (i = 0; i < meta.links.length; i++) {
+      link = document.createElement("li");
+      anchor = document.createElement("a");
+      anchor.href = meta.links[i];
+      anchor.target = "_blank";
+      anchor.innerText = meta.links[i].match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1];
+      link.appendChild(anchor);
+      links.appendChild(link);
+      }
+  }
+}
 
 //populate meta lists
 function populateList(meta, list) {
