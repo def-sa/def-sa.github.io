@@ -9,7 +9,7 @@ html {
 	padding: 0;
 	margin: 0;
 	image-rendering: -webkit-optimize-contrast;
-	font-size: 1em
+	font-size: 1em;
 }
 
 body,
@@ -18,7 +18,7 @@ html {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 100%
+	height: 100%;
 }
 
 .header {
@@ -34,7 +34,7 @@ html {
 	justify-content: center;
 	flex-wrap: nowrap;
 	position: -webkit-sticky;
-	position: sticky
+	position: sticky;
 }
 
 #intro {
@@ -43,25 +43,25 @@ html {
 	justify-content: center;
 	cursor: progress;
 	width: 100vw;
-	height: 100vh
+	height: 100vh;
 }
 
 #wrapper {
 	display: none;
 	background: #666;
-	width: 100vw
+	width: 100vw;
 }
 
 .spin {
-	animation: spin 2s infinite linear
+	animation: spin 2s infinite linear;
 }
 
 @keyframes spin {
 	from {
-		transform: rotate(0)
+		transform: rotate(0);
 	}
 	to {
-		transform: rotate(360deg)
+		transform: rotate(360deg);
 	}
 }
 
@@ -76,21 +76,21 @@ html {
 	width: inherit;
 	letter-spacing: 3px;
 	font-size: 22px;
-	padding: 0
+	padding: 0;
 }
 
 a {
-	color: #5bd8d9
+	color: #5bd8d9;
 }
 
 .nav a {
 	text-decoration: none;
 	color: #3c3c3c;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .nav .active a {
-	color: #000
+	color: #000;
 }
 
 .nav .active a::before {
@@ -98,7 +98,7 @@ a {
 	margin-top: 20px;
 	content: '↑';
 	position: absolute;
-	transform: rotate(45deg)
+	transform: rotate(45deg);
 }
 
 #logo,
@@ -106,7 +106,7 @@ a {
 	position: absolute;
 	animation: swing 1s infinite;
 	animation-iteration-count: 1;
-	animation-play-state: paused
+	animation-play-state: paused;
 }
 
 #ham-nav {
@@ -121,15 +121,15 @@ a {
 }
 
 #ham-nav li {
-	padding: .5em
+	padding: .5em;
 }
 
 #ham-nav li a {
-	color: #000
+	color: #000;
 }
 
 #tab-content {
-	position: relative
+	position: relative;
 }
 
 #home-tab {
@@ -139,7 +139,7 @@ a {
 	width: 100%;
 	min-height: 100%;
 	background: rgb(195 195 195 / 85%);
-	padding-top: 1em
+	padding-top: 1em;
 }
 
 #homepost {
@@ -154,23 +154,24 @@ a {
 	background: #3c3c3c;
 	color: #fff;
 	height: 35vh;
-	overflow: hidden
+	overflow: hidden;
 }
 
 #homepost img {
-	margin-top: 1em
+	margin-top: 1em;
 }
 
 #homepost a {
-	flex: 1
+	flex: 1;
+	cursor: pointer;
 }
 
 #homepost p {
-	margin: auto 0
+	margin: auto 0;
 }
 
 #closehome:hover {
-	background: #c34c4c
+	background: #c34c4c;
 }
 
 #closehome {
@@ -191,29 +192,29 @@ a {
 
 .links {
 	filter: invert(1);
-	display: flex
+	display: flex;
 }
 
 .links img {
-	max-width: 100px
+	max-width: 100px;
 }
 
 @media screen and (min-width:0px) {
 	.item {
 		width: 100%;
 		height: auto;
-		aspect-ratio: 1/1
+		aspect-ratio: 1/1;
 	}
 	#homepost {
 		aspect-ratio: unset;
-		width: unset
+		width: unset;
 	}
 	.aboutpost .item {
-		aspect-ratio: unset
+		aspect-ratio: unset;
 	}
 	#item-image {
 		width: 60%;
-		height: auto
+		height: auto;
 	}
 }
 
@@ -221,24 +222,24 @@ a {
 	.item {
 		width: 50%;
 		height: auto;
-		aspect-ratio: 1/1
+		aspect-ratio: 1/1;
 	}
 	#item-image {
 		width: 60%;
-		height: auto
+		height: auto;
 	}
 }
 
 @media screen and (min-width:480px) {
 	.item-image {
-		width: 100%
+		width: 100%;
 	}
 	#item-image {
 		width: 60%;
-		height: auto
+		height: auto;
 	}
 	#homepost {
-		width: 50%
+		width: 50%;
 	}
 }
 
@@ -246,29 +247,29 @@ a {
 	.item {
 		width: 33.33333%;
 		height: auto;
-		aspect-ratio: 1/1
+		aspect-ratio: 1/1;
 	}
 	#ham {
-		display: none
+		display: none;
 	}
 	#ham-menu {
-		display: none
+		display: none;
 	}
 	.aboutpost .item {
-		aspect-ratio: unset
+		aspect-ratio: unset;
 	}
 }
 
 @media screen and (max-width:768px) {
 	.nav {
-		display: none
+		display: none;
 	}
 	#ham {
 		cursor: pointer;
 		display: block;
 		margin-left: -75vw;
 		font-size: 32px;
-		padding: 1em
+		padding: 1em;
 	}
 	#ham-menu {
 		width: 100vw;
@@ -337,7 +338,7 @@ a {
 		aspect-ratio: unset;
 	}
 	#homepost {
-		width: 35%
+		width: 35%;
 	}
 }
 
@@ -362,13 +363,13 @@ a {
 	border: none;
 	padding: 1em;
 	cursor: pointer;
-	font-family: Courier New Bold, monospace
+	font-family: Courier New Bold, monospace;
 }
 
 #sortbuttons button.activebutton,
 #sortbuttons button:hover {
 	background: #666;
-	color: #fff
+	color: #fff;
 }
 
 #sortbuttons button.activebutton::before {
@@ -379,14 +380,14 @@ a {
 	position: absolute;
 	transform: rotate(-45deg);
 	font-size: 22px;
-	top: 0
+	top: 0;
 }
 
 #full-gallery,
 #gallery-tab {
 	display: none;
 	flex-wrap: wrap;
-	align-items: center
+	align-items: center;
 }
 
 #gallery-tab .item:hover {
@@ -394,16 +395,16 @@ a {
 	color: #ffc107;
 	filter: invert(0);
 	display: flex;
-	justify-content: center
+	justify-content: center;
 }
 
 .item {
 	display: flex;
-	position: relative
+	position: relative;
 }
 
 #gallery-tab>div>iframe {
-  width:100%
+  width:100%;
   }
 
 content {
@@ -415,7 +416,7 @@ content {
 	align-content: center;
 	justify-content: center;
 	width: 100%;
-	height: 100%
+	height: 100%;
 }
 
 content button {
@@ -424,13 +425,13 @@ content button {
 	height: 50%;
 	box-shadow: .5em .5em 2em #3c3c3c;
 	background: #3c3c3c;
-	color: #fff
+	color: #fff;
 }
 
 content:hover {
 	background: rgb(0, 0, 0, .75);
 	color: #fff;
-	transition: all ease-out .2s
+	transition: all ease-out .2s;
 }
 
 .item img {
@@ -447,7 +448,7 @@ content:hover {
 	justify-content: center;
 	padding-top: 6em;
 	background: rgb(195 195 195 / 85%);
-	display: none
+	display: none;
 }
 
 #item-popup {
@@ -458,7 +459,7 @@ content:hover {
 	top: 12vh;
 	background: #3c3c3c70;
 	height: fit-content;
-	width: 100%
+	width: 100%;
 }
 
 #full-video {
@@ -468,7 +469,7 @@ content:hover {
   }
 
 #item-image {
-	flex: 1
+	flex: 1;
 }
 
 #item-image img {
@@ -485,7 +486,7 @@ content:hover {
 }
 
 #item-info a {
-	color: #3c769a
+	color: #3c769a;
 }
 
 #item-info ul>::before {
@@ -493,7 +494,7 @@ content:hover {
 	display: inline-flex;
 	margin: .25em;
 	align-items: center;
-	font-size: 22px
+	font-size: 22px;
 }
 
 #dimensions,
@@ -632,18 +633,18 @@ content:hover {
 
 @keyframes swing {
 	20% {
-		transform: rotate3d(0, 0, 1, 15deg)
+		transform: rotate3d(0, 0, 1, 15deg);
 	}
 	40% {
-		transform: rotate3d(0, 0, 1, -10deg)
+		transform: rotate3d(0, 0, 1, -10deg);
 	}
 	60% {
-		transform: rotate3d(0, 0, 1, 5deg)
+		transform: rotate3d(0, 0, 1, 5deg);
 	}
 	80% {
-		transform: rotate3d(0, 0, 1, -5deg)
+		transform: rotate3d(0, 0, 1, -5deg);
 	}
 	to {
-		transform: rotate3d(0, 0, 1, 0deg)
+		transform: rotate3d(0, 0, 1, 0deg);
 	}
 }
