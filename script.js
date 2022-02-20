@@ -51,9 +51,8 @@ function hideTabs() {
 
 //if click outside of homepost window, close home
 document.getElementById('home-tab').onclick = function(e) {
-  if  (event.target.parentElement.id == 'homepost') {
-  } else {
-  openGallery();
+  if  (event.target.id == 'home-tab') {
+    openGallery();
   }
 };
 
