@@ -80,12 +80,42 @@ window.onload = function() {
   document.getElementById("intro").style.display = "none";
 };
 
-//make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
-function URLfix() {
+// if refferred to nonexisting pages /home/ /about/ /gallery/ or /speps/ direct user correctly
+if (document.referrer != "") {
+  ref = document.referrer;
+  refArr = ref.split('/'); //if referrer url has index.html, remove it
+  if ((ref = ref.split('/').pop()) == "index.html") {
+    refArr = refArr.slice(0, -1);
+    ref = refArr.pop();
+    URLfix(ref);
+  }
+}
+
+uniqueTags = [];
+
+//takes url and redirects user based on /#this-string
+function URLhelper() {
   url = document.URL;
   url = url.split('/');
   currenttab = url.pop();
-  switch (currenttab) {
+  linked = currenttab.slice(1);
+  uniquetags = uniqueTags.push("all"); //add "all" because its hardcoded in the html
+  if (uniqueTags.includes(linked)) {
+    URLfix("gallery");
+    toggle(linked);
+  }
+}
+
+//make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
+function URLfix(toTab) {
+  if (toTab == undefined) {
+  url = document.URL;
+  url = url.split('/');
+  to = url.pop();
+  } else {
+    to = "#"+toTab;
+    }
+  switch (to) {
     case "index.html":
       history.replaceState({}, document.title, "https://"+url[2]+"/"+url[3]); //remove index.html from url without refreshing
       openHome();
@@ -112,6 +142,7 @@ function URLfix() {
 //on url change, make it pretty
 window.addEventListener('popstate', function (event) {
 	URLfix();
+	URLhelper();
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 });
 
@@ -237,6 +268,7 @@ function populateGallery() {
         }
       container.appendChild(input);
     }
+    
     //for each data entry
     for (i = 0; i < data.length; i++) {
       //metadata names: id, id_thumb, desc, tags, mediums, links, date, dimensions, type
@@ -287,6 +319,7 @@ function populateGallery() {
       document.getElementById("gallery-tab").appendChild(item);
     }
   toggle("showcase");
+  uniqueTags = getUniqueTags(data);
   });
 }
 
@@ -456,7 +489,7 @@ function toggle(obj) {
   //remove active class from whichever button its on
   if (document.querySelector('#sortbuttons .activebutton') != null) {
     document.querySelector('#sortbuttons .activebutton').classList.remove('activebutton');
-  } else {}
+  }
   //make this button active
   document.getElementById(tag+"btn").classList.add("activebutton");
 }
