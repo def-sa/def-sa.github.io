@@ -230,6 +230,7 @@ function populateGallery() {
       container = document.getElementById("sortbuttons");
       input = document.createElement("button");
       input.innerText = uniqueTags[i];
+      input.id = uniqueTags[i]+"btn";
       input.setAttribute("onclick" , "toggle(this)");
       if (uniqueTags[i] == "showcase") {
         input.classList.add("activebutton");
@@ -285,6 +286,7 @@ function populateGallery() {
         }
       document.getElementById("gallery-tab").appendChild(item);
     }
+  toggle("showcase");
   });
 }
 
@@ -433,22 +435,29 @@ function populateList(meta, list) {
 
 //gallery sorted buttons toggle
 function toggle(obj) {
+  if (typeof obj === 'string') {
+    tag = obj;
+  } else {
+    tag = obj.innerText;
+  }
   var childDivs = document.querySelectorAll("#gallery-tab .item");
   for (i = 0; i < childDivs.length; i++ ) { //for each gallery item 
     var childDiv = childDivs[i];
     tags = childDiv.getAttribute('data-tags');
-    if (tags.includes(obj.innerText)) { //if gallery item includes tag metadata 
+    if (tags.includes(tag)) { //if gallery item includes tag metadata 
       childDiv.style.display = "flex";
-    } else if (obj.innerText == "all") {
+    } else if (tag == "all") {
       childDiv.style.display = "flex";
     } else {
       childDiv.style.display = "none";
     }
   }
   //remove active class from whichever button its on
-  document.querySelector('#sortbuttons .activebutton').classList.remove('activebutton');
+  if (document.querySelector('#sortbuttons .activebutton') != null) {
+    document.querySelector('#sortbuttons .activebutton').classList.remove('activebutton');
+  } else {}
   //make this button active
-  obj.classList.add("activebutton");
+  document.getElementById(tag+"btn").classList.add("activebutton");
 }
 
 console.log("if you have trouble getting gallery images to load, try clearing cookies and refreshing. idk why but it fixes it. if that doesn't help then i've probably fucked up somewhere and didn't notice");
