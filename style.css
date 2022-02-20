@@ -365,13 +365,13 @@ a {
 	font-family: Courier New Bold, monospace
 }
 
-#sortbuttons button.active,
+#sortbuttons button.activebutton,
 #sortbuttons button:hover {
 	background: #666;
 	color: #fff
 }
 
-#sortbuttons button.active::before {
+#sortbuttons button.activebutton::before {
 	content: '↓';
 	display: block;
 	margin-top: -5px;

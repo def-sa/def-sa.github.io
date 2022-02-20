@@ -233,14 +233,13 @@ function populateGallery() {
       input.innerText = uniqueTags[i];
       input.setAttribute("onclick" , "toggle(this)");
       if (uniqueTags[i] == "showcase") {
-        input.classList.add("active");
+        input.classList.add("activebutton");
         }
       container.appendChild(input);
     }
     //for each data entry
     for (i = 0; i < data.length; i++) {
       //metadata names: id, id_thumb, desc, tags, programs, links, date, dimensions, type
-		
       //create gallery item, with tags for button sorting
       item = document.createElement("div");
       item.classList.add("item");
@@ -448,9 +447,9 @@ function toggle(obj) {
     }
   }
   //remove active class from whichever button its on
-  document.querySelector('#sortbuttons .active').classList.remove('active');
+  document.querySelector('#sortbuttons .activebutton').classList.remove('activebutton');
   //make this button active
-  obj.classList.add("active");
+  obj.classList.add("activebutton");
 }
 
 console.log("if you have trouble getting gallery images to load, try clearing cookies and refreshing. idk why but it fixes it. if that doesn't help then i've probably fucked up somewhere and didn't notice");
