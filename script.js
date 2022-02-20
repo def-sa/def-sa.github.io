@@ -239,7 +239,7 @@ function populateGallery() {
     }
     //for each data entry
     for (i = 0; i < data.length; i++) {
-      //metadata names: id, id_thumb, desc, tags, programs, links, date, dimensions, type
+      //metadata names: id, id_thumb, desc, tags, mediums, links, date, dimensions, type
       //create gallery item, with tags for button sorting
       item = document.createElement("div");
       item.classList.add("item");
@@ -324,8 +324,6 @@ function populatePopup(btn) {
   item = document.getElementById('item-image');
   iteminfo = document.getElementById('item-info');
   
-  
-  
   // if tag of item is iframe, clone iframe to popup 
   if (iframe) {
     video = document.getElementById("full-video");
@@ -355,6 +353,9 @@ function populatePopup(btn) {
       image.setAttribute("onLoad","this.src='https://drive.google.com/uc?id="+imagemeta.id+"';this.onload='Function()'"); //load full image after 
     }
     image.alt = "full image";
+    if (imagemeta.mediums == undefined) {
+      imagemeta.mediums = "(no mediums)";
+      }
     addtoPopup(imagemeta);
   }
   document.getElementById("item-info").focus();
@@ -391,9 +392,9 @@ function addtoPopup(meta, type) {
    tags = document.getElementById("tags");
    populateList(meta.tags, tags);
   
-  //put metadata in programs
-  programs = document.getElementById("programs");
-  populateList(meta.programs, programs);
+  //put metadata in mediums
+  mediums = document.getElementById("mediums");
+  populateList(meta.mediums, mediums);
     
   //put metadata in links , special formatting so cant use the populateList function
   links = document.getElementById("links");

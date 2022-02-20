@@ -507,7 +507,7 @@ content:hover {
 #date,
 #desc,
 #links,
-#programs {
+#mediums {
 	padding-left: 10%;
 }
 
@@ -516,13 +516,13 @@ content:hover {
 	max-width: 50%;
 }
 
-#programs::before {
-	content: 'programs used:';
+#mediums::before {
+	content: 'mediums used:';
 	font-weight: 700;
 }
 
 #links,
-#programs,
+#mediums,
 #tags {
 	list-style: none;
 	line-height: 1em;

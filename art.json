@@ -6,9 +6,10 @@
     "desc": "daft punk guy",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": "mspaint",
+    "mediums": "mspaint",
     "links": "https://twitter.com/def_sa_/status/1364379808851922946",
     "dimensions": "1200x1116",
     "type": "jpg"
@@ -20,9 +21,10 @@
     "desc": "plant dog",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": "ibispaint",
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1413325093745348608",
     "dimensions": "1200x1200",
     "type": "jpg"
@@ -34,9 +36,10 @@
     "desc": "alarm",
     "tags": [
       "video",
-      "showcase"
+      "showcase",
+      "2022"
     ],
-    "programs": "davinci-resolve",
+    "mediums": "davinci-resolve",
     "links": "https://youtu.be/1D6cyPP_Wc0",
     "dimensions": "720x480",
     "type": "video"
@@ -48,9 +51,10 @@
     "desc": "bruh zoi",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": [
+    "mediums": [
       "sketchbook",
       "ibispaint"
     ],
@@ -63,8 +67,11 @@
     "id_thumb": "1v34R4BB4LGlBGCh_RaVhYhlLpCVUwRj9",
     "date": "2021-08-11T05:00:00.000Z",
     "desc": "drip mesh",
-    "tags": "showcase",
-    "programs": "ibispaint",
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1425432906705559557",
     "dimensions": "1200x1200",
     "type": "jpg"
@@ -76,9 +83,10 @@
     "desc": "fractal broken",
     "tags": [
       "showcase",
-      "gifs"
+      "gifs",
+      "2022"
     ],
-    "programs": [
+    "mediums": [
       "ezgif",
       "glitch-studio"
     ],
@@ -93,9 +101,10 @@
     "desc": "skull",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": "tuxpaint",
+    "mediums": "tuxpaint",
     "links": "https://twitter.com/def_sa_/status/1402479112246202368",
     "dimensions": "1000x952",
     "type": "jpg"
@@ -107,9 +116,10 @@
     "desc": "just overlay broken",
     "tags": [
       "showcase",
-      "gifs"
+      "gifs",
+      "2021"
     ],
-    "programs": "ezgif",
+    "mediums": "ezgif",
     "links": "https://twitter.com/def_sa_/status/1421645774992064513",
     "dimensions": "713x401",
     "type": "gif"
@@ -119,8 +129,11 @@
     "id_thumb": "15GCApli617X80-vLMX9p0SbZR1VFM79K",
     "date": "2021-08-09T05:00:00.000Z",
     "desc": "kixpix fern",
-    "tags": "showcase",
-    "programs": "kidpix",
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": "kidpix",
     "links": "https://twitter.com/def_sa_/status/1424918998207107072",
     "dimensions": "930x930",
     "type": "jpg"
@@ -130,8 +143,11 @@
     "id_thumb": "1PxE3Eov-ScrRESPsB4Erc2GkDoKOZEvz",
     "date": "2021-08-11T05:00:00.000Z",
     "desc": "pixel sort borzoi",
-    "tags": "showcase",
-    "programs": [
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": [
       "glitché",
       "ibispaint"
     ],
@@ -146,9 +162,10 @@
     "desc": "unfinished (111.27)",
     "tags": [
       "video",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": [
+    "mediums": [
       "blender",
       "davinci-resolve"
     ],
@@ -163,9 +180,10 @@
     "desc": "ideal",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": "ibispaint",
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1462142043728273409",
     "dimensions": "1200x1200",
     "type": "jpg"
@@ -175,8 +193,11 @@
     "id_thumb": "1X2AW58vWi13an8h8wvgR_eo9BZhC5LnD",
     "date": "2021-07-01T05:00:00.000Z",
     "desc": "drip hole",
-    "tags": "showcase",
-    "programs": "ibispaint",
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1410653828240846855",
     "dimensions": "1105x1200",
     "type": "jpg"
@@ -188,9 +209,10 @@
     "desc": "painter",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
-    "programs": "ibispaint",
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1471226465157005312",
     "dimensions": "1200x1200",
     "type": "jpg"
@@ -202,7 +224,8 @@
     "desc": "ascii dog",
     "tags": [
       "drawings",
-      "showcase"
+      "showcase",
+      "2021"
     ],
     "links": "https://twitter.com/def_sa_/status/1463918664126767110",
     "dimensions": "752x792",
@@ -213,8 +236,11 @@
     "id_thumb": "1asmxHvrLVTyyT6bmtM3wrudjyBRI-ZqD",
     "date": "2021-07-10T05:00:00.000Z",
     "desc": "fuck you",
-    "tags": "showcase",
-    "programs": "ibispaint",
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1414021892982312966",
     "dimensions": "1200x1200",
     "type": "jpg"
@@ -224,8 +250,11 @@
     "id_thumb": "1DVLWWVqVeK8F3GTAKzb9dunK5OGB3CnE",
     "date": "2021-06-13T05:00:00.000Z",
     "desc": "really super small",
-    "tags": "showcase",
-    "programs": "ibispaint",
+    "tags": [
+      "showcase",
+      "2021"
+    ],
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1404142227622932482",
     "dimensions": "900x1200",
     "type": "jpg"
@@ -237,9 +266,10 @@
     "desc": "catman (downscaled)",
     "tags": [
       "showcase",
-      "gifs"
+      "gifs",
+      "2021"
     ],
-    "programs": "blender",
+    "mediums": "blender",
     "links": [
       "https://twitter.com/def_sa_/status/1444072749878714368",
       "https://youtu.be/o-jCtVFFZH4"
@@ -252,7 +282,7 @@
     "id_thumb": "1QyH_cAC-OEmeRa0EyD7oWfQRhkYBpemC",
     "date": "2021-01-23T06:00:00.000Z",
     "desc": "slug owl",
-    "programs": "ibispaint",
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1352888430489952256",
     "dimensions": "1080x1080",
     "type": "jpg"
@@ -262,7 +292,7 @@
     "id_thumb": "1p6TvGLdndJV3YgozYGEJxnI_KUywwIS7",
     "date": "2021-07-19T05:00:00.000Z",
     "desc": "no mouse",
-    "programs": "ibispaint",
+    "mediums": "ibispaint",
     "links": "https://twitter.com/def_sa_/status/1417195620377546758",
     "dimensions": "1200x986",
     "type": "jpg"
