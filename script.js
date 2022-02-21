@@ -204,56 +204,53 @@ document.addEventListener("keyup", function(event) {
     moveGallery(false, true);
     return;
   }
+  if (event.key == "Escape") {
+    openGallery();
+    clearPopup();
+    }
 });
+
 //move gallery 
 function moveGallery(left, right) {
-  galleryactive = document.querySelector('#gallery-tab .active');
-  index = getChildrenIndex(galleryactive)-2; 
   galleryitem = document.querySelectorAll("#gallery-tab .item");
-  for (i = 0; i < galleryitem.length; i++ ) { //for each gallery item 
+  galleryitemVisible = [];
+  for (i = 0; i < galleryitem.length; i++ ) { //if visible items
+    if (galleryitem[i].style.display == "flex") {
+      galleryitemVisible.push(galleryitem[i]); //create list of them
+      }
+  }
+  galleryactive = document.querySelectorAll("#gallery-tab .active");
+  galleryactive = galleryactive[0]; //because queryselectorall returns a node list
+  if (galleryitemVisible.includes(galleryactive)) { //if active is not visible, make first item active
+    index = galleryitemVisible.indexOf(galleryactive);
+  } else { //active item is not visible, set to first item
+    galleryactive = galleryitemVisible[0];
+    index = 0;
+  }
+  for (i = 0; i < galleryitemVisible.length; i++ ) { //for each visible gallery item
     if (right == true) { //if right pressed
-      if (index < galleryitem.length-1) { //dont move index out of range
-        galleryitem[index].classList.remove("active");
-        galleryitem[index+1].classList.add("active");
-        galleryitem[index+1].children[0].click(); //click viewbutton
-        return;
-      }
+    if (index < galleryitemVisible.length) { //if in scope of items
+      if (galleryitemVisible[index+1] == undefined) {return;}
+      galleryitemVisible[index].classList.remove("active");
+      galleryitemVisible[index+1].classList.add("active");
+      galleryitemVisible[index+1].children[0].click(); //click viewbutton
+      return;
     }
-    if (left == true) {
-      if (index > 0) {
-        galleryitem[index].classList.remove("active");
-        galleryitem[index-1].classList.add("active");
-        galleryitem[index-1].children[0].click();
-        return;
-      }
+    }
+    if (left == true) { //same as above 
+    if (index > 0) {
+      if (galleryitemVisible[index-1] == undefined) {return;}
+      galleryitemVisible[index].classList.remove("active");
+      galleryitemVisible[index-1].classList.add("active");
+      galleryitemVisible[index-1].children[0].click();
+      return;
+    }
     }
   }
 }
-//some function i stole 
-function getChildrenIndex(ele){
-  if(ele.sourceIndex){
-    var eles = ele.parentNode.children;
-    var low = 0, high = eles.length-1, mid = 0;
-    var esi = ele.sourceIndex, nsi;
-    //use binary search algorithm
-    while (low <= high) {
-      mid = (low + high) >> 1;
-      nsi = eles[mid].sourceIndex;
-      if (nsi > esi) {
-          high = mid - 1;
-      } else if (nsi < esi) {
-          low = mid + 1;
-        } else {
-          return mid;
-        }
-    }
-  }
-  //other browsers
-  var i=0;
-  while(ele = ele.previousElementSibling){
-    i++;
-  }
-  return i;
+
+function getChildIndex(node) {
+  return Array.prototype.indexOf.call(node.parentNode.childNodes, node);
 }
 
 //populate gallery, duh
