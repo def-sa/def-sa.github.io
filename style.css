@@ -144,8 +144,9 @@ a {
 	background: rgba(0, 0, 0, .5);
 	width: 100%;
 	min-height: 100%;
-	background: rgb(195 195 195 / 85%);
+	background: rgb(195 195 195 / 70%);
 	padding-top: 1em;
+	mix-blend-mode: luminosity;
 }
 
 #homepost {
@@ -170,6 +171,7 @@ a {
 #homepost a {
 	flex: 1;
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 #homepost p {

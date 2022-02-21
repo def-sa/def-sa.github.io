@@ -78,18 +78,21 @@ function keyboardClick(event, element) {
 window.onload = function() {
   document.getElementById("wrapper").style.display = "block";
   document.getElementById("intro").style.display = "none";
-};
-
-// if refferred to nonexisting pages /home/ /about/ /gallery/ or /speps/ direct user correctly
-if (document.referrer != "") {
-  ref = document.referrer;
-  refArr = ref.split('/'); //if referrer url has index.html, remove it
-  if ((ref = ref.split('/').pop()) == "index.html") {
-    refArr = refArr.slice(0, -1);
-    ref = refArr.pop();
-    URLfix(ref);
+  
+  // if refferred to nonexisting pages /home/ /about/ /gallery/ or /speps/ direct user correctly
+  if (document.referrer != "") {
+    ref = document.referrer;
+    refArr = ref.split('/'); //if referrer url has index.html, remove it
+    if ((ref = ref.split('/').pop()) == "index.html") {
+      refArr = refArr.slice(0, -1);
+      ref = refArr.pop();
+    }
+    if (refArr.pop() == "") {
+      ref = refArr.pop();
+      }
+      URLfix(ref);
   }
-}
+};
 
 uniqueTags = [];
 
@@ -99,11 +102,15 @@ function URLhelper() {
   url = url.split('/');
   currenttab = url.pop();
   linked = currenttab.slice(1);
-  uniquetags = uniqueTags.push("all"); //add "all" because its hardcoded in the html
+  uniqueTags.push("all"); //add "all" temporarily because its hardcoded in the html
   if (uniqueTags.includes(linked)) {
     URLfix("gallery");
     toggle(linked);
-  }
+    x = uniqueTags.pop(); //to remove "all"
+  } else {
+    x = uniqueTags.pop();
+    history.replaceState({}, document.title, window.location.href.split('#')[0]);
+    }
 }
 
 //make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
@@ -126,6 +133,7 @@ function URLfix(toTab) {
     break;
     case "#gallery":
       history.replaceState({}, document.title, window.location.href.split('#')[0]);
+      toggle("showcase");
       openGallery();
     break;
     case "#about":
@@ -320,6 +328,7 @@ function populateGallery() {
     }
   toggle("showcase");
   uniqueTags = getUniqueTags(data);
+  URLhelper();
   });
 }
 
