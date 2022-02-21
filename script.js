@@ -116,12 +116,12 @@ function URLhelper() {
 //make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
 function URLfix(toTab) {
   if (toTab == undefined) {
-  url = document.URL;
-  url = url.split('/');
-  to = url.pop();
+    url = document.URL;
+    url = url.split('/');
+    to = url.pop();
   } else {
     to = "#"+toTab;
-    }
+  }
   switch (to) {
     case "index.html":
       history.replaceState({}, document.title, "https://"+url[2]+"/"+url[3]); //remove index.html from url without refreshing
@@ -133,8 +133,8 @@ function URLfix(toTab) {
     break;
     case "#gallery":
       history.replaceState({}, document.title, window.location.href.split('#')[0]);
-      toggle("showcase");
       openGallery();
+      toggle("showcase");
     break;
     case "#about":
       history.replaceState({}, document.title, window.location.href.split('#')[0]);
@@ -247,10 +247,6 @@ function moveGallery(left, right) {
     }
     }
   }
-}
-
-function getChildIndex(node) {
-  return Array.prototype.indexOf.call(node.parentNode.childNodes, node);
 }
 
 //populate gallery, duh
