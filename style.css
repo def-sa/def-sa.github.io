@@ -21,6 +21,10 @@ html {
 	height: 100%;
 }
 
+* {
+  transition: all ease-out .2s;
+   }
+   
 .header {
 	background: #c3c3c3;
 	top: 0;
@@ -370,20 +374,25 @@ a {
   
 #sort-menu, #sort-menu2 {
   width: 100%;
-  background: #666;
   display: flex;
   flex-direction: row;
   justify-content: center;
   display: none;
   overflow-x: auto;
   }
-  
+
 #sort {
 	width: 100%;
 	justify-content: space-evenly;
 	font-size: 1em;
 	overflow-x: auto;
 }
+
+#sort-menu button, #sort-menu2 button {
+  padding: 1em 4.666% !important;
+  background: #666;
+  color: #fff;
+  }
 
 #sort button, #sort-menu button, #sort-menu2 button {
 	border: none;
@@ -392,10 +401,12 @@ a {
 	font-family: Courier New Bold, monospace;
 }
 
-#sort button.activebutton,
-#sort button:hover, #sort-menu button, #sort-menu button.activebutton,
-#sort-menu button:hover, #sort-menu2 button, #sort-menu2 button.activebutton,
-#sort-menu2 button:hover {
+#sort-menu button.activebutton, #sort-menu2 button.activebutton, #sort-menu button:hover, #sort-menu2 button:hover {
+  background: #3c3c3c;
+  color: #fff;
+}
+#sort > button.activebutton,
+#sort > button:hover {
 	background: #666;
 	color: #fff;
 }
