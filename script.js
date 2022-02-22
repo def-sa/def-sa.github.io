@@ -6,7 +6,31 @@ const speps = document.getElementById("speps-tab");
 
 openHome();
 URLfix();
-populateGallery();
+
+var dataSaved = [];
+getData();
+
+function getData() {
+  fetch('./art.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        for (i = 0; i < data.length; i++) {
+          if (data[i].type == "jpg" || data[i].type == "png") {
+            data[i].type = "image";
+            }
+          data[i].date = data[i].date.slice(0, 10);
+        }
+        
+        dataSaved = data;
+        //populate gallery on successful json request
+        populateGallery();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+}
 
 // activate new tab and panel
 function addActive(tab, nav) {
@@ -94,7 +118,8 @@ window.onload = function() {
   }
 };
 
-uniqueTags = [];
+/* TODO: fix this to work with new sort buttons
+uniqueTag = [];
 
 //takes url and redirects user based on /#this-string
 function URLhelper() {
@@ -102,16 +127,17 @@ function URLhelper() {
   url = url.split('/');
   currenttab = url.pop();
   linked = currenttab.slice(1);
-  uniqueTags.push("all"); //add "all" temporarily because its hardcoded in the html
-  if (uniqueTags.includes(linked)) {
+  uniqueTag.push("all"); //add "all" temporarily because its hardcoded in the html
+  if (uniqueTag.includes(linked)) {
     URLfix("gallery");
     toggle(linked);
-    x = uniqueTags.pop(); //to remove "all"
+    x = uniqueTag.pop(); //to remove "all"
   } else {
-    x = uniqueTags.pop();
+    x = uniqueTag.pop();
     history.replaceState({}, document.title, window.location.href.split('#')[0]);
     }
 }
+*/
 
 //make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
 function URLfix(toTab) {
@@ -249,97 +275,272 @@ function moveGallery(left, right) {
   }
 }
 
-//populate gallery, duh
+//yeah
 function populateGallery() {
-  fetch('./art.json')
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-    //create buttons for each unique button tag
-    uniqueTags = getUniqueTags(data);
-    for (i = 0; i < uniqueTags.length; i++) {
-      container = document.getElementById("sortbuttons");
-      input = document.createElement("button");
-      input.innerText = uniqueTags[i];
-      input.id = uniqueTags[i]+"btn";
-      input.setAttribute("onclick" , "toggle(this)");
-      if (uniqueTags[i] == "showcase") {
-        input.classList.add("activebutton");
-        }
-      container.appendChild(input);
-    }
-    
-    //for each data entry
-    for (i = 0; i < data.length; i++) {
-      //metadata names: id, id_thumb, desc, tags, mediums, links, date, dimensions, type
-      //create gallery item, with tags for button sorting
-      item = document.createElement("div");
-      item.classList.add("item");
-      if (data[i].tags != undefined) {
-        item.setAttribute("data-tags", data[i].tags);
-      } else {
-        data[i].tags = "(no tags)";
-        item.setAttribute("data-tags", "");
-        }
-      if (i == 0) {
-        item.classList.add("active");
-        }
-        
-      //create gallery item overlay
-      viewbutton = document.createElement("button");
-      viewbutton.classList.add("viewbutton");
-      viewbutton.setAttribute("onclick", "populatePopup(this)");
-      viewbutton.innerHTML = "view "+data[i].type;
-      item.appendChild(viewbutton);
-      
-      if (data[i].tags.includes("video")) { //if video
-        //create iframe with video
-        iframe = document.createElement("iframe");
-        data[i].id = data[i].links.split("/").pop(); //id = yt video id **assumes link will always be youtube if video**
-        iframe.alt = data[i].desc;
-        iframe.src = "https://www.youtube-nocookie.com/embed/"+data[i].id;
-        iframe.frameBorder = 0;
-        iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-        iframe.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to iframe
-        item.appendChild(iframe);
-        } else { //if not video
-        //create gallery image with thumbnail
-        image = document.createElement("img");
-        if (data[i].tags.includes("showcase")) {
-          image.loading = "eager";
-        } else {
-          image.loading = "lazy";
-        }
-        image.alt = data[i].desc;
-        image.src = "https://drive.google.com/uc?id="+data[i].id_thumb;
-        image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
-        //append items to 
-        item.appendChild(image);
-        }
-      document.getElementById("gallery-tab").appendChild(item);
-    }
+  data = dataSaved;
+  createButtons(data);
+  //for each data entry
+  for (i = 0; i < data.length; i++) {
+    createGalleryItem(data, i);
+  }
   toggle("showcase");
-  uniqueTags = getUniqueTags(data);
   URLhelper();
-  });
 }
 
-//to get uniquetags for gallery buttons
-function getUniqueTags(data) {
-  var allTags = []; //pre define for sorting unique tags later
-  for (i = 0; i < data.length; i++) { //for each array of tags
-    tags = data[i].tags;
-    allTags.push(tags); //add each array of tags to allTags
+//yes
+function createGalleryItem(data, i) {
+  //metadata names: id, id_thumb, desc, tag, medium, links, date, dimensions, type
+  //create gallery item, with tag for button sorting
+  item = document.createElement("div");
+  item.classList.add("item");
+  //add attribues for sorting buttons 
+  if (data[i].tag != undefined) { //if any tags exist
+    item.setAttribute("data-sort", data[i].tag); //set tag as data attribute
+  } else { //if tag doesnt exist
+    data[i].tag = "(no tag)";
+    item.setAttribute("data-sort", "");
   }
-  var tagsMerged = [].concat.apply([], allTags); //combine arrays into 1 long array
-  var tagsFiltered = tagsMerged.filter(x => x !== undefined); //remove undefined
-  uniqueTags = tagsFiltered.filter(onlyUnique); //get only unique tags
-  uniqueTags.sort();
-  return uniqueTags;
+  item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].type); //for each type, add to attributes
+  item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].medium);
+  item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].date.slice(0,7));
+  if (i == 0) { //default position for uh keyboard movement i think
+    item.classList.add("active");
+    }
+  //create gallery item overlay
+  viewbutton = document.createElement("button");
+  viewbutton.classList.add("viewbutton");
+  viewbutton.setAttribute("onclick", "populatePopup(this)");
+  viewbutton.innerHTML = "view "+data[i].type;
+  item.appendChild(viewbutton);
+  
+  if (data[i].type == "video") { //if video
+    //create iframe with video
+    iframe = document.createElement("iframe");
+    data[i].id = data[i].links.split("/").pop(); //id = yt video id **assumes link will always be youtube if video**
+    iframe.alt = data[i].desc;
+    iframe.src = "https://www.youtube-nocookie.com/embed/"+data[i].id;
+    iframe.frameBorder = 0;
+    iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+    iframe.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to iframe
+    item.appendChild(iframe);
+  } else { //if not video (if is image)
+  //create gallery image with thumbnail
+    image = document.createElement("img");
+    if (data[i].tag.includes("showcase")) {
+      image.loading = "eager";
+    } else {
+      image.loading = "lazy";
+    }
+    image.alt = data[i].desc;
+    image.src = "https://drive.google.com/uc?id="+data[i].id_thumb;
+    image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
+    //append items to 
+    item.appendChild(image);
+  }
+  document.getElementById("gallery-tab").appendChild(item);
 }
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
+
+//create top buttons
+function createButtons(data) {
+  sort = document.getElementById("sort");
+  sortmenu = document.getElementById("sort-menu");
+  //top "tag" button
+  tag = document.createElement("button");
+  tag.innerText = "tag";
+  tag.id = tag.innerText+"btn";
+  tag.setAttribute("onclick" , "toggleMenu(this)");
+  insertAfter(sort.children[0], tag);
+  //top "type" button
+  type = document.createElement("button");
+  type.innerText = "type";
+  type.id = type.innerText+"btn";
+  type.setAttribute("onclick" , "toggleMenu(this)");
+  insertAfter(sort.children[0], type);
+  //top "medium" button
+  medium = document.createElement("button");
+  medium.innerText = "medium";
+  medium.id = medium.innerText+"btn";
+  medium.setAttribute("onclick" , "toggleMenu(this)");
+  insertAfter(sort.children[0], medium);
+  //top "date" button
+  date = document.createElement("button");
+  date.innerText = "date";
+  date.id = date.innerText+"btn";
+  date.setAttribute("onclick" , "toggleMenu(this)");
+  insertAfter(sort.children[0], date);
+}
+
+//toggle sort-menu
+function toggleMenu(btn, year) {
+  if (typeof btn === 'string') {
+    menu = btn;
+  } else {
+    menu = btn.innerText;
+  }
+  //remove active from top sort buttons
+  if (document.querySelector('#sort .activebutton') != null) {
+      document.querySelector('#sort .activebutton').classList.remove('activebutton');
+  }
+  sortmenu = document.getElementById("sort-menu");
+  sortmenu2 = document.getElementById("sort-menu2");
+  removeChildren(sortmenu);
+  removeChildren(sortmenu2);
+  createButtonsMenu(menu, year);
+  document.getElementById(menu+"btn").classList.add("activebutton");
+}
+//create sort-menu items
+function createButtonsMenu(att, yearSelected) {
+  sortmenu = document.getElementById("sort-menu");
+  sortmenu2 = document.getElementById("sort-menu2");
+  if (data == undefined) {
+    data = dataSaved;
+  }
+  switch(att) {
+  case "all":
+    removeChildren(sortmenu);
+    removeChildren(sortmenu2);
+    sortmenu.style.display = "none";
+    sortmenu2.style.display = "none";
+    toggle('all');
+    break;
+  case "tag":
+    uniqueTag = getUnique(data, 'tag');
+    for (i = 0; i < uniqueTag.length; i++) { //for each unique tag, make button
+      if (uniqueTag[i] != "(no tag)") { //skip if (no tag)
+        tagitem = document.createElement("button");
+        tagitem.innerText = uniqueTag[i];
+        tagitem.setAttribute("onclick" , "toggle(this)");
+        tagitem.id = uniqueTag[i]+"btn";
+        sortmenu.appendChild(tagitem);
+      }
+    }
+    sortmenu.style.display = "flex";
+    sortmenu2.style.display = "none";
+    break;
+  case "type":
+    uniqueType = getUnique(data, 'type');
+    for (i = 0; i < uniqueType.length; i++) { //for each unqiue type
+      typeitem = document.createElement("button");
+      typeitem.innerText = uniqueType[i];
+        typeitem.setAttribute("onclick" , "toggle(this)");
+      typeitem.id = uniqueType[i]+"btn";
+      sortmenu.appendChild(typeitem);
+    }
+    sortmenu.style.display = "flex";
+    sortmenu2.style.display = "none";
+    break;
+  case "medium":
+    galleryitem = document.querySelectorAll("#gallery-tab .item");
+    uniqueMedium = getUnique(data, 'medium');
+    for (i = 0; i < uniqueMedium.length; i++) { //for each unique medium
+    galleryVisible = [];
+      for (x = 0; x < galleryitem.length; x++ ) { //for each gallery item
+      datasort = galleryitem[x].getAttribute('data-sort');
+      if (datasort.includes(uniqueMedium[i])) { //if gallery includes medium
+        galleryVisible.push(uniqueMedium[i]); //add to visible
+        }
+      }
+      if (galleryVisible.length >= 6) { //only add buttons if it would result in 6 or more gallery items
+        mediumitem = document.createElement("button");
+        mediumitem.innerText = uniqueMedium[i];
+        mediumitem.setAttribute("onclick" , "toggle(this)");
+        mediumitem.id = uniqueMedium[i]+"btn";
+        sortmenu.appendChild(mediumitem);
+      }
+      /* why does this make it not work? i have no idea.
+      if (uniqueMedium[i] == "ibispaint") {
+        mediumitem.classList.add("activebutton");
+        mediumitem.click();
+      }
+      */
+    }
+    sortmenu.style.display = "flex";
+    sortmenu2.style.display = "none";
+    break;
+  case "date":
+    data = dataSaved;
+    uniqueYear = getUnique(data, 'date', true);
+    console.log(data);
+    
+    for (i = 0; i < uniqueYear.length; i++) { //for each year
+      dateitem = document.createElement("button");
+      dateitem.innerText = uniqueYear[i];
+      dateitem.setAttribute("onclick" , "toggle(this, undefined, true)");
+      dateitem.id = uniqueYear[i]+"btn";
+      sortmenu.appendChild(dateitem);
+      
+      allMonths = []; //get unique months here because returning getUnique breaks the for loop
+      galleryitem = document.querySelectorAll("#gallery-tab .item");
+      for (z = 0; z < galleryitem.length; z++ ) { //for each gallery item
+        allMonths.push(data[z].date.slice(5, 7));
+        }
+      console.log(allMonths);
+      uniqueMonths = Array.from(new Set(allMonths)); //remove duplicates
+      uniqueMonths.sort();
+      
+      yearMonth = [];
+      for (y = 0; y < uniqueMonths.length; y++) { //for each month
+        for (x = 0; x < galleryitem.length; x++ ) { //for each gallery item
+          datasort = galleryitem[x].getAttribute('data-sort');
+          yyyymm = uniqueYear[i]+"-"+uniqueMonths[y]; 
+          if (datasort.includes(yyyymm)) { //check if gallery item has specific year and month
+            yearMonth.push(yyyymm);
+          }
+        }
+      }
+        yearMonth = Array.from(new Set(yearMonth));
+        yearMonth.sort();
+        
+        //currentMonth = new Date().getMonth()+1;
+        
+        for (b = 0; b < yearMonth.length; b++ ) {
+          year = yearMonth[b].slice(0, 4);
+          if (year == yearSelected) {
+            month = yearMonth[b].slice(5, 7);
+            dateitem2 = document.createElement("button");
+            dateitem2.innerText = month;
+            dateitem2.setAttribute("onclick" , "toggle(this, true)");
+            dateitem2.id = yearMonth[b]+"btn";
+            sortmenu2.appendChild(dateitem2);
+          }
+        }
+    }
+    sortmenu.style.display = "flex";
+    sortmenu2.style.display = "none";
+    break;
+  }
+}
+
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function removeChildren(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function getUnique(data, item, isyear) {
+  allItems = []; 
+  for (i = 0; i < data.length; i++) { //for all entrees
+    if (Array.isArray(data[i][item])) { //if is an array add all items
+      for (x = 0; x < data[i][item].length; x++) {
+        allItems.push(data[i][item][x]);
+        }
+    } else //if not an array (it's 1 item) add 1
+      if (isyear == true) { //get unique years
+        allItems.push(data[i][item].slice(0, 4))
+      } else {
+      allItems.push(data[i][item]);
+      }
+    }
+  allItems = allItems.filter(function(x) { //remove undefined
+    return x !== undefined;
+  });
+  uniqueItems = Array.from(new Set(allItems)); //remove duplicates
+  uniqueItems.sort();
+  return uniqueItems;  
 }
 
 //populate gallery popup
@@ -388,8 +589,8 @@ function populatePopup(btn) {
       image.setAttribute("onLoad","this.src='https://drive.google.com/uc?id="+imagemeta.id+"';this.onload='Function()'"); //load full image after 
     }
     image.alt = "full image";
-    if (imagemeta.mediums == undefined) {
-      imagemeta.mediums = "(no mediums)";
+    if (imagemeta.medium == undefined) {
+      imagemeta.medium = "(no medium)";
       }
     addtoPopup(imagemeta);
   }
@@ -423,13 +624,13 @@ function addtoPopup(meta, type) {
   dim = document.getElementById("dimensions");
    dim.innerText = meta.dimensions;
    
-   //put metadata in tags
-   tags = document.getElementById("tags");
-   populateList(meta.tags, tags);
+   //put metadata in tag
+   tag = document.getElementById("tag");
+   populateList(meta.tag, tag);
   
-  //put metadata in mediums
-  mediums = document.getElementById("mediums");
-  populateList(meta.mediums, mediums);
+  //put metadata in medium
+  medium = document.getElementById("medium");
+  populateList(meta.medium, medium);
     
   //put metadata in links , special formatting so cant use the populateList function
   links = document.getElementById("links");
@@ -456,7 +657,7 @@ function addtoPopup(meta, type) {
 
 //populate meta lists
 function populateList(meta, list) {
-  if (!Array.isArray(meta)) { //if tags not array (meaning it's 1 item)
+  if (!Array.isArray(meta)) { //if tag not array (meaning it's 1 item)
       item = document.createElement("li");
       item.innerText = meta;
       list.appendChild(item);
@@ -470,30 +671,49 @@ function populateList(meta, list) {
 }
 
 //gallery sorted buttons toggle
-function toggle(obj) {
+function toggle(obj, ismonth, isyear) {
   if (typeof obj === 'string') {
     tag = obj;
   } else {
     tag = obj.innerText;
   }
-  var childDivs = document.querySelectorAll("#gallery-tab .item");
-  for (i = 0; i < childDivs.length; i++ ) { //for each gallery item 
-    var childDiv = childDivs[i];
-    tags = childDiv.getAttribute('data-tags');
-    if (tags.includes(tag)) { //if gallery item includes tag metadata 
-      childDiv.style.display = "flex";
-    } else if (tag == "all") {
-      childDiv.style.display = "flex";
+  
+  if (isyear != undefined) {
+    toggleMenu("date", obj.innerText);
+    document.getElementById("sort-menu2").style.display = "flex";
+  }
+  isMonth = undefined;
+  if (ismonth != undefined) {
+    year = document.querySelectorAll("#sort-menu .activebutton")[0];
+    tag = year.innerText+"-"+tag
+    isMonth = true;
+  }
+  
+  fullgallery = document.querySelectorAll("#gallery-tab .item");
+  for (i = 0; i < fullgallery.length; i++ ) { //for each gallery item 
+    item = fullgallery[i];
+    datasort = item.getAttribute('data-sort');
+    if (datasort.includes(tag) || tag == "all") { //if gallery item includes sorted, or all, display them
+      item.style.display = "flex";
     } else {
-      childDiv.style.display = "none";
+      item.style.display = "none";
     }
   }
-  //remove active class from whichever button its on
-  if (document.querySelector('#sortbuttons .activebutton') != null) {
-    document.querySelector('#sortbuttons .activebutton').classList.remove('activebutton');
+  //if tag exists
+  if (document.getElementById(tag+"btn") != undefined) {
+    
+    //remove active class from sort-menu buttons
+    if (document.querySelector('#sort-menu2 .activebutton') != null) {
+        document.querySelector('#sort-menu2 .activebutton').classList.remove('activebutton');
+    }
+    if (isMonth == undefined) {
+      if (document.querySelector('#sort-menu .activebutton') != null) {
+          document.querySelector('#sort-menu .activebutton').classList.remove('activebutton');
+      }
+    }
+    //remove active from tag
+    document.getElementById(tag+"btn").classList.add("activebutton");
   }
-  //make this button active
-  document.getElementById(tag+"btn").classList.add("activebutton");
 }
 
 console.log("if you have trouble getting gallery images to load, try clearing cookies and refreshing. idk why but it fixes it. if that doesn't help then i've probably fucked up somewhere and didn't notice");
