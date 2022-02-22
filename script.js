@@ -4,11 +4,11 @@ const gallery = document.getElementById("gallery-tab");
 const about = document.getElementById("about-tab");
 const speps = document.getElementById("speps-tab");
 
-openHome();
-URLfix();
-
 var dataSaved = [];
 getData();
+
+openHome();
+URLfix();
 
 function getData() {
   fetch('./art.json')
@@ -22,13 +22,9 @@ function getData() {
             }
           data[i].date = data[i].date.slice(0, 10);
         }
-        
         dataSaved = data;
         //populate gallery on successful json request
         populateGallery();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
       });
 }
 
@@ -283,8 +279,7 @@ function populateGallery() {
   for (i = 0; i < data.length; i++) {
     createGalleryItem(data, i);
   }
-  toggle("showcase");
-  URLhelper();
+  //URLhelper();
 }
 
 //yes
@@ -368,6 +363,8 @@ function createButtons(data) {
   date.id = date.innerText+"btn";
   date.setAttribute("onclick" , "toggleMenu(this)");
   insertAfter(sort.children[0], date);
+  toggleMenu(tag);
+  toggle("showcase");
 }
 
 //toggle sort-menu
@@ -460,7 +457,6 @@ function createButtonsMenu(att, yearSelected) {
   case "date":
     data = dataSaved;
     uniqueYear = getUnique(data, 'date', true);
-    console.log(data);
     
     for (i = 0; i < uniqueYear.length; i++) { //for each year
       dateitem = document.createElement("button");
