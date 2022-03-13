@@ -150,7 +150,6 @@ a {
 	min-height: 100%;
 	background: rgb(195 195 195 / 70%);
 	padding-top: 1em;
-	mix-blend-mode: luminosity;
 }
 
 #homepost {
