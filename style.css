@@ -213,6 +213,7 @@ a {
 
 .links img {
 	max-width: 100px;
+	margin: 3%;
 }
 
 @media screen and (min-width:0px) {
