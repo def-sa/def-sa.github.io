@@ -437,7 +437,7 @@ function createButtonsMenu(att, yearSelected) {
         galleryVisible.push(uniqueMedium[i]); //add to visible
         }
       }
-      if (galleryVisible.length >= 6) { //only add buttons if it would result in 6 or more gallery items
+      if (galleryVisible.length >= 2) { //only add buttons if it would result in 2 or more gallery items
         mediumitem = document.createElement("button");
         mediumitem.innerText = uniqueMedium[i];
         mediumitem.setAttribute("onclick" , "toggle(this)");
