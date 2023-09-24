@@ -84,9 +84,9 @@ document.getElementById('closehome').onkeyup = function(event){
   keyboardClick(event, this);
 };
 //accessibility support for about me link
-document.getElementById('homepost').children[4].children[0].onkeyup = function(event) {
-  keyboardClick(event, this);
-  };
+//document.getElementById('homepost').children[4].children[0].onkeyup = function(event) {
+  //keyboardClick(event, this);
+  //};
 
 function keyboardClick(event, element) {
   if (event.key == "Enter" || event.key == "Space") {
@@ -113,6 +113,7 @@ window.onload = function() {
       URLfix(ref);
   }
 };
+
 
 /* TODO: fix this to work with new sort buttons
 uniqueTag = [];

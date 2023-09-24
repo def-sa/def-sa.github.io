@@ -15,7 +15,7 @@
 	<meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
 	<meta property="og:site_name" content="the website of def-sa, a trying experimental artist"/>
 	<link rel="icon" type="image/png" href="./images/favicon.png">
-    <title>def-sa</title>
+    <title>def-sa (redes3)</title>
     <link href="./style.css" rel="stylesheet" type="text/css" media="all">
 	<link rel="preconnect" href="https://drive.google.com">
   </head>
@@ -30,14 +30,14 @@
   </div>
   <div id="wrapper">
     <div class="header">
-    <img id="logo" src="./images/logo-transparent.png" onclick="this.style.animationPlayState = 'running'"/>
+    <img id="logo" src="./images/logo-transparent.png" onclick="this.style.filter = 'invert(100%)'">
     <div id="ham" onclick="toggleHam();">⚌</div>
     <ul id="nav-tab" class="nav">
-      <li class="active"><a tabindex=0 onclick="openHome()">home</a></li>
-      <li><a tabindex=0 onclick="openGallery()">gallery</a></li>
-      <li></li>
-      <li><a tabindex=0 onclick="openAbout()">about</a></li>
-      <li><a tabindex=0 onclick="openSpeps()">↑</a></li>
+      <li class="active" onclick="openHome()"><a tabindex=0>home</a></li>
+      <li onclick="openGallery()"><a tabindex=0>gallery</a></li>
+      <li style="padding:0"></li>
+      <li onclick="openAbout()"><a tabindex=0 >about</a></li>
+      <li onclick="openSpeps()"><a tabindex=0 >↑</a></li>
       </ul>
     </div>
     <div id="ham-menu">
@@ -50,23 +50,28 @@
     </div>
     <div id="tab-content">
       <div class="tab-pane" id="home-tab">
-        <div id="homepost">
-          <p id="closehome" tabindex=0>x</p>
-          <p style="font-size: 1em;">hello!</p>
-          <p style="font-size: 1.5em;margin-left: 10%;">i'm def-sa.</p>
-          <p style="margin-left: 25%;font-size: 1.15em;">a trying experimental artist.</p>
-          <p style="margin-left: 65%;font-size: 1.15em;">more <a tabindex=0 onclick="openAbout()">about</a> me</p>
-          <p>you can find me here:</p>
-			<div class="links">
-				<a href="www.tumblr.com/ilimp4" target="_blank"><img src="./images/tumblr.svg" alt="tumblr logo"></a>
-				<a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/twitter.svg" alt="twitter logo"></a>
-				<a href="./discord/" target="_blank"><img src="./images/discord.svg"alt="discord logo"></a>
-				<a href="https://www.youtube.com/@def-sa" target="_blank"><img src="./images/youtube.svg" alt="youtube logo" title="main yt account"></a>
-				<a href="https://www.youtube.com/@ilimp4" target="_blank"><img src="./images/youtube.svg" alt="youtube logo" title="alt yt account for whatever"></a>
-				<a href="https://cash.app/$defsa" target="_blank"><img src="./images/donate.svg" alt="donate logo" title="donate to help save me from minimum wage hell"></a>
-				<a href="https://github.com/def-sa/" target="_blank"><img src="./images/github.svg" alt="github logo"></a>
-				<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank"><img src="./images/sounds.svg" alt="noise logo"></a>
-			</div>
+      <div id="homepost">
+        <div id="def-sa">
+          <p id="closehome" tabindex="0">x</p>
+          <h2>i'm def-sa.</h2> 
+          
+          <p style="margin: auto 0 0;">experimental art project by @ilimp4</p>
+          
+          <p style="margin: 1em;">-&gt; more <a tabindex="0" onclick="openAbout()">about</a> me</p>
+          <p style="margin: auto 0 0;">you can find me here:</p>
+          <div class="links">
+            
+            <a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/twitter.svg" alt="twitter logo"></a>
+            
+            <a href="https://www.youtube.com/@def-sa" target="_blank"><img src="./images/youtube.svg" alt="youtube logo" title="main yt account"></a>
+            <a href="https://cash.app/$defsa" target="_blank"><img src="./images/donate.svg" alt="donate logo" title="donate to help save me from minimum wage hell"></a>
+            <a href="https://github.com/def-sa/" target="_blank"><img src="./images/github.svg" alt="github logo"></a>
+            <a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank"><img src="./images/sounds.svg" alt="noise logo"></a><a href="https://www.youtube.com/@ilimp4" target="_blank" style="opacity: .25;"><img src="./images/youtube.svg" alt="youtube logo" title="alt yt account for whatever"></a>
+            <a href="./discord/" target="_blank" style="opacity: .25;"><img src="./images/discord.svg" alt="discord logo"></a>
+            <a href="https://www.tumblr.com/ilimp4" target="_blank" style="opacity: .25;"><img src="./images/tumblr.svg" alt="tumblr logo"></a>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
       <div class="tab-pane" id="gallery-tab">
