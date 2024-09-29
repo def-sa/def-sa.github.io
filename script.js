@@ -328,7 +328,7 @@ function createGalleryItem(data, i) {
       image.loading = "lazy";
     }
     image.alt = data[i].desc;
-    image.src = "https://drive.google.com/uc?id="+data[i].id_thumb;
+    image.src = "https://drive.google.com/thumbnail?id="+data[i].id_thumb;
     image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
     //append items to 
     item.appendChild(image);
@@ -580,10 +580,10 @@ function populatePopup(btn) {
     document.getElementById("full-video").style.display = "none";
     image.src = "";
     if (imagemeta.type.includes("gif")) { //preloading gifs is fucky, so don't
-      image.src = "https://drive.google.com/uc?id="+imagemeta.id;
+      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id;
       } else {
-      image.src = "https://drive.google.com/uc?id="+imagemeta.id_thumb; //load thumbnail first
-      image.setAttribute("onLoad","this.src='https://drive.google.com/uc?id="+imagemeta.id+"';this.onload='Function()'"); //load full image after 
+      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id_thumb; //load thumbnail first
+      image.setAttribute("onLoad","this.src='https://drive.google.com/thumbnail?id="+imagemeta.id+"';this.onload='Function()'"); //load full image after 
     }
     image.alt = "full image";
     if (imagemeta.medium == undefined) {
@@ -614,7 +614,7 @@ function addtoPopup(meta, type) {
   if (type == "video") {
     full.href = "https://youtu.be/"+meta.id;
   } else {
-    full.href = "https://drive.google.com/uc?id="+meta.id;
+    full.href = "https://drive.google.com/thumbnail?id="+meta.id;
   }
   
   //put metadata in dimensions
