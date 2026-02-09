@@ -1,13 +1,22 @@
 html {
-  background: linear-gradient(-90deg, rgba(60,60,60,1) 0%, rgba(195,195,195,1) 100%);
+	background: #c3c3c3;
 	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 100%;
+	height: 100%;
+	font-family: Courier New Bold, monospace;
 	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 	image-rendering: -webkit-optimize-contrast;
 	font-size: 1em;
 }
 
-body, html {
+body,
+html {
 	font-family: Courier New Bold, monospace;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 	height: 100%;
 }
@@ -17,7 +26,7 @@ body, html {
    }
    
 .header {
-	background: linear-gradient(-90deg, rgba(60,60,60,1) 0%, rgba(195,195,195,1) 100%);
+	background: #c3c3c3;
 	top: 0;
 	height: 12vh;
 	width: 100vw;
@@ -39,20 +48,16 @@ body, html {
 	cursor: progress;
 	width: 100vw;
 	height: 100vh;
-	align-items: center;
-  flex-direction: column;
 }
 
 #wrapper {
-  position: absolute;
+	display: none;
+	background: #666;
+	width: 100vw;
 }
 
 .spin {
 	animation: spin 2s infinite linear;
-	align-items: center;
-  flex-direction: column;
-  width: 20em;
-  height: 20em;
 }
 
 @keyframes spin {
@@ -84,14 +89,12 @@ a {
 
 .nav a {
 	text-decoration: none;
-  color: black;
-  filter: invert(1);
-  cursor: pointer;
+	color: #3c3c3c;
+	cursor: pointer;
 }
 
 .nav .active a {
 	color: #000;
-  filter: drop-shadow(1px 1px 0px white);
 }
 
 .nav .active a::before {
@@ -102,25 +105,16 @@ a {
 	transform: rotate(45deg);
 }
 
-#nav-tab li:hover {
-  background: #c3c3c3;
-}
-
-#nav-tab li {
-  padding: 1em;
-}
-
-#logo {
+#logo,
+.logo {
 	position: absolute;
 	animation: swing 1s infinite;
+	animation-iteration-count: 1;
 	animation-play-state: paused;
 	max-height: 96px;
   max-width: 96px;
+  height: 100%;
 }
-
-#logo:hover {
-  filter: invert(1);
-  }
 
 #ham-nav {
 	text-decoration: none;
@@ -144,13 +138,18 @@ a {
   padding: 1em 25% 1em 25%;
   }
 
+#tab-content {
+	position: relative;
+}
 
 #home-tab {
-  position: absolute;
-  z-index: 4;
-  min-width: 100%;
-  min-height: 100%;
-  background: rgb(195 195 195 / 70%);
+	position: absolute;
+	z-index: 4;
+	background: rgba(0, 0, 0, .5);
+	width: 100%;
+	min-height: 100%;
+	background: rgb(195 195 195 / 70%);
+	padding-top: 1em;
 }
 
 #homepost {
@@ -162,7 +161,7 @@ a {
 	position: -webkit-sticky;
 	position: sticky;
 	top: 20vh;
-	background: linear-gradient(-45deg, rgba(60,60,60,1) 0%, rgba(0,0,0,1) 100%);
+	background: #3c3c3c;
 	color: #fff;
 	height: 35vh;
 	overflow: hidden;
@@ -258,7 +257,7 @@ a {
 		height: auto;
 	}
 	#homepost {
-		width: 75%;
+		width: 50%;
 	}
 }
 
@@ -305,7 +304,6 @@ a {
 		display: flex;
 		box-shadow: .5em .5em 2em #3c3c3c;
 		top: 12vh;
-		padding: 1em 0;
 		overflow: auto;
 		height: fit-content;
 		width: 100%;
@@ -338,7 +336,7 @@ a {
 	max-height: 35vh;
 	}
 	#homepost {
-	width: 100%;
+	width: 85%;
 	}
 	#closehome {
 	right: 15%;
@@ -363,7 +361,7 @@ a {
 		aspect-ratio: unset;
 	}
 	#homepost {
-		width: 55%;
+		width: 35%;
 	}
 }
 
@@ -376,11 +374,8 @@ a {
 }
 
 #sort {
+  background: #c3c3c3;
   display: flex;
-  }
-  
-#sort button {
-  color: #c3c3c3;
   }
   
 #sort-menu, #sort-menu2 {
@@ -407,12 +402,9 @@ a {
 
 #sort button, #sort-menu button, #sort-menu2 button {
 	border: none;
-  padding: 1em 5vw;
-  cursor: pointer;
-  font-family: Courier New Bold, monospace;
-  background: transparent;
-  font-size: 1em;
-  color: white;
+	padding: 1em;
+	cursor: pointer;
+	font-family: Courier New Bold, monospace;
 }
 
 #sort-menu button.activebutton, #sort-menu2 button.activebutton, #sort-menu button:hover, #sort-menu2 button:hover {
@@ -421,17 +413,22 @@ a {
 }
 #sort > button.activebutton,
 #sort > button:hover {
-	color: white;
-  font-size: 1em;
-  background: #3c3c3c;
+	background: #666;
+	color: #fff;
 }
 
-.tab-pane {
-  display: flex;
-  justify-content: center;
+#sort button.activebutton::before {
+	content: '↓';
+	display: block;
+	margin-top: 30px;
+	margin-left: -12px;
+	position: absolute;
+	transform: rotate(-45deg);
+	font-size: 22px;
+	top: 0;
 }
 
-.nav .active a::before, #sort button.activebutton::before, #sort-menu button.activebutton::before, #sort-menu2 button.activebutton::before {
+#sort-menu button.activebutton::before, #sort-menu2 button.activebutton::before {
   content: '↓';
   margin-top: -17px;
   margin-left: -13px;
@@ -465,12 +462,12 @@ a {
   }
 
 #alert {
-  background: #30ffce3d;
+  background: #ff3b3045;
   width: 100%;
   display: flex;
   align-content: center;
   justify-content: center;
-  padding: 0.75em;
+  padding: 0.5em;
   color: white;
   }
 
@@ -658,7 +655,7 @@ content:hover {
 
 #aboutpost {
 	padding: 1em;
-	color:white;
+  background: #c3c3c3;
 }
 
 #aboutpost hr {
@@ -674,6 +671,7 @@ content:hover {
   }
 
 #aboutpost a {
+  color: #3c769a;
   cursor: pointer;
   } 
 
@@ -692,6 +690,7 @@ content:hover {
 #speps-tab {
   text-align: center;
   font-size: 2em;
+  background: #c3c3c3;
   padding-top: 25%;
   }
 

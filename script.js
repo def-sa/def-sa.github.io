@@ -10,13 +10,15 @@ getData();
 openHome();
 URLfix();
 
+
 function getData() {
-  fetch('./art.json')
+  fetch('./export.json')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         for (i = 0; i < data.length; i++) {
+          console.log(data[i])
           if (data[i].type == "jpg" || data[i].type == "png") {
             data[i].type = "image";
             }
@@ -32,22 +34,19 @@ function getData() {
 function addActive(tab, nav) {
   nav.classList.add("active"); //for nav highlight + underline
   //hide all tabs then display active tab
+  hideTabs();
   switch (tab.id) {
     case 'home-tab':
-      hideTabs();
       home.style.display = "block";
       gallery.style.display = "flex";
       break;
     case 'gallery-tab':
-      hideTabs();
       gallery.style.display = "flex";
       break;
     case 'about-tab':
-      hideTabs();
       about.style.display = "block";
       break;
     case 'speps-tab':
-      hideTabs();
       speps.style.display = "block";
       break;
     }  
@@ -63,6 +62,10 @@ for (i = 0; i < all_nav.length; i++) {
 
 //hide tabs
 function hideTabs() {
+  allTabs = document.getElementById("tab-content").children;
+  for (let i = 0; i < allTabs.length; i++) {
+    console.log(allTabs[i])
+  } 
   home.style.display = "none";
   gallery.style.display = "none";
   about.style.display = "none";
@@ -279,16 +282,24 @@ function populateGallery() {
   //for each data entry
   for (i = 0; i < data.length; i++) {
     createGalleryItem(data, i);
+    toggle("showcase")
   }
   //URLhelper();
 }
 
+
+var uniqueTagsArray = []
+
+
+
+
 //yes
 function createGalleryItem(data, i) {
-  //metadata names: id, id_thumb, desc, tag, medium, links, date, dimensions, type
+  //metadata names: id, thumb_id, desc, tag, medium, links, date, dimensions, type
   //create gallery item, with tag for button sorting
   item = document.createElement("div");
   item.classList.add("item");
+  
   //add attribues for sorting buttons 
   if (data[i].tag != undefined) { //if any tags exist
     item.setAttribute("data-sort", data[i].tag); //set tag as data attribute
@@ -296,8 +307,8 @@ function createGalleryItem(data, i) {
     data[i].tag = "(no tag)";
     item.setAttribute("data-sort", "");
   }
-  item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].type); //for each type, add to attributes
-  item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].medium);
+  // item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].type); //for each type, add to attributes
+  // item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].medium);
   item.setAttribute("data-sort", item.getAttribute("data-sort")+","+data[i].date.slice(0,7));
   if (i == 0) { //default position for uh keyboard movement i think
     item.classList.add("active");
@@ -306,10 +317,10 @@ function createGalleryItem(data, i) {
   viewbutton = document.createElement("button");
   viewbutton.classList.add("viewbutton");
   viewbutton.setAttribute("onclick", "populatePopup(this)");
-  viewbutton.innerHTML = "view "+data[i].type;
+  viewbutton.innerHTML = "view "+data[i].name;
   item.appendChild(viewbutton);
   
-  if (data[i].type == "video") { //if video
+  if (data[i].name == "video") { //if video
     //create iframe with video
     iframe = document.createElement("iframe");
     data[i].id = data[i].links.split("/").pop(); //id = yt video id **assumes link will always be youtube if video**
@@ -328,13 +339,34 @@ function createGalleryItem(data, i) {
       image.loading = "lazy";
     }
     image.alt = data[i].desc;
-    image.src = "https://drive.google.com/thumbnail?id="+data[i].id_thumb;
+    
+    /* shit broke
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://drive.google.com/thumbnail?id="+data[i].thumb_id, true);
+    
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(xhr.responseURL);
+      }
+    };
+    
+    xhr.send();
+    */
+    
+    
+    
+    
+    image.src = "https://drive.google.com/thumbnail?id="+data[i].thumb_id;
     image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
     //append items to 
+    item.style.display = "none";
     item.appendChild(image);
   }
   document.getElementById("gallery-tab").appendChild(item);
 }
+
+
+
 
 //create top buttons
 function createButtons(data) {
@@ -352,18 +384,18 @@ function createButtons(data) {
   type.id = type.innerText+"btn";
   type.setAttribute("onclick" , "toggleMenu(this)");
   insertAfter(sort.children[0], type);
-  //top "medium" button
-  medium = document.createElement("button");
-  medium.innerText = "medium";
-  medium.id = medium.innerText+"btn";
-  medium.setAttribute("onclick" , "toggleMenu(this)");
-  insertAfter(sort.children[0], medium);
+  // //top "medium" button
+  // medium = document.createElement("button");
+  // medium.innerText = "medium";
+  // medium.id = medium.innerText+"btn";
+  // medium.setAttribute("onclick" , "toggleMenu(this)");
+  // insertAfter(sort.children[0], medium);
   //top "date" button
-  date = document.createElement("button");
-  date.innerText = "date";
-  date.id = date.innerText+"btn";
-  date.setAttribute("onclick" , "toggleMenu(this)");
-  insertAfter(sort.children[0], date);
+  // date = document.createElement("button");
+  // date.innerText = "date";
+  // date.id = date.innerText+"btn";
+  // date.setAttribute("onclick" , "toggleMenu(this)");
+  // insertAfter(sort.children[0], date);
   toggleMenu(tag);
   toggle("showcase");
 }
@@ -427,34 +459,34 @@ function createButtonsMenu(att, yearSelected) {
     sortmenu.style.display = "flex";
     sortmenu2.style.display = "none";
     break;
-  case "medium":
-    galleryitem = document.querySelectorAll("#gallery-tab .item");
-    uniqueMedium = getUnique(data, 'medium');
-    for (i = 0; i < uniqueMedium.length; i++) { //for each unique medium
-    galleryVisible = [];
-      for (x = 0; x < galleryitem.length; x++ ) { //for each gallery item
-      datasort = galleryitem[x].getAttribute('data-sort');
-      if (datasort.includes(uniqueMedium[i])) { //if gallery includes medium
-        galleryVisible.push(uniqueMedium[i]); //add to visible
-        }
-      }
-      if (galleryVisible.length >= 2) { //only add buttons if it would result in 2 or more gallery items
-        mediumitem = document.createElement("button");
-        mediumitem.innerText = uniqueMedium[i];
-        mediumitem.setAttribute("onclick" , "toggle(this)");
-        mediumitem.id = uniqueMedium[i]+"btn";
-        sortmenu.appendChild(mediumitem);
-      }
-      /* why does this make it not work? i have no idea.
-      if (uniqueMedium[i] == "ibispaint") {
-        mediumitem.classList.add("activebutton");
-        mediumitem.click();
-      }
-      */
-    }
-    sortmenu.style.display = "flex";
-    sortmenu2.style.display = "none";
-    break;
+  // case "medium":
+  //   galleryitem = document.querySelectorAll("#gallery-tab .item");
+  //   uniqueMedium = getUnique(data, 'medium');
+  //   for (i = 0; i < uniqueMedium.length; i++) { //for each unique medium
+  //   galleryVisible = [];
+  //     for (x = 0; x < galleryitem.length; x++ ) { //for each gallery item
+  //     datasort = galleryitem[x].getAttribute('data-sort');
+  //     if (datasort.includes(uniqueMedium[i])) { //if gallery includes medium
+  //       galleryVisible.push(uniqueMedium[i]); //add to visible
+  //       }
+  //     }
+  //     if (galleryVisible.length >= 2) { //only add buttons if it would result in 2 or more gallery items
+  //       mediumitem = document.createElement("button");
+  //       mediumitem.innerText = uniqueMedium[i];
+  //       mediumitem.setAttribute("onclick" , "toggle(this)");
+  //       mediumitem.id = uniqueMedium[i]+"btn";
+  //       sortmenu.appendChild(mediumitem);
+  //     }
+  //     /* why does this make it not work? i have no idea.
+  //     if (uniqueMedium[i] == "ibispaint") {
+  //       mediumitem.classList.add("activebutton");
+  //       mediumitem.click();
+  //     }
+  //     */
+  //   }
+  //   sortmenu.style.display = "flex";
+  //   sortmenu2.style.display = "none";
+  //   break;
   case "date":
     data = dataSaved;
     uniqueYear = getUnique(data, 'date', true);
@@ -582,7 +614,7 @@ function populatePopup(btn) {
     if (imagemeta.type.includes("gif")) { //preloading gifs is fucky, so don't
       image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id;
       } else {
-      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id_thumb; //load thumbnail first
+      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.thumb_id; //load thumbnail first
       image.setAttribute("onLoad","this.src='https://lh3.googleusercontent.com/d/"+imagemeta.id+"';this.onload='Function()'"); //load full image after 
     }
     image.alt = "full image";
@@ -629,27 +661,27 @@ function addtoPopup(meta, type) {
   medium = document.getElementById("medium");
   populateList(meta.medium, medium);
     
-  //put metadata in links , special formatting so cant use the populateList function
-  links = document.getElementById("links");
-  if (!Array.isArray(meta.links)) { 
-    link = document.createElement("li");
-    anchor = document.createElement("a");
-    anchor.href = meta.links;
-    anchor.target = "_blank";
-    anchor.innerText = meta.links.match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1]; //get domain from link
-    link.appendChild(anchor);
-    links.appendChild(link);
-  } else {
-    for (i = 0; i < meta.links.length; i++) {
-      link = document.createElement("li");
-      anchor = document.createElement("a");
-      anchor.href = meta.links[i];
-      anchor.target = "_blank";
-      anchor.innerText = meta.links[i].match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1];
-      link.appendChild(anchor);
-      links.appendChild(link);
-      }
-  }
+  // //put metadata in links , special formatting so cant use the populateList function
+  // links = document.getElementById("links");
+  // if (!Array.isArray(meta.links)) { 
+  //   link = document.createElement("li");
+  //   anchor = document.createElement("a");
+  //   anchor.href = meta.links;
+  //   anchor.target = "_blank";
+  //   anchor.innerText = meta.links.match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1]; //get domain from link
+  //   link.appendChild(anchor);
+  //   links.appendChild(link);
+  // } else {
+  //   for (i = 0; i < meta.links.length; i++) {
+  //     link = document.createElement("li");
+  //     anchor = document.createElement("a");
+  //     anchor.href = meta.links[i];
+  //     anchor.target = "_blank";
+  //     anchor.innerText = meta.links[i].match(/^https?\:\/\/([^\/:?#]+)(?:[\/:?#]|$)/i)[1];
+  //     link.appendChild(anchor);
+  //     links.appendChild(link);
+  // //     }
+  // }
 }
 
 //populate meta lists
@@ -712,5 +744,7 @@ function toggle(obj, ismonth, isyear) {
     document.getElementById(tag+"btn").classList.add("activebutton");
   }
 }
+
+
 
 console.log("if you have trouble getting gallery images to load, try clearing cookies and refreshing. idk why but it fixes it. if that doesn't help then i've probably fucked up somewhere and didn't notice");
