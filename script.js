@@ -1,219 +1,233 @@
+const list = document.getElementById('list');
+const container = document.getElementById('container');
+const items = Array.from(list.children);
 
-const home = document.getElementById("home-tab");
-const gallery = document.getElementById("gallery-tab");
-const about = document.getElementById("about-tab");
-const speps = document.getElementById("speps-tab");
+let currentIndex = 1;
+let ticking = false;
+
+
+var onTabCurrently = toggleTabs(false);
+
 
 var dataSaved = [];
 getData();
 
-openHome();
-URLfix();
+
+var age = new Date().getFullYear() - 2001
+console.log(age)
+document.getElementById("age").innerHTML = 'i\'m ' + age;
 
 
-function getData() {
-  fetch('./export.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        for (i = 0; i < data.length; i++) {
-          console.log(data[i])
-          if (data[i].type == "jpg" || data[i].type == "png") {
-            data[i].type = "image";
-            }
-          data[i].date = data[i].date.slice(0, 10);
-        }
-        dataSaved = data;
-        //populate gallery on successful json request
-        populateGallery();
-      });
-}
 
-// activate new tab and panel
-function addActive(tab, nav) {
-  nav.classList.add("active"); //for nav highlight + underline
-  //hide all tabs then display active tab
-  hideTabs();
-  switch (tab.id) {
-    case 'home-tab':
-      home.style.display = "block";
-      gallery.style.display = "flex";
-      break;
-    case 'gallery-tab':
-      gallery.style.display = "flex";
-      break;
-    case 'about-tab':
-      about.style.display = "block";
-      break;
-    case 'speps-tab':
-      speps.style.display = "block";
-      break;
-    }  
-}
 
-//keyboard nav for header links
-all_nav = document.getElementById("nav-tab").children;
-for (i = 0; i < all_nav.length; i++) {
-  all_nav[i].onkeyup = function(event) {
-    keyboardClick(event, this.children[0]); 
-  };
-}
 
-//hide tabs
-function hideTabs() {
-  allTabs = document.getElementById("tab-content").children;
-  for (let i = 0; i < allTabs.length; i++) {
-    console.log(allTabs[i])
-  } 
-  home.style.display = "none";
-  gallery.style.display = "none";
-  about.style.display = "none";
-  speps.style.display = "none";
-}
-
-//if click outside of homepost window, close home
-document.getElementById('home-tab').onclick = function(e) {
-  if  (event.target.id == 'home-tab') {
-    openGallery();
-  }
-};
-
-// close home post
-document.getElementById('closehome').onclick = function(event){
-  openGallery();
-}; //accessibility support for closehome
-document.getElementById('closehome').onkeyup = function(event){
-  keyboardClick(event, this);
-};
-//accessibility support for about me link
-//document.getElementById('homepost').children[4].children[0].onkeyup = function(event) {
-  //keyboardClick(event, this);
-  //};
-
-function keyboardClick(event, element) {
-  if (event.key == "Enter" || event.key == "Space") {
-    element.click();
-    } 
-}
-
-//intro
-window.onload = function() {
-  document.getElementById("wrapper").style.display = "block";
-  document.getElementById("intro").style.display = "none";
+function updateView() {
   
-  // if refferred to nonexisting pages /home/ /about/ /gallery/ or /speps/ direct user correctly
-  if (document.referrer != "") {
-    ref = document.referrer;
-    refArr = ref.split('/'); //if referrer url has index.html, remove it
-    if ((ref = ref.split('/').pop()) == "index.html") {
-      refArr = refArr.slice(0, -1);
-      ref = refArr.pop();
-    }
-    if (refArr.pop() == "") {
-      ref = refArr.pop();
-      }
-      URLfix(ref);
-  }
-};
+  const activeItem = items[currentIndex];
 
+  const containerRect = container.getBoundingClientRect();
+  const itemRect = activeItem.getBoundingClientRect();
 
-/* TODO: fix this to work with new sort buttons
-uniqueTag = [];
+  // distance from top of list to active item
+  const itemOffset = activeItem.offsetTop;
 
-//takes url and redirects user based on /#this-string
-function URLhelper() {
-  url = document.URL;
-  url = url.split('/');
-  currenttab = url.pop();
-  linked = currenttab.slice(1);
-  uniqueTag.push("all"); //add "all" temporarily because its hardcoded in the html
-  if (uniqueTag.includes(linked)) {
-    URLfix("gallery");
-    toggle(linked);
-    x = uniqueTag.pop(); //to remove "all"
+  // center calculation based purely on live layout
+  const y =
+    (container.clientHeight / 2) -
+    (activeItem.offsetHeight / 2) -
+    itemOffset;
+
+  list.style.transform = `translateY(${y}px)`;
+
+  items.forEach((item, i) =>
+    item.classList.toggle('active', i === currentIndex)
+  );
+  
+  if (!document.getElementById("go-down")) return;
+  
+  scrolled += 1;
+  if (scrolled >= 5) {
+    
+    document.getElementById("go-down").style.opacity = "0.0"
+    
+  } else if (scrolled > 7) {
+    document.getElementById("go-down").remove();
   } else {
-    x = uniqueTag.pop();
-    history.replaceState({}, document.title, window.location.href.split('#')[0]);
-    }
-}
-*/
-
-//make url pretty when linked to /index.html, /#home, /#about, /#gallery, or /#speps
-function URLfix(toTab) {
-  if (toTab == undefined) {
-    url = document.URL;
-    url = url.split('/');
-    to = url.pop();
-  } else {
-    to = "#"+toTab;
+    document.getElementById("go-down").style.fontStyle = "oblique";
   }
-  switch (to) {
-    case "index.html":
-      history.replaceState({}, document.title, "https://"+url[2]+"/"+url[3]); //remove index.html from url without refreshing
-      openHome();
-    break;
-    case "#home":
-      history.replaceState({}, document.title, window.location.href.split('#')[0]); //remove hashtag from url without refreshing
-      openHome();
-    break;
-    case "#gallery":
-      history.replaceState({}, document.title, window.location.href.split('#')[0]);
-      openGallery();
-      toggle("showcase");
-    break;
-    case "#about":
-      history.replaceState({}, document.title, window.location.href.split('#')[0]);
-      openAbout();
-    break;
-    case "#speps":
-      history.replaceState({}, document.title, window.location.href.split('#')[0]);
-      openSpeps();
-    break;
-  }
+  
+  
+  
+  
 }
 
-//on url change, make it pretty
-window.addEventListener('popstate', function (event) {
-	URLfix();
-	URLhelper();
-	document.body.scrollTop = document.documentElement.scrollTop = 0;
+function requestUpdate() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateView();
+    ticking = false;
+  });
+}
+
+function moveSelection(delta) {
+  const ni = currentIndex + delta;
+  if (ni < 0 || ni >= items.length) return;
+  currentIndex = ni;
+  requestUpdate();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') moveSelection(1);
+  if (e.key === 'ArrowUp') moveSelection(-1);
 });
 
-//sorry about this but idk what else i'd do
-function openHome() {
-  document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab //remove underline + highlight
-  addActive(document.getElementById("home-tab"), document.getElementById("nav-tab").children[0]);
-  }
-function openGallery() {
-  document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
-  addActive(document.getElementById("gallery-tab"), document.getElementById("nav-tab").children[1]);
-  }
-function openAbout() {
-  document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
-  addActive(document.getElementById("about-tab"), document.getElementById("nav-tab").children[3]); //skip one child because of empty list item where logo is
-  }
-function openSpeps() {
-  document.querySelector('#nav-tab .active').classList.remove('active'); //remove active tab
-  addActive(document.getElementById("speps-tab"), document.getElementById("nav-tab").children[4]);
-  }
+container.addEventListener('wheel', e => {
+  e.preventDefault();
+  moveSelection(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
 
-//toggle hamburger menu
-function toggleHam() {
-  var e = document.getElementById("ham-menu");
-  e.style.display = ((e.style.display!='block') ? 'block' : 'none');
+items.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    currentIndex = i;
+    requestUpdate();
+  });
+});
+
+window.addEventListener('load', updateView);
+window.addEventListener('resize', updateView);
+  
+var scrolled = 0;
+window.addEventListener('scroll', function() {
+
+});
+
+
+function openTab(tab) {
+  
+  const parent = document.getElementById('tab-list');
+
+  parent.querySelectorAll('.active').forEach(el => {
+    el.classList.remove('active');
+  });
+    
+  
+  toggleTabs(true);
+  document.getElementById("tab-info").innerHTML = document.getElementById(tab).getAttribute("data-tab-info");
+  document.getElementById(tab).classList.add("active")
+  
+  }
+  
+function toggleTabs(bool) {
+  document.getElementById("tab-info").innerHTML = "";
+  
+  
+  document.getElementById("right-tab").classList.remove("flex-half");
+  document.getElementById("right-tab").style.flex = "0";
+  document.getElementById("title-desc").style.height = "100vh";
+  document.getElementById("title").style.display = "block";
+  document.getElementById("title-info").style.display = "none";
+  document.getElementById("flex-left").style.maxWidth = "unset";
+  document.getElementById("nav-x").style.display = "none";
+  
+  
+  
+  
+  
+  
+  if (bool) { //view tab
+    document.getElementById("right-tab").classList.add("flex-half");
+    document.getElementById("right-tab").style.flex = "6";
+    document.getElementById("title-desc").style.height = "50vh";
+    
+    document.getElementById("title").style.display = "none";
+    document.getElementById("title-info").style.display = "block";
+    document.getElementById("flex-left").style.maxWidth = "33vw";
+    document.getElementById("nav-x").style.display = "block";
+  } 
 }
-
-//remove items from popup and close it
-document.getElementById('item-x').onclick = function(event){
-  clearPopup();
-};
-//popup x keyboard support
-document.getElementById('item-x').onkeyup = function(event){
-  keyboardClick(event, this);
-};
-
-function clearPopup() {
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  const canvas = document.getElementById('starry-night');
+  const ctx = canvas.getContext('2d');
+  
+  let stars = [];
+  const numStars = 300;
+  let dpr = window.devicePixelRatio || 1;
+  
+  function resizeCanvas() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+  
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+  
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  
+  function createStars() {
+    stars.length = 0;
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width / dpr,
+        y: Math.random() * canvas.height / dpr,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        delta: (Math.random() * 0.02) - 0.01
+      });
+    }
+  }
+  
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+    for (const star of stars) {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+      ctx.fill();
+  
+      star.alpha += star.delta;
+      if (star.alpha <= 0 || star.alpha >= 1) {
+        star.delta *= -1;
+      }
+    }
+  }
+  
+  function animate() {
+    drawStars();
+    requestAnimationFrame(animate);
+  }
+  
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    createStars();
+  });
+  
+  resizeCanvas();
+  createStars();
+  animate();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function clearPopup() {
   document.getElementById('item-details').style.display = 'none';
   lists = document.getElementById("item-info").getElementsByTagName("ul");
   for (i = 0; i < lists.length; i++) {
@@ -235,46 +249,35 @@ document.addEventListener("keyup", function(event) {
     clearPopup();
     }
 });
-
-//move gallery 
-function moveGallery(left, right) {
-  galleryitem = document.querySelectorAll("#gallery-tab .item");
-  galleryitemVisible = [];
-  for (i = 0; i < galleryitem.length; i++ ) { //if visible items
-    if (galleryitem[i].style.display == "flex") {
-      galleryitemVisible.push(galleryitem[i]); //create list of them
-      }
-  }
-  galleryactive = document.querySelectorAll("#gallery-tab .active");
-  galleryactive = galleryactive[0]; //because queryselectorall returns a node list
-  if (galleryitemVisible.includes(galleryactive)) { //if active is not visible, make first item active
-    index = galleryitemVisible.indexOf(galleryactive);
-  } else { //active item is not visible, set to first item
-    galleryactive = galleryitemVisible[0];
-    index = 0;
-  }
-  for (i = 0; i < galleryitemVisible.length; i++ ) { //for each visible gallery item
-    if (right == true) { //if right pressed
-    if (index < galleryitemVisible.length) { //if in scope of items
-      if (galleryitemVisible[index+1] == undefined) {return;}
-      galleryitemVisible[index].classList.remove("active");
-      galleryitemVisible[index+1].classList.add("active");
-      galleryitemVisible[index+1].children[0].click(); //click viewbutton
-      return;
-    }
-    }
-    if (left == true) { //same as above 
-    if (index > 0) {
-      if (galleryitemVisible[index-1] == undefined) {return;}
-      galleryitemVisible[index].classList.remove("active");
-      galleryitemVisible[index-1].classList.add("active");
-      galleryitemVisible[index-1].children[0].click();
-      return;
-    }
-    }
-  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+function getData() {
+  fetch('./export.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        for (i = 0; i < data.length; i++) {
+          // console.log(data[i])
+          if (data[i].type == "jpg" || data[i].type == "png") {
+            data[i].type = "image";
+            }
+          data[i].date = data[i].date.slice(0, 10);
+        }
+        dataSaved = data;
+        //populate gallery on successful json request
+        populateGallery();
+      });
 }
-
+  
 //yeah
 function populateGallery() {
   data = dataSaved;
@@ -285,6 +288,7 @@ function populateGallery() {
     toggle("showcase")
   }
   //URLhelper();
+  shuffleDivsByClass('item');
 }
 
 
@@ -362,7 +366,7 @@ function createGalleryItem(data, i) {
     item.style.display = "none";
     item.appendChild(image);
   }
-  document.getElementById("gallery-tab").appendChild(item);
+  document.getElementById("zip").appendChild(item);
 }
 
 
@@ -378,12 +382,22 @@ function createButtons(data) {
   tag.id = tag.innerText+"btn";
   tag.setAttribute("onclick" , "toggleMenu(this)");
   insertAfter(sort.children[0], tag);
-  //top "type" button
-  type = document.createElement("button");
-  type.innerText = "type";
-  type.id = type.innerText+"btn";
-  type.setAttribute("onclick" , "toggleMenu(this)");
-  insertAfter(sort.children[0], type);
+  
+  //randomize button
+  random = document.createElement("button");
+  random.innerText = "randomize";
+  random.id = random.innerText+"btn";
+  random.setAttribute("onclick" , "shuffleDivsByClass('item')");
+  insertAfter(sort.children[0], random);
+  
+  
+  
+  // //top "type" button
+  // type = document.createElement("button");
+  // type.innerText = "type";
+  // type.id = type.innerText+"btn";
+  // type.setAttribute("onclick" , "toggleMenu(this)");
+  // insertAfter(sort.children[0], type);
   // //top "medium" button
   // medium = document.createElement("button");
   // medium.innerText = "medium";
@@ -460,7 +474,7 @@ function createButtonsMenu(att, yearSelected) {
     sortmenu2.style.display = "none";
     break;
   // case "medium":
-  //   galleryitem = document.querySelectorAll("#gallery-tab .item");
+  //   galleryitem = document.querySelectorAll("#zip .item");
   //   uniqueMedium = getUnique(data, 'medium');
   //   for (i = 0; i < uniqueMedium.length; i++) { //for each unique medium
   //   galleryVisible = [];
@@ -499,11 +513,11 @@ function createButtonsMenu(att, yearSelected) {
       sortmenu.appendChild(dateitem);
       
       allMonths = []; //get unique months here because returning getUnique breaks the for loop
-      galleryitem = document.querySelectorAll("#gallery-tab .item");
+      galleryitem = document.querySelectorAll("#zip .item");
       for (z = 0; z < galleryitem.length; z++ ) { //for each gallery item
         allMonths.push(data[z].date.slice(5, 7));
-        }
-      console.log(allMonths);
+        } 
+      // console.log(allMonths);
       uniqueMonths = Array.from(new Set(allMonths)); //remove duplicates
       uniqueMonths.sort();
       
@@ -574,13 +588,14 @@ function getUnique(data, item, isyear) {
 
 //populate gallery popup
 function populatePopup(btn) {
+  console.log(btn)
   clearPopup();
   //for arrow navigation
   btn.blur();
-  if (document.querySelector('#gallery-tab .active')) { //if active exists, remove, or else the first item is active
-    document.querySelector('#gallery-tab .active').classList.remove('active');
+  if (document.querySelector('#zip .active')) { //if active exists, remove, or else the first item is active
+    document.querySelector('#zip .active').classList.remove('active');
   } else {
-    document.getElementById('gallery-tab').children[2].classList.add("active");
+    document.getElementById('zip').children[2].classList.add("active");
   }
   btn.parentNode.classList.add("active");
   
@@ -589,19 +604,19 @@ function populatePopup(btn) {
   item = document.getElementById('item-image');
   iteminfo = document.getElementById('item-info');
   
-  // if tag of item is iframe, clone iframe to popup 
-  if (iframe) {
-    video = document.getElementById("full-video");
-    videometa = iframe.getAttribute("data-meta");
-    videometa = JSON.parse(videometa);
-    document.getElementById("full-img").style.display = "none";
-    video.style.display = "block";
+  // // if tag of item is iframe, clone iframe to popup 
+  // if (iframe) {
+  //   video = document.getElementById("full-video");
+  //   videometa = iframe.getAttribute("data-meta");
+  //   videometa = JSON.parse(videometa);
+  //   document.getElementById("full-img").style.display = "none";
+  //   video.style.display = "block";
     
-    videometa.dimensions = "";
-    video.src = iframe.src;
+  //   videometa.dimensions = "";
+  //   video.src = iframe.src;
     
-    addtoPopup(videometa, "video");
-  }
+  //   addtoPopup(videometa, "video");
+  // }
   if (img) { // if tag of item is img
     imagemeta = img.getAttribute("data-meta");
     imagemeta = JSON.parse(imagemeta);
@@ -635,9 +650,9 @@ function addtoPopup(meta, type) {
   } else {
     date.innerText = meta.date.substring(0,10); 
   }
-  //put metadata in desc
-  desc = document.getElementById("desc");
-  desc.innerText = meta.desc;
+  // //put metadata in desc
+  // desc = document.getElementById("desc");
+  // desc.innerText = meta.desc;
   
   //put metadata in full
   full = document.getElementById("full");
@@ -649,17 +664,17 @@ function addtoPopup(meta, type) {
     full.href = "https://drive.google.com/thumbnail?id="+meta.id;
   }
   
-  //put metadata in dimensions
-  dim = document.getElementById("dimensions");
-   dim.innerText = meta.dimensions;
+  // //put metadata in dimensions
+  // dim = document.getElementById("dimensions");
+  // dim.innerText = meta.dimensions;
    
    //put metadata in tag
    tag = document.getElementById("tag");
    populateList(meta.tag, tag);
   
-  //put metadata in medium
-  medium = document.getElementById("medium");
-  populateList(meta.medium, medium);
+  // //put metadata in medium
+  // medium = document.getElementById("medium");
+  // populateList(meta.medium, medium);
     
   // //put metadata in links , special formatting so cant use the populateList function
   // links = document.getElementById("links");
@@ -718,7 +733,7 @@ function toggle(obj, ismonth, isyear) {
     isMonth = true;
   }
   
-  fullgallery = document.querySelectorAll("#gallery-tab .item");
+  fullgallery = document.querySelectorAll("#zip .item");
   for (i = 0; i < fullgallery.length; i++ ) { //for each gallery item 
     item = fullgallery[i];
     datasort = item.getAttribute('data-sort');
@@ -745,6 +760,52 @@ function toggle(obj, ismonth, isyear) {
   }
 }
 
+  
+  
+  //remove items from popup and close it
+document.getElementById('item-x').onclick = function(event){
+  clearPopup();
+};
+  
+  
 
 
-console.log("if you have trouble getting gallery images to load, try clearing cookies and refreshing. idk why but it fixes it. if that doesn't help then i've probably fucked up somewhere and didn't notice");
+
+
+  
+function shuffleDivsByClass(className) {
+  const elements = Array.from(document.querySelectorAll('.' + className));
+  if (elements.length === 0) return;
+
+  const parent = elements[0].parentNode;
+
+  // Fisher–Yates shuffle
+  for (let i = elements.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [elements[i], elements[j]] = [elements[j], elements[i]];
+  }
+
+  const fragment = document.createDocumentFragment();
+  elements.forEach(el => fragment.appendChild(el));
+  parent.appendChild(fragment);
+}
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

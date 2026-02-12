@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta name="google" content="notranslate">
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
@@ -8,121 +8,181 @@
 	<meta name="description" content="an internet user's website">
 	<meta name="keywords" content="artist, website">
 	<meta name="author" content="def-sa">
-	<meta property="og:title" content="def-sa.github.io"/>
-	<meta property="og:description" content="a gallery of everything i've created."/>
+	<meta property="og:title" content="illy's website"/>
+	<meta property="og:description" content="illy lives here! and everything i own!"/>
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://def-sa.github.io/"/>
-	<meta property="og:image" content="https://def-sa.github.io/images/logo-web.png"/>
-	<meta property="og:site_name" content="the website of def-sa, a trying experimental artist"/>
+	<meta property="og:url" content="https://ili.zip/"/>
+	<meta property="og:image" content="https://ili.zip/images/logo-web.png"/>
+	<meta property="og:site_name" content="the website of illy, a learning artist"/>
 	<link rel="icon" type="image/png" href="./images/favicon.png">
-    <title>def-sa (redes3)</title>
+    <title>illysite v1</title>
     <link href="./style.css" rel="stylesheet" type="text/css" media="all">
 	<link rel="preconnect" href="https://drive.google.com">
   </head>
-  <body>
-  <p id="home"></p>
-  <p id="gallery"></p>
-  <p id="about"></p>
-  <p id="↑"></p>
-  <div id="intro">
-    <h1 style="margin-top: 15vh">def-sa</h1>
-    <img class="logo spin" src="./images/logo-transparent.png"/>
-  </div>
-  <div id="wrapper">
-    <div class="header">
-    <img id="logo" src="./images/logo-transparent.png" onclick="this.style.filter = 'invert(100%)'">
-    <div id="ham" onclick="toggleHam();">⚌</div>
-    <ul id="nav-tab" class="nav">
-      <li class="active" onclick="openHome()"><a tabindex=0>home</a></li>
-      <li onclick="openGallery()"><a tabindex=0>gallery</a></li>
-      <li style="padding:0"></li>
-      <li onclick="openAbout()"><a tabindex=0 >about</a></li>
-      <li onclick="openSpeps()"><a tabindex=0 >↑</a></li>
-      </ul>
-    </div>
-    <div id="ham-menu">
-    <ul id="ham-nav">
-      <li><a onclick="toggleHam();openHome()">home</a></li>
-      <li><a onclick="toggleHam();openGallery()">gallery</a></li>
-      <li><a onclick="toggleHam();openAbout()">about</a></li>
-      <li><a onclick="toggleHam();openSpeps()">↑</a></li>
-    </ul>
-    </div>
-    <div id="tab-content">
-      <div class="tab-pane" id="home-tab">
-      <div id="homepost">
-        <div id="def-sa">
-          <p id="closehome" tabindex="0">x</p>
-          <h2>i'm def-sa.</h2> 
-          
-          <p style="margin: auto 0 0;">experimental art project by @ilimp4</p>
-          
-          <p style="margin: 1em;">-&gt; more <a tabindex="0" onclick="openAbout()">about</a> me</p>
-          <p style="margin: auto 0 0;">you can find me here:</p>
-          <div class="links">
-            
-            <a href="https://twitter.com/def_sa_" target="_blank"><img src="./images/twitter.svg" alt="twitter logo"></a>
-            
-            <a href="https://www.youtube.com/@def-sa" target="_blank"><img src="./images/youtube.svg" alt="youtube logo" title="main yt account"></a>
-            <a href="https://cash.app/$defsa" target="_blank"><img src="./images/donate.svg" alt="donate logo" title="donate to help save me from minimum wage hell"></a>
-            <a href="https://github.com/def-sa/" target="_blank"><img src="./images/github.svg" alt="github logo"></a>
-            <a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank"><img src="./images/sounds.svg" alt="noise logo"></a><a href="https://www.youtube.com/@ilimp4" target="_blank" style="opacity: .25;"><img src="./images/youtube.svg" alt="youtube logo" title="alt yt account for whatever"></a>
-            <a href="./discord/" target="_blank" style="opacity: .25;"><img src="./images/discord.svg" alt="discord logo"></a>
-            <a href="https://www.tumblr.com/ilimp4" target="_blank" style="opacity: .25;"><img src="./images/tumblr.svg" alt="tumblr logo"></a>
+<body>
+  
+  <div id="flex">
+  <p id="go-down">↓↓↓</p>
+      <canvas id="starry-night"></canvas> <!-- background -->
+      <div id="flex-left">
+        <div id="title-desc">
+          <div class="title">
+          <p id="title" style="font-size: 1em;">ili.</p>
+          <div id="container">
+            <div class="title-list" id="list">
+              <div class="title-item" onclick="openTab('mp4')">mp4</div>
+              <div class="title-item" onclick="openTab('zip')">zip</div>
+              <div class="title-item" onclick="openTab('mp3')">mp3</div>
+              <div class="title-item" onclick="openTab('info')">info</div>
+              <div class="title-item" onclick="openTab('alt')">alt</div>
             </div>
-          </div>
-          </div>
+         </div>
         </div>
+        
       </div>
-      <div class="tab-pane" id="gallery-tab">
-	  <div id="alert">gallery is currently ALMOST FINISHED! 2020 - 2024 UPLOADED!! :D</div>
-      <div id="sort">
-        <button onclick="toggleMenu(this)" id="allbtn">all</button>
-      </div>
-      <div id="sort-menu"></div>
-      <div id="sort-menu2"></div>
-        <div id="item-details">
-        <div id="item-popup">
-          <div id="item-image">
-            <img id="full-img">
-            <iframe id="full-video" frameborder=0></iframe>
-          </div>
-          <div id="item-info"> 
-            <div id="item-x" tabindex=0>x</div>
-            <p id="dimensions"></p>
-            <h3 id="date"></h3>
-            <a id="full"></a>
-            <p id="desc"></p>
-            <ul id="tag"></ul>
-            <ul id="medium"></ul>
-            <ul id="links"></ul>
-          </div>
-        </div>
-        </div>
-      </div>
-    <div class="tab-pane" id="about-tab">
-      <div id="aboutpost">
-      <div>
-        <h3>who?</h3>
-        <hr>
-        <p>my alias is <b>def-sa</b>. i also go by <b>ilimp4</b>.</p>
-        <p>pronouns are <b>they\them</b></p>
-        <p>i'm 24</p>
-        <p>a learning artist</p>
-      </div>
-      <br><br>
-      <div>
-        <h3>what?</h3>
-        <hr>
-        <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
-        <p><b>coding</b>. learning html, css, & javascript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>! working on my game Cargo in the Godot Engine</p>
-        <p>auditory arts. (<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank">not music</a>)</p>
-      </div>
-      </div>
+       <div id="title-info">
+        <p id="tab-info"></p>
+       </div>
     </div>
-    <div class="tab-pane" id="speps-tab"> nothing (yet) </div>
+    
+    <div id="right-tab" class="flex-right">
+    <div></div>
+      <div id="tab-list">
+      
+        <div id="mp4" class="tab" data-tab-info="my mp4's. the whole idea or whatever">
+          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+          <a href="https://www.youtube.com/@ilimp4" target="_blank" style="font-size: 8em; text-align: justify">youtube</a>
+          <p class="note">all my videos are here currently and i don't have any plans on changing that unless youtube does the semi-regular thing where they make everything worse</p>
+        </div>
+        
+        <div id="zip" class="tab" data-tab-info="an unreasonablely large archive of stuff that i've created. dated 2020 - 2024">
+          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+          
+          <div id="sort">
+            <button onclick="toggleMenu(this)" id="allbtn">all</button>
+          </div>
+          <div id="sort-menu"></div>
+          <div id="sort-menu2"></div>
+            <div id="item-details">
+            <div id="item-popup">
+              <div id="item-image">
+                <img id="full-img">
+                <iframe id="full-video" frameborder=0></iframe>
+              </div>
+              <div id="item-info"> 
+                <div id="item-x" tabindex=0>x</div>
+                <p id="dimensions"></p>
+                <h3 id="date"></h3>
+                <a id="full"></a>
+                <p id="desc"></p>
+                <ul id="tag"></ul>
+                <ul id="medium"></ul>
+                <ul id="links"></ul>
+              </div>
+            </div>
+            </div>
+            </div>
+        
+        <div id="mp3" class="tab" data-tab-info="audio ive made. mostly in audacity">
+          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+          
+            <p class="big-title">mashup / plunderphonics albums</p>
+            <div class="albums">
+             <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=rvKM1y-QOnk" target="_blank">S</a>
+              <img src="https://drive.google.com/thumbnail?id=1FUfsVCNd1eVvf8lYtGEnh9kwauQ4ZZTZ">
+            </div>
+            
+             <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=7CQ1sTAsEDU" target="_blank">runchrot</a>
+              <img src="https://drive.google.com/thumbnail?id=1Yksob55rApzXHy2B-XtSqXtH2KAWQYFD">
+            </div>
+            
+            <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=wjB4h1L8V-g" target="_blank">rotbomb</a>
+              <img src="https://drive.google.com/thumbnail?id=1kZd87rS-73YtRnnD5_q6Bl9mNLiOCcLs">
+            </div>
+            
+            <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=1UkPb4jazTg" target="_blank">rotbomb: b sides</a>
+              <img src="https://drive.google.com/thumbnail?id=12z5OFtm9or016zYZ8KSOQHSZD7aGvQL9">
+            </div>
+         </div>
+          
+            <p class="big-title">noise / auditory art</p>
+            <p>playlist of all noise stuff (<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank">not music</a>)</p>
+            <div class="albums">
+            <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=5EC3tMOIX-c" target="_blank">hello</a>
+              <img src="https://drive.google.com/thumbnail?id=1A6V4Utodk23Ex5HKdg_JB-8R4nuFYEuE">
+            </div>
+          
+            <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=xwEMlETKnWk" target="_blank">KING</a>
+              <img src="https://drive.google.com/thumbnail?id=1ecgyvZM5J0mrmIrTqc_RX7I34MdTgpOd">
+            </div>
+            
+            <div>
+              <a class="viewbutton" href="https://www.youtube.com/watch?v=OwnHOn7o83s" target="_blank">tennis vs. myself</a>
+              <img src="https://drive.google.com/thumbnail?id=1gRS78jmp7TpwOnppxSl0dt1GrjAV_1QX">
+            </div>
+            
+            </div>
+            <p class="note">all my audio is also on youtube because i don't like soundcloud but someday ill make it hosted by itself like my gallery</p>
+          </div>
+        
+        
+        
+        <div id="info" class="tab" data-tab-info="<img src='./illy.png' title='hi, im illy!' style='width: 100%;'>">
+          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+          <div id="aboutpost">
+          <div>
+            <h3>who?</h3>
+            <hr>
+            <p>i'm <b>illy</b>. i also used to go by <b>def-sa</b>.</p>
+            <p>pronouns are <b>they\them</b> or <b>he/him</b></p>
+            <p id="age"></p>
+            <p>a learning artist</p>
+          </div>
+          <br><br>
+          <div>
+            <h3>what?</h3>
+            <hr>
+            <p><b>videos</b>, edited just for archiving and practice</p>
+            <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
+            <p><b>coding</b>. learning html, css, &amp; javascript & GDScript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>! working on my game called <b>Cargo</b> (may change) in the Godot Engine</p>
+            <p>auditory arts like noise and plunderphonics </p>
+            <br>
+          </div>
+           <div>
+            <h3>where?</h3>
+            <hr>
+            <p>im not really active anywhere besides my friend groups but i do have these</p>
+            <ul>
+              <li><a href="https://bsky.app/profile/ilimp4.bsky.social">bluesky</a></li>
+              <li><a href="https://www.youtube.com/@ilimp4">youtube (ilimp4)</a></li>
+              <li><a href="https://www.youtube.com/@def-sa">youtube alt (def-sa)</a></li>
+            </ul>
+            
+            
+          </div>
+          </div>
+          
+        </div>
+        
+        <div id="alt" class="tab">
+          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+          <a class="big-title" href="https://defsa.neocities.org/redes3/" target="_blank">old website design</a>
+        </div>
+        
+      </div>
     </div>
   </div>
-  <script src="./script.js"> </script>
-  </body>
+
+  
+  
+  <div>lksfhlkrtrthkl;</div>
+  
+  <script src="./script.js"></script>
+</body>
 </html>
