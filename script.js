@@ -46,7 +46,7 @@ function updateView() {
   if (!document.getElementById("go-down")) return;
   
   scrolled += 1;
-  if (scrolled >= 5) {
+  if (scrolled >= 3) {
     
     document.getElementById("go-down").style.opacity = "0.0"
     
