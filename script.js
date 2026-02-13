@@ -680,7 +680,7 @@ function addtoPopup(meta, type) {
   if (type == "video") {
     full.href = "https://youtu.be/"+meta.id;
   } else {
-    full.href = "https://drive.google.com/thumbnail?id="+meta.id;
+    full.href = "https://lh3.googleusercontent.com/d/"+meta.id;
   }
   
   // //put metadata in dimensions
