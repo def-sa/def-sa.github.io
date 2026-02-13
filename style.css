@@ -350,6 +350,9 @@ content:hover {
 	justify-content: center;
 	background: rgb(195 195 195 / 85%);
 	display: none;
+	position: absolute;
+	top: 15%;
+}
 }
 
 #item-popup {
@@ -537,3 +540,7 @@ content:hover {
   }
 
 
+#loading {
+font-size: 2em;
+  position: absolute;
+}
