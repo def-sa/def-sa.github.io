@@ -408,11 +408,11 @@ function createButtons(data) {
   // medium.setAttribute("onclick" , "toggleMenu(this)");
   // insertAfter(sort.children[0], medium);
   //top "date" button
-  // date = document.createElement("button");
-  // date.innerText = "date";
-  // date.id = date.innerText+"btn";
-  // date.setAttribute("onclick" , "toggleMenu(this)");
-  // insertAfter(sort.children[0], date);
+  date = document.createElement("button");
+  date.innerText = "date";
+  date.id = date.innerText+"btn";
+  date.setAttribute("onclick" , "toggleMenu(this)");
+  insertAfter(sort.children[0], date);
   toggleMenu(tag);
   toggle("showcase");
 }
