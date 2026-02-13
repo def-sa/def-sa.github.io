@@ -630,7 +630,7 @@ function populatePopup(btn) {
       image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id;
       } else {
       image.src = "https://drive.google.com/thumbnail?id="+imagemeta.thumb_id; //load thumbnail first
-      image.setAttribute("onLoad","this.src='https://lh3.googleusercontent.com/d/"+imagemeta.id+"';this.onload='Function(); document.getElementById('loading').remove()'"); //load full image after 
+      image.setAttribute("onLoad","this.src='https://lh3.googleusercontent.com/d/"+imagemeta.id+"';this.onload='Function(); document.getElementById('loading').remove()"); //load full image after 
 	}
     image.alt = "full image";
     if (imagemeta.medium == undefined) {
