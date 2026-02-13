@@ -353,7 +353,6 @@ content:hover {
 	position: absolute;
 	top: 15%;
 }
-}
 
 #item-popup {
 	display: flex;
@@ -364,6 +363,7 @@ content:hover {
 	background: #3c3c3c70;
 	height: fit-content;
 	width: 100%;
+	
 }
 
 #full-video {
@@ -393,18 +393,9 @@ content:hover {
 	color: #3c769a;
 }
 
-#item-info ul>::before {
-	content: '→';
-	display: inline-flex;
-	margin: .25em;
-	align-items: center;
-	font-size: 22px;
-}
-
 #dimensions,
 #full,
 #tag {
-	float: right;
 	margin-right: 10%;
 }
 
@@ -541,6 +532,13 @@ content:hover {
 
 
 #loading {
-font-size: 2em;
+  font-size: 2em;
   position: absolute;
+  font-size: 2em;
+  position: absolute;
+  padding: 15%;
 }
+
+#date {
+  text-align: center;
+  }

@@ -46,7 +46,7 @@ function updateView() {
   if (!document.getElementById("go-down")) return;
   
   scrolled += 1;
-  if (scrolled >= 3) {
+  if (scrolled >= 5) {
     
     document.getElementById("go-down").style.opacity = "0.0"
     
@@ -299,6 +299,7 @@ var uniqueTagsArray = []
 
 //yes
 function createGalleryItem(data, i) {
+  
   //metadata names: id, thumb_id, desc, tag, medium, links, date, dimensions, type
   //create gallery item, with tag for button sorting
   item = document.createElement("div");
@@ -335,8 +336,10 @@ function createGalleryItem(data, i) {
     iframe.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to iframe
     item.appendChild(iframe);
   } else { //if not video (if is image)
+   
   //create gallery image with thumbnail
     image = document.createElement("img");
+   
     if (data[i].tag.includes("showcase")) {
       image.loading = "eager";
     } else {
@@ -618,6 +621,7 @@ function populatePopup(btn) {
   //   addtoPopup(videometa, "video");
   // }
   if (img) { // if tag of item is img
+    
     imagemeta = img.getAttribute("data-meta");
     imagemeta = JSON.parse(imagemeta);
     
@@ -625,21 +629,36 @@ function populatePopup(btn) {
     image = document.getElementById("full-img");
     image.style.display = "block";
     document.getElementById("full-video").style.display = "none";
-    image.src = "";
-    if (imagemeta.type.includes("gif")) { //preloading gifs is fucky, so don't
-      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id;
-      } else {
-      image.src = "https://drive.google.com/thumbnail?id="+imagemeta.thumb_id; //load thumbnail first
-      image.setAttribute("onLoad","this.src='https://lh3.googleusercontent.com/d/"+imagemeta.id+"';this.onload='Function(); document.getElementById('loading').remove()"); //load full image after 
-	}
+    // if (imagemeta.type.includes("gif")) { //preloading gifs is fucky, so don't
+    //   image.src = "https://drive.google.com/thumbnail?id="+imagemeta.id;
+    //   } else {
+    document.getElementById("loading").innerText = "loading full res image⏳";
+    image.src = "https://drive.google.com/thumbnail?id="+imagemeta.thumb_id; //load thumbnail first
+    
+    
+    image.onload = function() {
+    loadFullImage();
+    };
+    
+    function loadFullImage() {
+      image.src='https://lh3.googleusercontent.com/d/'+imagemeta.id;
+      image.onload = function() {
+        document.getElementById('loading').innerText = '';
+        }
+    }
+    
+    
+    image.setAttribute("onError", "document.getElementById('loading').innerText = 'failed to load full res image. could not be in the backend or you are loading images too fast'")
+    // }
     image.alt = "full image";
-    if (imagemeta.medium == undefined) {
-      imagemeta.medium = "(no medium)";
-      }
+    // if (imagemeta.medium == undefined) {
+    //   imagemeta.medium = "(no medium)";
+    //   }
     addtoPopup(imagemeta);
   }
   document.getElementById("item-info").focus();
   document.getElementById('item-details').style.display = 'flex';
+  
 }
 
 function addtoPopup(meta, type) {
@@ -661,7 +680,7 @@ function addtoPopup(meta, type) {
   if (type == "video") {
     full.href = "https://youtu.be/"+meta.id;
   } else {
-    full.href = "https://lh3.googleusercontent.com/d/"+meta.id;
+    full.href = "https://drive.google.com/thumbnail?id="+meta.id;
   }
   
   // //put metadata in dimensions
