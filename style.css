@@ -449,7 +449,7 @@ content:hover {
   font-family: Courier New Bold, monospace;
   background: transparent;
   font-size: 1em;
-  color: white;
+  color: black;
 }
 
 #sort-menu button.activebutton, #sort-menu2 button.activebutton, #sort-menu button:hover, #sort-menu2 button:hover {
