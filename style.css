@@ -774,7 +774,7 @@ a {
 #starry-night {
   position: absolute;
   inset: 0;
-  background-image: url("./stars.gif");
+  background-image: url("./images/stars.gif");
   background-repeat: repeat;
   pointer-events: none;
   z-index: -1;
