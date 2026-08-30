@@ -94,6 +94,7 @@ window.addEventListener('resize', updateView);
 
 
 function openTab(tab) {
+  document.getElementById("notepad-title").innerText = tab+".txt - Notepad"
   
   const parent = document.getElementById('tab-list');
 

@@ -246,8 +246,10 @@ canvas {
 }
 
 .item {
-	display: flex;
 	position: relative;
+  aspect-ratio: 1;
+  width: 25%;
+  image-rendering: optimizespeed;
 }
 
 #zip>div>iframe {
@@ -337,8 +339,6 @@ content:hover {
 }
 
 .item img {
-	max-width:255px;
-	max-height:255px;
 	aspect-ratio: 1/1;
 	object-fit: cover;
 }
@@ -512,12 +512,14 @@ content:hover {
   text-align: center;
   font-size: 1.25em;
   padding: 0 5% 0 5%;
+  min-width: 100%;
   }
 
 .big-title {
   font-size: 4em;
   text-decoration: underline;
-  text-align: center
+  text-align: center;
+  min-width: 100%;
   }
 
 
@@ -1041,6 +1043,158 @@ a {
 
 
 
+
+
+.folder-preview {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  overflow: visible;
+}
+
+.folder-back,
+.folder-front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.folder-back {
+  z-index: 1;
+}
+
+.folder-front {
+  z-index: 3;
+}
+
+.folder-image {
+  position: absolute;
+  perspective: 500px;
+  z-index: 2;
+}
+
+.folder-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+
+  border: 2px solid white;
+
+  transform-origin: left bottom;
+}
+
+/* IMAGE 1 */
+
+.folder-image-1 {
+  left: 34px;
+  top: 11px;
+  width: 72px;
+  height: 87px;
+
+  perspective-origin: 0% -80%;
+}
+
+.folder-image-1 img {
+  height: 111%;
+
+  transform:
+    rotateY(-9deg)
+    rotateX(0deg)
+    rotateZ(0deg)
+    scale(0.92, 0.93);
+
+  background: blue;
+}
+
+/* IMAGE 2 */
+
+.folder-image-2 {
+  left: -32px;
+  top: 12px;
+  width: 58%;
+  height: 71%;
+
+  perspective-origin: -112% -80%;
+}
+
+.folder-image-2 img {
+  transform:
+    rotateY(-52deg)
+    rotateX(0deg)
+    rotateZ(0deg)
+    scale(0.9, 0.94);
+
+  background: red;
+}
+
+.album-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+
+.video-file {
+  text-align: center;
+  align-content: center;
+}
+
+.video-icon {
+  width: 92px;
+  height: 58px;
+  margin: 0 auto 4px;
+
+  display: flex;
+  align-items: stretch;
+
+  border: 1px solid #555;
+}
+
+.film-strip {
+  width: 10px;
+  padding: 3px 2px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #2b2b2b;
+}
+
+.film-strip span {
+  width: 100%;
+  height: 6px;
+
+  box-sizing: border-box;
+
+  background: #777;
+  border: 1px solid #111;
+}
+
+.video-thumb {
+  flex: 1;
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+}
+
+.video-name {
+  max-width: 100px;
+  margin: 0 auto;
+
+  overflow-wrap: anywhere;
+}
 
 
 

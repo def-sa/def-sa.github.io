@@ -14,7 +14,7 @@
 	<meta property="og:url" content="https://ili.zip/"/>
 	<meta property="og:image" content="https://ili.zip/images/logo-web.png"/>
 	<meta property="og:site_name" content="the website of illy, a learning artist"/>
-	<link rel="icon" type="image/png" href="./images/favicon.png">
+	<link rel="icon" type="image/png" href="./images/favicon.ico">
     <title>illysite v2</title>
     <link href="./style.css" rel="stylesheet" type="text/css" media="all">
 	<link rel="preconnect" href="https://drive.google.com">
@@ -46,8 +46,8 @@
         <div id="notepad">
           <div class="notepad-titlebar">
             <div class="notepad-title">
-              <span class="notepad-icon"><img src="./images/favicon.png" style="max-width: 22px;aspect-ratio: 1;image-rendering: crisp-edges;"></span>
-              Untitled - Notepad
+              <span class="notepad-icon"><img src="./images/favicon.ico" style="max-width: 22px;aspect-ratio: 1;image-rendering: crisp-edges;"></span>
+              <p id="notepad-title">Untitled - Notepad</p>
             </div>
         
             <div class="notepad-controls">
@@ -141,50 +141,158 @@
         <div id="mp3" class="tab" data-tab-info="audio ive made. mostly in audacity">
           
             <p class="big-title">mashup / plunderphonics albums</p>
+            
             <div class="albums">
-             <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=rvKM1y-QOnk" target="_blank">S</a>
-              <img src="https://drive.google.com/thumbnail?id=1FUfsVCNd1eVvf8lYtGEnh9kwauQ4ZZTZ">
-            </div>
             
-             <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=7CQ1sTAsEDU" target="_blank">runchrot</a>
-              <img src="https://drive.google.com/thumbnail?id=1Yksob55rApzXHy2B-XtSqXtH2KAWQYFD">
-            </div>
+              <a class="album-button" href="https://www.youtube.com/watch?v=rvKM1y-QOnk" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=1FUfsVCNd1eVvf8lYtGEnh9kwauQ4ZZTZ">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=1FUfsVCNd1eVvf8lYtGEnh9kwauQ4ZZTZ">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>S</p>
+            </a>
             
-            <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=wjB4h1L8V-g" target="_blank">rotbomb</a>
-              <img src="https://drive.google.com/thumbnail?id=1kZd87rS-73YtRnnD5_q6Bl9mNLiOCcLs">
-            </div>
+              <a class="album-button" href="https://www.youtube.com/watch?v=7CQ1sTAsEDU" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=1Yksob55rApzXHy2B-XtSqXtH2KAWQYFD">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=1Yksob55rApzXHy2B-XtSqXtH2KAWQYFD">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>runchrot</p>
+            </a>
             
-            <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=1UkPb4jazTg" target="_blank">rotbomb: b sides</a>
-              <img src="https://drive.google.com/thumbnail?id=12z5OFtm9or016zYZ8KSOQHSZD7aGvQL9">
-            </div>
-         </div>
+              <a class="album-button" href="https://www.youtube.com/watch?v=wjB4h1L8V-g" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=1kZd87rS-73YtRnnD5_q6Bl9mNLiOCcLs">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=1kZd87rS-73YtRnnD5_q6Bl9mNLiOCcLs">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>rotbomb</p>
+            </a>
+            
+              <a class="album-button" href="https://www.youtube.com/watch?v=1UkPb4jazTg" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=12z5OFtm9or016zYZ8KSOQHSZD7aGvQL9">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=12z5OFtm9or016zYZ8KSOQHSZD7aGvQL9">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>rotbomb: b sides</p>
+            </a>
           
             <p class="big-title">noise / auditory art</p>
             <p class="note">playlist of all noise stuff (<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank">not music</a>)</p>
             <div class="albums">
-            <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=5EC3tMOIX-c" target="_blank">hello</a>
-              <img src="https://drive.google.com/thumbnail?id=1A6V4Utodk23Ex5HKdg_JB-8R4nuFYEuE">
+            
+            <a class="album-button" href="https://www.youtube.com/watch?v=5EC3tMOIX-c" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=1A6V4Utodk23Ex5HKdg_JB-8R4nuFYEuE">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=1A6V4Utodk23Ex5HKdg_JB-8R4nuFYEuE">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>hello</p>
+            </a>
+            
+            <a class="video-file" href="https://www.youtube.com/watch?v=xwEMlETKnWk">
+
+            <div class="video-icon">
+          
+              <div class="film-strip">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+          
+              <div class="video-thumb">
+                <img src="https://drive.google.com/thumbnail?id=1ecgyvZM5J0mrmIrTqc_RX7I34MdTgpOd" alt="">
+              </div>
+          
+              <div class="film-strip">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+          
             </div>
           
-            <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=xwEMlETKnWk" target="_blank">KING</a>
-              <img src="https://drive.google.com/thumbnail?id=1ecgyvZM5J0mrmIrTqc_RX7I34MdTgpOd">
+            <div class="video-name">
+              KING.mp4
             </div>
+          
+          </a>
             
-            <div>
-              <a class="viewbutton" href="https://www.youtube.com/watch?v=OwnHOn7o83s" target="_blank">tennis vs. myself</a>
-              <img src="https://drive.google.com/thumbnail?id=1gRS78jmp7TpwOnppxSl0dt1GrjAV_1QX">
-            </div>
+            <a class="album-button" href="https://www.youtube.com/watch?v=OwnHOn7o83s" target="_blank">
+                <div class="folder-preview">
+                  <img class="folder-back" src="./images/folder-back.png" alt="">
+                
+                  <div class="folder-image folder-image-1">
+                    <img src="https://drive.google.com/thumbnail?id=1gRS78jmp7TpwOnppxSl0dt1GrjAV_1QX">
+                  </div>
+                
+                  <div class="folder-image folder-image-2">
+                    <img src="https://drive.google.com/thumbnail?id=1gRS78jmp7TpwOnppxSl0dt1GrjAV_1QX">
+                  </div>
+                
+                  <img class="folder-front" src="./images/folder-front.png" alt="">
+                
+                </div>
+                <p>tennis vs. myself</p>
+            </a>
+            
             
             </div>
             <p class="note">all my audio is also on youtube because i don't like soundcloud but someday ill make it hosted by itself like my gallery</p>
           </div>
-        
+         </div>
         
         
         <div id="info" class="tab" data-tab-info="i'm illy">
@@ -236,9 +344,6 @@
     </div>
   </div>
 
-  
-  
-  <div>lksfhlkrtrthkl;</div>
   
   <script src="./script.js"></script>
 </body>
