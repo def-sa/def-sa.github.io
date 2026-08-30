@@ -12,51 +12,105 @@
 	<meta property="og:description" content="illy lives here! and everything i own!"/>
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://ili.zip/"/>
-	<meta property="og:image" content="https://ili.zip/images/illy.png"/>
+	<meta property="og:image" content="https://ili.zip/images/logo-web.png"/>
 	<meta property="og:site_name" content="the website of illy, a learning artist"/>
-	<link rel="icon" type="image/png" href="./images/favicon.png">
-    <title>illysite v1</title>
+	<link rel="icon" type="image/png" href="./images/favicon.ico">
+    <title>illysite v2</title>
     <link href="./style.css" rel="stylesheet" type="text/css" media="all">
 	<link rel="preconnect" href="https://drive.google.com">
+	<link rel="preload" href="./images//stars.gif" as="image">
   </head>
 <body>
   
   <div id="flex">
   <p id="go-down">↓↓↓</p>
-      <canvas id="starry-night"></canvas> <!-- background -->
+      <div id="starry-night"></div>
+      <div id="space-gallery"></div>
       <div id="flex-left">
-        <div id="title-desc">
+        
           <div class="title">
           <p id="title" style="font-size: 1em;">ili.</p>
           <div id="container">
             <div class="title-list" id="list">
-              <div class="title-item" onclick="openTab('mp4')">mp4</div>
-              <div class="title-item" onclick="openTab('zip')">zip</div>
-              <div class="title-item" onclick="openTab('mp3')">mp3</div>
-              <div class="title-item" onclick="openTab('info')">info</div>
-              <div class="title-item" onclick="openTab('alt')">alt</div>
+              <div class="title-item" onclick="openTab(this.innerText)">mp4</div>
+              <div class="title-item active" onclick="openTab(this.innerText)">zip</div>
+              <div class="title-item" onclick="openTab(this.innerText)">mp3</div>
+              <div class="title-item" onclick="openTab(this.innerText)">info</div>
+              <!--<div class="title-item" onclick="openTab(this.innerText)">alt</div>-->
+              <div class="title-item" onclick="openTab(this.innerText)">txt</div>
             </div>
          </div>
-        </div>
         
       </div>
-       <div id="title-info">
-        <p id="tab-info"></p>
+       <div id="title-desc">
+        <div id="notepad">
+          <div class="notepad-titlebar">
+            <div class="notepad-title">
+              <span class="notepad-icon"><img src="./images/favicon.ico" style="max-width: 22px;aspect-ratio: 1;image-rendering: crisp-edges;"></span>
+              Untitled - Notepad
+            </div>
+        
+            <div class="notepad-controls">
+              <button>-</button>
+              <button>□</button>
+              <button>×</button>
+            </div>
+          </div>
+        
+          <div class="notepad-menu">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Format</span>
+            <span>View</span>
+            <span>Help</span>
+          </div>
+        
+          <textarea class="notepad-text" readonly spellcheck="false" id="tab-info">type here....</textarea>
+        
+          <div class="notepad-status">
+            <span>Ln 1, Col 1</span>
+            <span>100%</span>
+            <span>Windows (CRLF)</span>
+            <span>UTF-8</span>
+          </div>
+        </div>
        </div>
     </div>
     
     <div id="right-tab" class="flex-right">
     <div></div>
       <div id="tab-list">
-      
+        
+        <div class="explorer-topbar">
+            <div class="explorer-titlebar">
+              <div class="explorer-title">
+                <span class="explorer-icon">📁</span>
+                File Explorer
+              </div>
+          
+              <div class="explorer-window-controls">
+                <button>-</button>
+                <button>□</button>
+                <button id="nav-x" onclick="toggleTabs(false)">×</button>
+              </div>
+            </div>
+          
+            <div class="explorer-tabs">
+              <span class="explorer-tab explorer-tab-file">File</span>
+              <span class="explorer-tab">Home</span>
+              <span class="explorer-tab">Share</span>
+              <span class="explorer-tab">View</span>
+            </div>
+          </div>
+          
         <div id="mp4" class="tab" data-tab-info="my mp4's. the whole idea or whatever">
-          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
-          <a href="https://www.youtube.com/@ilimp4" target="_blank" style="font-size: 8em; text-align: justify">youtube</a>
+          <p class="note">LATEST THING!!</p>
+          <iframe width="560" height="315" style="margin:auto" src="https://www.youtube-nocookie.com/embed/fgAIInyz9ec?si=ZCHgB71S1ylRSal9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <a class="note" href="https://www.youtube.com/@ilimp4" target="_blank" style="font-size: 8em; text-align: justify">youtube</a>
           <p class="note">all my videos are here currently and i don't have any plans on changing that unless youtube does the semi-regular thing where they make everything worse</p>
         </div>
         
         <div id="zip" class="tab" data-tab-info="an unreasonablely large archive of stuff that i've created. dated 2020 - 2024">
-          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
           
           <div id="sort">
             <button onclick="toggleMenu(this)" id="allbtn">all</button>
@@ -85,7 +139,6 @@
             </div>
         
         <div id="mp3" class="tab" data-tab-info="audio ive made. mostly in audacity">
-          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
           
             <p class="big-title">mashup / plunderphonics albums</p>
             <div class="albums">
@@ -111,7 +164,7 @@
          </div>
           
             <p class="big-title">noise / auditory art</p>
-            <p>playlist of all noise stuff (<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank">not music</a>)</p>
+            <p class="note">playlist of all noise stuff (<a href="https://www.youtube.com/playlist?list=PL_vz_BSvbmGU3xhaXW5fh_U2zlPYQzpXw" target="_blank">not music</a>)</p>
             <div class="albums">
             <div>
               <a class="viewbutton" href="https://www.youtube.com/watch?v=5EC3tMOIX-c" target="_blank">hello</a>
@@ -134,48 +187,51 @@
         
         
         
-        <div id="info" class="tab" data-tab-info="<img src='./images/illy.png' title='hi, im illy!' style='width: 100%;'>">
-          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
+        <div id="info" class="tab" data-tab-info="i'm illy">
+          <img src="./images/illy.png" title="hi, im illy!" style="position: absolute;left: 50%;top: 7%;max-width: 46%;">
           <div id="aboutpost">
-          <div>
-            <h3>who?</h3>
-            <hr>
-            <p>i'm <b>illy</b>. i also used to go by <b>def-sa</b>.</p>
-            <p>pronouns are <b>they\them</b> or <b>he/him</b></p>
-            <p id="age"></p>
-            <p>a learning artist</p>
-          </div>
-          <br><br>
-          <div>
-            <h3>what?</h3>
-            <hr>
-            <p><b>videos</b>, edited just for archiving and practice</p>
-            <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
-            <p><b>coding</b>. learning html, css, &amp; javascript & GDScript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>! working on my game called <b>Cargo</b> (may change) in the Godot Engine</p>
-            <p>auditory arts like noise and plunderphonics </p>
-            <br>
-          </div>
-           <div>
-            <h3>where?</h3>
-            <hr>
-            <p>im not really active anywhere besides my friend groups but i do have these</p>
-            <ul>
-              <li><a href="https://bsky.app/profile/ilimp4.bsky.social">bluesky</a></li>
-              <li><a href="https://www.youtube.com/@ilimp4">youtube (ilimp4)</a></li>
-              <li><a href="https://www.youtube.com/@def-sa">youtube alt (def-sa)</a></li>
-            </ul>
-            
-            
-          </div>
+            <div>
+              <h3>who?</h3>
+              <hr>
+              <p>i'm <b>illy</b>. i also used to go by <b>def-sa</b>.</p>
+              <p>pronouns are <b>they\them</b> or <b>he/him</b></p>
+              <p id="age"></p>
+              <p>a learning artist</p>
+            </div>
+            <br><br>
+            <div>
+              <h3>what?</h3>
+              <hr>
+              <p><b>videos</b>, edited just for archiving and practice</p>
+              <p><b>visual arts</b>. 2d, some 3d. almost always digital</p>
+              <p><b>coding</b>. learning html, css, &amp; javascript & GDScript. i made this entire site <a href="https://github.com/def-sa/def-sa.github.io" target="_blank">from scratch</a>! working on my game called <b>Cargo</b> (may change) in the Godot Engine</p>
+              <p>auditory arts like noise and plunderphonics </p>
+              <br>
+            </div>
+             <div>
+              <h3>where?</h3>
+              <hr>
+              <p>im not really active anywhere besides my friend groups but i do have these</p>
+              <ul>
+                <li><a href="https://bsky.app/profile/ilimp4.bsky.social">bluesky</a></li>
+                <li><a href="https://www.youtube.com/@ilimp4">youtube (ilimp4)</a></li>
+                <li><a href="https://www.youtube.com/@def-sa">youtube alt (def-sa)</a></li>
+              </ul>
+              
+              
+            </div>
+            </div>
           </div>
           
-        </div>
         
-        <div id="alt" class="tab">
-          <div class="window-nav"><div id="nav-x" onclick="toggleTabs(false)">x</div></div>
-          <a class="big-title" href="https://defsa.neocities.org/redes3/" target="_blank">old website design</a>
+        <!--<div id="alt" class="tab" data-tab-info="collection of fun stuff i like">-->
+          <!--<iframe style="height:100vh" src="https://defsa.neocities.org/ili.fun/"> </iframe>-->
+          <!--<a class="big-title" href="https://defsa.neocities.org/redes3/" target="_blank">old website design</a>-->
+          
+        <!--</div>-->
+        <div id="txt" class="tab" data-tab-info="stuff said!!!">
+          <div id="blog"></div>
         </div>
-        
       </div>
     </div>
   </div>

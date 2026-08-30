@@ -2,105 +2,95 @@ const list = document.getElementById('list');
 const container = document.getElementById('container');
 const items = Array.from(list.children);
 
-let currentIndex = 1;
 let ticking = false;
 
 
 var onTabCurrently = toggleTabs(false);
 
 
+const GALLERY_DATA_URL = './gallery.json';
 var dataSaved = [];
+var galleryDataPromise = null;
 getData();
 
 
 var age = new Date().getFullYear() - 2001
-console.log(age)
 document.getElementById("age").innerHTML = 'i\'m ' + age;
 
 
 
 
 
+
+
+let currentIndex = 0;
+let positions = [];
+let locked = false;
+
+function cachePositions() {
+  positions = items.map(item => ({
+    top: item.offsetTop,
+    height: item.offsetHeight
+  }));
+}
+
 function updateView() {
-  
-  const activeItem = items[currentIndex];
+  const p = positions[currentIndex];
+  if (!p) return;
 
-  const containerRect = container.getBoundingClientRect();
-  const itemRect = activeItem.getBoundingClientRect();
+  const y = container.clientHeight / 2 - p.height / 2 - p.top;
 
-  // distance from top of list to active item
-  const itemOffset = activeItem.offsetTop;
-
-  // center calculation based purely on live layout
-  const y =
-    (container.clientHeight / 2) -
-    (activeItem.offsetHeight / 2) -
-    itemOffset;
-
-  list.style.transform = `translateY(${y}px)`;
+  list.style.transform = `translate3d(0, ${y}px, 0)`;
 
   items.forEach((item, i) =>
-    item.classList.toggle('active', i === currentIndex)
+    item.classList.toggle("active", i === currentIndex)
   );
+}
+
+function moveSelection(dir) {
+  const next = Math.max(0, Math.min(items.length - 1, currentIndex + dir));
+  if (next === currentIndex) return;
+
+  currentIndex = next;
+  requestAnimationFrame(updateView);
+}
+
+container.addEventListener("wheel", e => {
+  e.preventDefault();
+  if (locked || !e.deltaY) return;
   
-  if (!document.getElementById("go-down")) return;
-  
-  scrolled += 1;
-  if (scrolled >= 5) {
-    
-    document.getElementById("go-down").style.opacity = "0.0"
-    
-  } else if (scrolled > 7) {
-    document.getElementById("go-down").remove();
-  } else {
-    document.getElementById("go-down").style.fontStyle = "oblique";
+  if (e.deltaY > 0) {
+    document.getElementById("go-down")?.remove();
   }
-  
-  
-  
-  
-}
+  locked = true;
+  moveSelection(Math.sign(e.deltaY));
 
-function requestUpdate() {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    updateView();
-    ticking = false;
-  });
-}
+  setTimeout(() => locked = false, 100);
+}, { passive: false });
 
-function moveSelection(delta) {
-  const ni = currentIndex + delta;
-  if (ni < 0 || ni >= items.length) return;
-  currentIndex = ni;
-  requestUpdate();
-}
+document.addEventListener("DOMContentLoaded", () => {
+  cachePositions();
+  updateView();
+});
+
+window.addEventListener("resize", () => {
+  cachePositions();
+  updateView();
+});
+
+
+
+
+
 
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowDown') moveSelection(1);
   if (e.key === 'ArrowUp') moveSelection(-1);
 });
 
-container.addEventListener('wheel', e => {
-  e.preventDefault();
-  moveSelection(e.deltaY > 0 ? 1 : -1);
-}, { passive: false });
 
-items.forEach((item, i) => {
-  item.addEventListener('click', () => {
-    currentIndex = i;
-    requestUpdate();
-  });
-});
-
-window.addEventListener('load', updateView);
 window.addEventListener('resize', updateView);
   
-var scrolled = 0;
-window.addEventListener('scroll', function() {
-
-});
 
 
 function openTab(tab) {
@@ -121,12 +111,12 @@ function openTab(tab) {
 function toggleTabs(bool) {
   document.getElementById("tab-info").innerHTML = "";
   
-  
+
   document.getElementById("right-tab").classList.remove("flex-half");
   document.getElementById("right-tab").style.flex = "0";
   document.getElementById("title-desc").style.height = "100vh";
   document.getElementById("title").style.display = "block";
-  document.getElementById("title-info").style.display = "none";
+  document.getElementById("notepad").style.display = "none";
   document.getElementById("flex-left").style.maxWidth = "unset";
   document.getElementById("nav-x").style.display = "none";
   
@@ -141,90 +131,13 @@ function toggleTabs(bool) {
     document.getElementById("title-desc").style.height = "50vh";
     
     document.getElementById("title").style.display = "none";
-    document.getElementById("title-info").style.display = "block";
+    document.getElementById("notepad").style.display = "block";
     document.getElementById("flex-left").style.maxWidth = "33vw";
     document.getElementById("nav-x").style.display = "block";
   } 
 }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  const canvas = document.getElementById('starry-night');
-  const ctx = canvas.getContext('2d');
-  
-  let stars = [];
-  const numStars = 300;
-  let dpr = window.devicePixelRatio || 1;
-  
-  function resizeCanvas() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-  
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-  
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  
-  function createStars() {
-    stars.length = 0;
-    for (let i = 0; i < numStars; i++) {
-      stars.push({
-        x: Math.random() * canvas.width / dpr,
-        y: Math.random() * canvas.height / dpr,
-        radius: Math.random() * 1.5 + 0.5,
-        alpha: Math.random(),
-        delta: (Math.random() * 0.02) - 0.01
-      });
-    }
-  }
-  
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-    for (const star of stars) {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
-      ctx.fill();
-  
-      star.alpha += star.delta;
-      if (star.alpha <= 0 || star.alpha >= 1) {
-        star.delta *= -1;
-      }
-    }
-  }
-  
-  function animate() {
-    drawStars();
-    requestAnimationFrame(animate);
-  }
-  
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-    createStars();
-  });
-  
-  resizeCanvas();
-  createStars();
-  animate();
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   
   function clearPopup() {
@@ -237,11 +150,13 @@ function toggleTabs(bool) {
 //key press to move along gallery images
 document.addEventListener("keyup", function(event) {
   if (event.key == "ArrowLeft" || event.key == "a") {
-    moveGallery(true, false);
+    event.preventDefault();
+    moveGallery(-1);
     return;
   }
   if (event.key == "ArrowRight" || event.key == "d") {
-    moveGallery(false, true);
+    event.preventDefault();
+    moveGallery(1);
     return;
   }
   if (event.key == "Escape") {
@@ -252,30 +167,85 @@ document.addEventListener("keyup", function(event) {
   
   
   
+function moveGallery(dir) {
+  var items = Array.from(document.querySelectorAll("#zip .item"))
+    .filter(function(item) {
+      return getComputedStyle(item).display !== "none";
+    });
+
+  if (!items.length) return;
+
+  var current = items.findIndex(function(item) {
+    return item.classList.contains("active");
+  });
+
+  if (current < 0) current = 0;
+
+  items[current].classList.remove("active");
+
+  current = (current + dir + items.length) % items.length;
+
+  var next = items[current];
+  next.classList.add("active");
+
+  // If popup is currently open, replace its contents too.
+  var popup = document.querySelector("#item-popup");
+
+  if (popup) {
+    var button = next.querySelector(".viewbutton");
+    if (button) populatePopup(button);
+  }
+}
+
   
   
   
   
   
-  
-  
-function getData() {
-  fetch('./export.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        for (i = 0; i < data.length; i++) {
-          // console.log(data[i])
-          if (data[i].type == "jpg" || data[i].type == "png") {
-            data[i].type = "image";
-            }
-          data[i].date = data[i].date.slice(0, 10);
-        }
-        dataSaved = data;
-        //populate gallery on successful json request
-        populateGallery();
-      });
+async function loadGalleryData() {
+  if (galleryDataPromise) return galleryDataPromise;
+
+  galleryDataPromise = fetch(GALLERY_DATA_URL, {
+    cache: "no-cache"
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`gallery.json failed: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(json => {
+      if (!json || !Array.isArray(json.art)) {
+        throw new Error("Invalid gallery.json format");
+      }
+
+      return json.art.map(item => ({
+        artwork_id: item[0],
+        name: String(item[0]).padStart(4, "0"),
+        date: item[1] || "N/A",
+        type: item[2] || "",
+        tag: Array.isArray(item[3]) ? item[3] : [],
+        id: item[4],
+        thumb_id: item[5]
+      }));
+    });
+
+  return galleryDataPromise;
+}
+
+async function getData() {
+  try {
+    const data = await loadGalleryData();
+
+    dataSaved = data.map(item => ({
+      ...item,
+      tag: [...item.tag]
+    }));
+
+    populateGallery();
+  } catch (error) {
+    console.error("Failed to load gallery:", error);
+  }
 }
   
 //yeah
@@ -339,31 +309,27 @@ function createGalleryItem(data, i) {
    
   //create gallery image with thumbnail
     image = document.createElement("img");
+
    
-    if (data[i].tag.includes("showcase")) {
-      image.loading = "eager";
-    } else {
-      image.loading = "lazy";
-    }
-    image.alt = data[i].desc;
-    
-    /* shit broke
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', "https://drive.google.com/thumbnail?id="+data[i].thumb_id, true);
-    
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(xhr.responseURL);
-      }
-    };
-    
-    xhr.send();
-    */
-    
-    
+    checkUrlStatus("https://drive.google.com/thumbnail?id="+data[i].thumb_id)
     
     
     image.src = "https://drive.google.com/thumbnail?id="+data[i].thumb_id;
+    
+    const tags = Array.isArray(data[i].tag)
+      ? data[i].tag
+      : String(data[i].tag || "").split(",");
+    
+    const isShowcase = tags
+      .map(tag => tag.trim().toLowerCase())
+      .includes("showcase");
+    
+    image.loading = isShowcase ? "eager" : "lazy";
+    
+    if (isShowcase) {
+      image.fetchPriority = "high";
+    }
+    
     image.setAttribute("data-meta", JSON.stringify(data[i])); //add full metadata to image
     //append items to 
     item.style.display = "none";
@@ -373,7 +339,21 @@ function createGalleryItem(data, i) {
 }
 
 
-
+function checkUrlStatus(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    
+    // If the image loads successfully, the status is effectively 200
+    img.onload = () => resolve({ success: true, status: 200 });
+    
+    // If it fails to load (404, broken link, or private), it triggers an error
+    img.onerror = () => resolve({ success: false, status: "Failed to load (Private or 404)"});
+    
+    img.alt = "loading...";
+    img.src = url;
+    
+  });
+}
 
 //create top buttons
 function createButtons(data) {
@@ -393,21 +373,6 @@ function createButtons(data) {
   random.setAttribute("onclick" , "shuffleDivsByClass('item')");
   insertAfter(sort.children[0], random);
   
-  
-  
-  // //top "type" button
-  // type = document.createElement("button");
-  // type.innerText = "type";
-  // type.id = type.innerText+"btn";
-  // type.setAttribute("onclick" , "toggleMenu(this)");
-  // insertAfter(sort.children[0], type);
-  // //top "medium" button
-  // medium = document.createElement("button");
-  // medium.innerText = "medium";
-  // medium.id = medium.innerText+"btn";
-  // medium.setAttribute("onclick" , "toggleMenu(this)");
-  // insertAfter(sort.children[0], medium);
-  //top "date" button
   date = document.createElement("button");
   date.innerText = "date";
   date.id = date.innerText+"btn";
@@ -476,34 +441,7 @@ function createButtonsMenu(att, yearSelected) {
     sortmenu.style.display = "flex";
     sortmenu2.style.display = "none";
     break;
-  // case "medium":
-  //   galleryitem = document.querySelectorAll("#zip .item");
-  //   uniqueMedium = getUnique(data, 'medium');
-  //   for (i = 0; i < uniqueMedium.length; i++) { //for each unique medium
-  //   galleryVisible = [];
-  //     for (x = 0; x < galleryitem.length; x++ ) { //for each gallery item
-  //     datasort = galleryitem[x].getAttribute('data-sort');
-  //     if (datasort.includes(uniqueMedium[i])) { //if gallery includes medium
-  //       galleryVisible.push(uniqueMedium[i]); //add to visible
-  //       }
-  //     }
-  //     if (galleryVisible.length >= 2) { //only add buttons if it would result in 2 or more gallery items
-  //       mediumitem = document.createElement("button");
-  //       mediumitem.innerText = uniqueMedium[i];
-  //       mediumitem.setAttribute("onclick" , "toggle(this)");
-  //       mediumitem.id = uniqueMedium[i]+"btn";
-  //       sortmenu.appendChild(mediumitem);
-  //     }
-  //     /* why does this make it not work? i have no idea.
-  //     if (uniqueMedium[i] == "ibispaint") {
-  //       mediumitem.classList.add("activebutton");
-  //       mediumitem.click();
-  //     }
-  //     */
-  //   }
-  //   sortmenu.style.display = "flex";
-  //   sortmenu2.style.display = "none";
-  //   break;
+    
   case "date":
     data = dataSaved;
     uniqueYear = getUnique(data, 'date', true);
@@ -591,7 +529,6 @@ function getUnique(data, item, isyear) {
 
 //populate gallery popup
 function populatePopup(btn) {
-  console.log(btn)
   clearPopup();
   //for arrow navigation
   btn.blur();
@@ -786,19 +723,106 @@ document.getElementById('item-x').onclick = function(event){
   clearPopup();
 };
   
-  
+
+fetch("./blog.json")
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(data) {
+    var blog = document.getElementById("blog");
+
+    data.posts
+      .sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+      })
+      .forEach(function(post) {
+        var article = document.createElement("article");
+        article.className = "blog-post";
+
+        var avatar = document.createElement("div");
+        avatar.className = "blog-avatar";
+
+        var avatarImg = document.createElement("img");
+        avatarImg.src = "./illy.png";
+        avatarImg.alt = "illy";
+        avatarImg.title = "hi, im illy!";
+
+        avatar.appendChild(avatarImg);
+
+        var body = document.createElement("div");
+        body.className = "blog-body";
+
+        var header = document.createElement("div");
+        header.className = "blog-header";
+
+        var author = document.createElement("span");
+        author.className = "blog-author";
+        author.textContent = "illy";
+
+        var date = document.createElement("span");
+        date.className = "blog-date";
+        date.textContent = formatBlogDate(post.date);
+
+        header.appendChild(author);
+        header.appendChild(date);
+
+        var title = document.createElement("span");
+        title.className = "blog-title";
+        title.textContent = post.title;
+
+        var content = document.createElement("div");
+        content.className = "blog-content";
+        content.textContent = post.content;
+
+        var tags = document.createElement("div");
+        tags.className = "blog-tags";
+
+        post.tags.forEach(function(tag) {
+          var tagElement = document.createElement("span");
+          tagElement.textContent = "#" + tag;
+          tags.appendChild(tagElement);
+        });
+
+        body.appendChild(header);
+        body.appendChild(title);
+        body.appendChild(content);
+        body.appendChild(tags);
+
+        article.appendChild(avatar);
+        article.appendChild(body);
+
+        blog.appendChild(article);
+      });
+  });
+
+function formatBlogDate(date) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  })
+  .format(new Date(date))
+  .replace(",", "");
+}
 
 
 
 
-  
+
+
+
+
+
+//for randomize 
 function shuffleDivsByClass(className) {
   const elements = Array.from(document.querySelectorAll('.' + className));
   if (elements.length === 0) return;
 
   const parent = elements[0].parentNode;
 
-  // Fisher–Yates shuffle
   for (let i = elements.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [elements[i], elements[j]] = [elements[j], elements[i]];
@@ -810,21 +834,252 @@ function shuffleDivsByClass(className) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//space floaty gallery
+const SPACE_IMAGE_COUNT = 16;
+
+
+function rand(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function shuffle(array) {
+    return [...array].sort(() => Math.random() - 0.5);
+}
+
+function generatePositions(count) {
+    const positions = [];
+
+    const minDistance = 24;
+    const maxAttempts = 500;
+
+    for (let i = 0; i < count; i++) {
+        let best = null;
+        let bestDistance = -1;
+
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+            const candidate = {
+                x: rand(4, 86),
+                y: rand(5, 80)
+            };
+
+            if (!positions.length) {
+                best = candidate;
+                break;
+            }
+
+            const nearest = Math.min(
+                ...positions.map(pos =>
+                    Math.hypot(
+                        candidate.x - pos.x,
+                        candidate.y - pos.y
+                    )
+                )
+            );
+
+            if (nearest >= minDistance) {
+                best = candidate;
+                break;
+            }
+
+            if (nearest > bestDistance) {
+                bestDistance = nearest;
+                best = candidate;
+            }
+        }
+
+        positions.push(best);
+    }
+
+    return positions;
+}
+
+
+function thumbnailURL(item) {
+    return (
+        "https://drive.google.com/thumbnail?id=" +
+        encodeURIComponent(item.thumb_id) +
+        "&sz=w400"
+    );
+}
+
+
+function preloadImage(item) {
+    return new Promise(resolve => {
+        const img = new Image();
+
+        img.fetchPriority = "high";
+        img.src = thumbnailURL(item);
+
+        img.onload = () => resolve(item);
+        img.onerror = () => resolve(null);
+    });
+}
+
+
+function createGalleryImage(item, position, index) {
+    const img = document.createElement("img");
+
+    img.className = "space-gallery-image";
+    img.src = thumbnailURL(item);
+    
+
+    img.alt = item.name || "";
+    img.loading = "eager";
+    img.fetchPriority = "high";
+    img.draggable = false;
+
+
+    // SIZE
+    const sizeRoll = Math.random();
+
+    const size =
+        sizeRoll < 0.08 ? rand(200, 280) :
+        sizeRoll < 0.30 ? rand(50, 90) :
+        rand(90, 170);
+
+    img.style.width = `${size}px`;
+
+
+    // POSITION
+    img.style.left = `${position.x}%`;
+    img.style.top = `${position.y}%`;
+
+
+    // ROTATION
+    img.style.setProperty(
+        "--rotation",
+        `${rand(-21, 78)}deg`
+    );
+
+
+    // OPACITY
+    img.style.setProperty(
+        "--image-opacity",
+        rand(0.5, 0.9)
+    );
+
+
+    // DRIFT
+    img.style.setProperty(
+        "--drift-x",
+        `${rand(10, 25)}px`
+    );
+
+    img.style.setProperty(
+        "--drift-y",
+        `${rand(8, 22)}px`
+    );
+
+    img.style.setProperty(
+        "--float-time",
+        `${rand(10, 18)}s`
+    );
+
+    img.style.setProperty(
+        "--float-delay",
+        `${rand(-12, 0)}s`
+    );
+
+
+    // STAGGERED ENTRANCE
+    img.style.setProperty(
+        "--enter-delay",
+        `${index * 0.06}s`
+    );
+
+
+    img.onerror = () => img.remove();
+
+    return img;
+}
+
+
+
+async function createSpaceGallery() {
+    const container = document.getElementById("space-gallery");
+
+    if (!container) return;
+
+    try {
+        const gallery = await loadGalleryData();
+
+        // ONLY ITEMS TAGGED "showcase"
+        const showcase = gallery.filter(item =>
+            item?.thumb_id &&
+            Array.isArray(item.tag) &&
+            item.tag.some(tag =>
+                String(tag)
+                    .trim()
+                    .toLowerCase() === "showcase"
+            )
+        );
+
+        // RANDOM SELECTION
+        const selected = shuffle(showcase)
+            .slice(0, SPACE_IMAGE_COUNT);
+
+        // SPREAD POSITIONS
+        const positions = generatePositions(
+            selected.length
+        );
+
+        // LOAD SELECTED IMAGES FIRST
+        const loaded = (
+            await Promise.all(
+                selected.map(preloadImage)
+            )
+        ).filter(Boolean);
+
+        // ADD TO PAGE
+        container.replaceChildren(
+            ...loaded.map((item, index) =>
+                createGalleryImage(
+                    item,
+                    positions[index],
+                    index
+                )
+            )
+        );
+    }
+
+    catch (error) {
+        console.error(
+            "Space gallery failed:",
+            error
+        );
+    }
+}
+
+
+
+if (document.readyState === "loading") {
+    document.addEventListener(
+        "DOMContentLoaded",
+        createSpaceGallery
+    );
+}
+else {
+    createSpaceGallery();
+}
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   
