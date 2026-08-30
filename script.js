@@ -743,7 +743,7 @@ fetch("./blog.json")
         avatar.className = "blog-avatar";
 
         var avatarImg = document.createElement("img");
-        avatarImg.src = "./illy.png";
+        avatarImg.src = "./images/illy.png";
         avatarImg.alt = "illy";
         avatarImg.title = "hi, im illy!";
 
