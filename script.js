@@ -490,7 +490,7 @@ function createButtonsMenu(att, yearSelected) {
           }
         }
     }
-    sortmenu.style.display = "flex";
+    sortmenu.style.display = "block";
     sortmenu2.style.display = "none";
     break;
   }
