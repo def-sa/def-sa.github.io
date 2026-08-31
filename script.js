@@ -427,7 +427,7 @@ function createButtonsMenu(att, yearSelected) {
         sortmenu.appendChild(tagitem);
       }
     }
-    sortmenu.style.display = "flex";
+    sortmenu.style.display = "block";
     sortmenu2.style.display = "none";
     break;
   case "type":
