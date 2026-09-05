@@ -227,7 +227,7 @@ canvas {
     background: #3c3c3c99;
   }
   .item {
-    width: 50vw !important;
+    width: 50vw;
     }
   .tab-list {
     width: 100vw;
@@ -248,18 +248,22 @@ canvas {
     width: 100%;
     max-width: unset !important;
     }
-  #item-details {
-    top: 17vh !important;
-    }
   #item-info p,#item-info a, #item-info h3, #item-info ul{
     display:none;
     }
+    .blog-title {
+      font-size: unset !important;
+      }
 }
 
 @media (min-width: 768px) {
   .tab.active {
     display:flex;
   }
+  .tab#zip {
+  overflow-y: unset;
+  }
+
 }
 
 
@@ -496,7 +500,7 @@ content:hover {
   
 #sort-menu, #sort-menu2 {
   width: 100%;
-  display: flex;
+  display: block;
   flex-direction: row;
   justify-content: center;
   display: none;

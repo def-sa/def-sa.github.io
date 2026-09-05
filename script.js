@@ -461,7 +461,7 @@ function createButtonsMenu(att, yearSelected) {
         sortmenu.appendChild(tagitem);
       }
     }
-    sortmenu.style.display = "flex";
+    sortmenu.style.display = "block";
     sortmenu2.style.display = "none";
     break;
   case "type":
@@ -473,7 +473,7 @@ function createButtonsMenu(att, yearSelected) {
       typeitem.id = uniqueType[i]+"btn";
       sortmenu.appendChild(typeitem);
     }
-    sortmenu.style.display = "flex";
+    sortmenu.style.display = "block";
     sortmenu2.style.display = "none";
     break;
     
