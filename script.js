@@ -55,18 +55,47 @@ function moveSelection(dir) {
   requestAnimationFrame(updateView);
 }
 
-container.addEventListener("wheel", e => {
-  e.preventDefault();
-  if (locked || !e.deltaY) return;
-  
-  if (e.deltaY > 0) {
+
+
+
+
+function triggerMove(direction) {
+  if (locked || !direction) return;
+
+  if (direction > 0) {
     document.getElementById("go-down")?.remove();
   }
-  locked = true;
-  moveSelection(Math.sign(e.deltaY));
 
-  setTimeout(() => locked = false, 100);
+  locked = true;
+
+  moveSelection(direction);
+
+  setTimeout(() => {
+    locked = false;
+  }, 100);
+}
+
+
+// DESKTOP
+container.addEventListener("wheel", e => {
+  e.preventDefault();
+
+  if (!e.deltaY) return;
+
+  triggerMove(Math.sign(e.deltaY));
 }, { passive: false });
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   cachePositions();
@@ -91,16 +120,21 @@ document.addEventListener('keydown', e => {
 
 window.addEventListener('resize', updateView);
   
+if (window.matchMedia("(max-width: 768px)").matches) {
+    openTab("zip");
+}
+
 
 
 function openTab(tab) {
   document.getElementById("notepad-title").innerText = tab+".txt - Notepad"
   
-  const parent = document.getElementById('tab-list');
-
-  parent.querySelectorAll('.active').forEach(el => {
-    el.classList.remove('active');
+  document.querySelectorAll('.tab-list').forEach(parent => {
+    parent.querySelectorAll('.active').forEach(el => {
+      el.classList.remove('active');
+    });
   });
+  
     
   
   toggleTabs(true);
@@ -427,7 +461,7 @@ function createButtonsMenu(att, yearSelected) {
         sortmenu.appendChild(tagitem);
       }
     }
-    sortmenu.style.display = "block";
+    sortmenu.style.display = "flex";
     sortmenu2.style.display = "none";
     break;
   case "type":
@@ -490,7 +524,7 @@ function createButtonsMenu(att, yearSelected) {
           }
         }
     }
-    sortmenu.style.display = "block";
+    sortmenu.style.display = "flex";
     sortmenu2.style.display = "none";
     break;
   }
@@ -744,7 +778,7 @@ fetch("./blog.json")
         avatar.className = "blog-avatar";
 
         var avatarImg = document.createElement("img");
-        avatarImg.src = "./images/illy.png";
+        avatarImg.src = "./images//illy.png";
         avatarImg.alt = "illy";
         avatarImg.title = "hi, im illy!";
 

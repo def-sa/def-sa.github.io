@@ -26,6 +26,15 @@
   <p id="go-down">↓↓↓</p>
       <div id="starry-night"></div>
       <div id="space-gallery"></div>
+      
+       <div class="mobile-nav tab-list" style="display:none">
+          <div onclick="openTab(this.innerText)">mp4</div>
+          <div class="active" onclick="openTab(this.innerText)">zip</div>
+          <div onclick="openTab(this.innerText)">mp3</div>
+          <div onclick="openTab(this.innerText)">info</div>
+          <div onclick="openTab(this.innerText)">txt</div>
+        </div>
+        
       <div id="flex-left">
         
           <div class="title">
@@ -40,6 +49,7 @@
               <div class="title-item" onclick="openTab(this.innerText)">txt</div>
             </div>
          </div>
+         
         
       </div>
        <div id="title-desc">
@@ -79,7 +89,7 @@
     
     <div id="right-tab" class="flex-right">
     <div></div>
-      <div id="tab-list">
+      <div class="tab-list">
         
         <div class="explorer-topbar">
             <div class="explorer-titlebar">

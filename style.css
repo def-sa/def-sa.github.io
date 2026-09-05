@@ -187,6 +187,76 @@ canvas {
   background: radial-gradient(circle,rgb(13, 13, 13) 0%, rgba(255, 255, 255, 0) 100%);
   }
 
+
+.mobile-nav {
+  display: none;
+}
+
+
+/* mobile */
+@media (max-width: 768px) {
+  #go-down {
+    display:none;
+    }
+  #flex-left {
+    display: none !important;
+  }
+  #right-tab {
+    flex: unset !important;
+    display: flex !important;
+    position: unset !important;
+    }
+  #flex {
+  flex-direction: column;
+    }
+
+  .mobile-nav {
+    display: flex !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-direction: unset !important;
+  }
+  .mobile-nav div {
+    flex: 1;
+    text-align: center;
+    border: 1px solid white;
+    padding: 12% 0 12% 0;
+    background: #3c3c3c99;
+  }
+  .item {
+    width: 50vw !important;
+    }
+  .tab-list {
+    width: 100vw;
+    }
+    
+  .tab.active {
+    flex: 1;
+    display: block;
+    flex-direction: column;
+    height: 150%;
+      }
+  .tab.active#zip {
+    display:flex;
+    }
+  .item-details {
+    position: absolute;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+  .tab.active {
+    display:flex;
+  }
+}
+
+
+
+
+
 #title-desc {
   flex:1;
   overflow: hidden;
@@ -197,7 +267,6 @@ canvas {
 #tab-list {
   width: 100%;
   display: flex;
-  /*! background: #292929; */
   flex-direction: column;
   }
 
@@ -209,12 +278,11 @@ canvas {
   
 .tab.active {
   flex:1;
-  display: flex;
   flex-direction: column;
   }
   
   
-#container {    /* or auto if you want native scroll fallback */
+#container {
   position: relative;
   max-height: 50vh;
 	min-width: 33.33vw;
@@ -225,7 +293,6 @@ canvas {
 .window-nav {
   width: 100%;
   background: black;
-  /*height: 8%;*/
   }
 
 
@@ -344,12 +411,12 @@ content:hover {
 }
 
 #item-details {
-	z-index: 2;
-	justify-content: center;
-	background: rgb(195 195 195 / 85%);
-	display: none;
-	top: 15%;
-	position: sticky;
+  z-index: 2;
+  background: rgb(195 195 195 / 85%);
+  top: 18vh;
+  position: absolute;
+  display: none;
+  top: 0;
 }
 
 #item-popup {
@@ -420,8 +487,9 @@ content:hover {
   
 #sort-menu, #sort-menu2 {
   width: 100%;
-  display: block;
+  display: flex;
   flex-direction: row;
+  justify-content: center;
   display: none;
   overflow-x: auto;
   }
@@ -547,10 +615,6 @@ content:hover {
 a {
   color: burlywood;
   }
-        
-        * {
-            /*! box-sizing: border-box; */
-        }
 
         body {
             margin: 0;
@@ -1109,7 +1173,6 @@ a {
   background: blue;
 }
 
-/* IMAGE 2 */
 
 .folder-image-2 {
   left: -32px;
