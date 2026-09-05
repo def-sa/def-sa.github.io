@@ -148,6 +148,8 @@ canvas {
   }
 
 .tab {
+  height: 75%;
+  overflow-y: scroll;
   /*! background: #c3c3c3; */
   display: none;
   color: white;
@@ -235,17 +237,24 @@ canvas {
     flex: 1;
     display: block;
     flex-direction: column;
-    height: 150%;
       }
   .tab.active#zip {
     display:flex;
     }
-  .item-details {
+  #item-info {
+    background: #c3c3c3;
     position: absolute;
+    z-index: 100;
+    width: 100%;
+    max-width: unset !important;
+    }
+  #item-details {
+    top: 17vh !important;
+    }
+  #item-info p,#item-info a, #item-info h3, #item-info ul{
+    display:none;
     }
 }
-
-
 
 @media (min-width: 768px) {
   .tab.active {
@@ -414,7 +423,7 @@ content:hover {
   z-index: 2;
   background: rgb(195 195 195 / 85%);
   top: 18vh;
-  position: absolute;
+  position: sticky;
   display: none;
   top: 0;
 }
